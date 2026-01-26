@@ -606,46 +606,114 @@ th, td{ box-sizing: border-box; }
 .th-tip{outline:none}
 
 
-/* ===== UI polish (Jan 2026) ===== */
-.tableWrap{ border-radius: var(--radius); overflow:auto; }
-.tableWrap table{ min-width: 1320px; }
-
-/* Two-line header labels for long columns */
-.thLabel{ display:block; font-weight:950; line-height:1.05; }
-.thSub{ display:block; margin-top:4px; font-size:11px; color: var(--muted); font-weight:800; }
-
-/* Compact rows + zebra */
-.tableWrap tbody tr:nth-child(odd){ background: rgba(255,255,255,.02); }
-.tableWrap tbody tr:hover{ background: rgba(124,58,237,.08); }
-.tableWrap th{ white-space:nowrap; }
-.tableWrap td{ white-space:nowrap; }
-.tableWrap td .net{ white-space:nowrap; }
-
-/* Sticky left (Product) */
-th.sticky-left, td.sticky-left{
-  position: sticky;
-  left: 0;
-  z-index: 7;
-  background: rgba(10,16,32,.92);
-  backdrop-filter: blur(10px);
-  box-shadow: 10px 0 20px rgba(0,0,0,.18);
+/* ================= Responsive (PC + Mobile) ================= */
+.mobileCards{ display:none; margin-top:10px; }
+.mcard{
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+  border-radius:18px;
+  padding:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  margin-bottom:10px;
 }
-td.sticky-left{ z-index: 6; }
 @media (prefers-color-scheme: light){
-  th.sticky-left, td.sticky-left{ background:#f8fafc; }
+  .mcard{ background:#ffffff; }
+}
+.mcard-hd{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+  margin-bottom:10px;
+}
+.mtitle{
+  font-weight:950; line-height:1.2;
+}
+.msub{ color:var(--muted); font-weight:750; font-size:12px; margin-top:4px; }
+.mgrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+.mfield label{
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:800;
+  margin-bottom:6px;
+}
+.mout{
+  font-family:var(--mono);
+  font-weight:900;
+  text-align:right;
+  padding:10px 10px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.02);
+}
+.mout.positive{ color: var(--ok); }
+.mout.negative{ color: var(--bad); }
+.mactions{
+  display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+  margin-top:10px;
+}
+.mactions .smallBtn{ width:auto; }
+
+.mobileBar{
+  display:none;
+  position:fixed;
+  left:12px; right:12px; bottom:12px;
+  z-index:30;
+  padding:10px;
+  border-radius:18px;
+  border:1px solid var(--line2);
+  background:rgba(15,26,51,.88);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+}
+@media (prefers-color-scheme: light){
+  .mobileBar{ background:rgba(255,255,255,.90); }
+}
+.mobileBar .barRow{
+  display:flex; gap:10px; justify-content:space-between; align-items:center;
+}
+.mobileBar .barBtn{
+  flex:1;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:10px 10px;
+  border-radius:14px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  font-weight:900;
+  cursor:pointer;
+  user-select:none;
+}
+.mobileBar .barBtn.primary{
+  background:linear-gradient(135deg, rgba(124,58,237,.75), rgba(37,99,235,.75));
+  border-color: rgba(124,58,237,.35);
+}
+.mobileBar .barBtn:active{ transform: translateY(1px); }
+
+@media (max-width: 920px){
+  .wrap{ padding:14px 12px 94px; }
+  .actions{ gap:8px; width:100%; }
+  .actions .btn{ flex:1; min-width: unset; }
+  .kpis{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 
-/* Visual group for Break-even columns */
-th.col-be, td.be-col{
-  background: rgba(245,158,11,.08);
+@media (max-width: 720px){
+  .topbar{ gap:10px; }
+  .brand{ min-width: unset; width:100%; }
+  h1{ font-size:16px; }
+  .sub{ font-size:12px; line-height:1.35; }
+  .actions{ display:none; }
+  .tablewrap{ display:none; }
+  .mobileCards{ display:block; }
+  .mobileBar{ display:block; }
+  .grid{ grid-template-columns: 1fr; }
+  .settingsDrawer{ width:min(420px, calc(100vw - 24px)); }
+  .dd{ width:100%; }
 }
-.tableWrap th.col-be{ border-bottom: 1px solid rgba(245,158,11,.25); }
-
-/* Better column widths on medium screens */
-@media (max-width: 1100px){
-  .wrap{ max-width: 100%; }
-  .tableWrap table{ min-width: 1480px; } /* allow horizontal scroll instead of squeezing */
-  .tableWrap th, .tableWrap td{ padding: 10px 10px; }
+@media (max-width: 380px){
+  .mgrid{ grid-template-columns: 1fr; }
 }
 
 </style>
@@ -709,7 +777,7 @@ th.col-be, td.be-col{
         <ul class="ul">
           <li><b>Tiền về</b>: số tiền bạn dự kiến nhận về sau phí.</li>
           <li><b>Lợi nhuận thực tế</b>: lợi nhuận còn lại sau thuế, theo giá vốn thực tế.</li>
-          <li><b>% chuẩn</b>: tỷ lệ <b>Lợi nhuận thực tế / Tiền về</b> (dùng để so với mục tiêu).</li>
+          <li><b>% chuẩn</b>: tỷ lệ <b>Lợi nhuận thực tế / Giá bán</b> (dùng để so với mục tiêu).</li>
           <li><b>Lãi ròng</b>: lợi nhuận cuối cùng sau các khoản chi phí cố định (nếu bạn bật).</li>
           <li><b>Trạng thái</b>: báo hiệu nhanh dòng đang Lãi / Lỗ / Cần chú ý.</li>
         </ul>
@@ -760,7 +828,7 @@ th.col-be, td.be-col{
 
         <div class="field">
           <div style="width:100%">
-            <label>% mục tiêu (Lợi nhuận thực tế / Tiền về)</label>
+            <label>% mục tiêu (Lợi nhuận thực tế / Giá bán)</label>
             <input id="targetPct" type="number" value="7" step="0.01" min="0" max="99">
           </div>
           <div class="suffix">%</div>
@@ -861,34 +929,34 @@ th.col-be, td.be-col{
           <div class="mini">Tip: nhập <b>Giá bán</b> & <b>Giá vốn (hóa đơn)</b> (và nếu có thì thêm <b>Giá vốn thực tế</b>). Rời ô sẽ tự format <span class="mono">348000 → 348.000</span>. Phím tắt: <kbd>Ctrl</kbd> + <kbd>F</kbd> để tìm trên trang.</div>
         </div>
         <div class="mini">
-          “% chuẩn” = <span class="mono">Lợi nhuận thực tế / Tiền về</span> • Trạng thái dựa trên <span class="mono">Lãi ròng</span>.
+          “% chuẩn” = <span class="mono">Lợi nhuận thực tế / Giá bán</span> • Trạng thái dựa trên <span class="mono">Lãi ròng</span>.
         </div>
       </div>
 
       <div class="tablewrap">
         <table>
           <colgroup>
-            <col style="width:220px">
-            <col style="width:130px">
+            <col style="width:260px">
             <col style="width:140px">
             <col style="width:140px">
-            <col style="width:130px">
-            <col style="width:120px">
             <col style="width:140px">
-            <col style="width:150px">
-            <col style="width:170px">
-            <col style="width:170px">
+            <col style="width:140px">
+            <col style="width:140px">
+            <col style="width:140px">
+            <col style="width:140px">
+            <col style="width:140px">
             <col style="width:110px">
-            <col style="width:90px">
+            <col style="width:110px">
             <col style="width:120px">
-            <col style="width:120px">
-            <col style="width:120px">
-            <col style="width:330px">
-            <col style="width:92px">
+            <col style="width:140px">
+            <col style="width:140px">
+            <col style="width:180px">
+            <col style="width:190px">
+            <col style="width:110px">
           </colgroup>
           <thead>
             <tr>
-              <th class="sticky-left"><span class="th-tip" tabindex="0" data-tip="Tên sản phẩm/SKU để bạn quản lý." title="Tên sản phẩm/SKU để bạn quản lý.">Sản phẩm</span></th>
+              <th><span class="th-tip" tabindex="0" data-tip="Tên sản phẩm/SKU để bạn quản lý." title="Tên sản phẩm/SKU để bạn quản lý.">Sản phẩm</span></th>
               <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bạn dự định bán ra (P)." title="Giá bạn dự định bán ra (P).">Giá bán</span></th>
               <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế." title="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế.">Giá vốn (hóa đơn)</span></th>
 
@@ -900,10 +968,10 @@ th.col-be, td.be-col{
               <th class="right"><span class="th-tip" tabindex="0" data-tip="Tiền về − Giá vốn thực tế." title="Tiền về − Giá vốn thực tế.">Tiền chênh lệch</span></th>
               <th class="right"><span class="th-tip" tabindex="0" data-tip="Tiền chênh lệch − Thuế (kế toán)." title="Tiền chênh lệch − Thuế (kế toán).">Lợi nhuận thực tế</span></th>
 
-              <th class="right col-be"><span class="th-tip" tabindex="0" data-tip="Giá bán tối thiểu để Lợi nhuận thực tế = 0 theo giá vốn thực tế (không đủ HĐ)." title="Giá bán tối thiểu để Lợi nhuận thực tế = 0 theo giá vốn thực tế (không đủ HĐ)."><span class="thLabel">Giá bán hòa vốn</span><span class="thSub">không đủ HĐ</span></span></th>
-<th class="right col-be"><span class="th-tip" tabindex="0" data-tip="Giá bán tối thiểu để Lợi nhuận thực tế = 0 khi giá vốn hóa đơn = giá vốn thực tế (đủ hóa đơn)." title="Giá bán tối thiểu để Lợi nhuận thực tế = 0 khi giá vốn hóa đơn = giá vốn thực tế (đủ hóa đơn)."><span class="thLabel">Giá bán hòa vốn</span><span class="thSub">đủ hóa đơn</span></span></th>
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bán hòa vốn theo GIÁ VỐN THỰC TẾ (khi hóa đơn thấp hơn thực tế). Điều kiện: Lợi nhuận thực tế = 0. Thuế vẫn tính theo giá vốn hóa đơn." title="Giá bán hòa vốn theo GIÁ VỐN THỰC TẾ (khi hóa đơn thấp hơn thực tế). Điều kiện: Lợi nhuận thực tế = 0. Thuế vẫn tính theo giá vốn hóa đơn.">Giá bán hòa vốn không đủ HD</span></th>
+<th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bán hòa vốn khi ĐỦ HÓA ĐƠN (giá vốn hóa đơn = giá vốn thực tế). Điều kiện: Lợi nhuận thực tế = 0." title="Giá bán hòa vốn khi ĐỦ HÓA ĐƠN (giá vốn hóa đơn = giá vốn thực tế). Điều kiện: Lợi nhuận thực tế = 0.">Giá bán hòa vốn đủ hóa đơn</span></th>
 
-                            <th class="right"><span class="th-tip" tabindex="0" data-tip="Tỷ lệ Lợi nhuận thực tế / Tiền về, dùng để đánh giá hiệu quả." title="Tỷ lệ lãi so với tiền về, dùng để đánh giá hiệu quả.">% chuẩn</span></th>
+                            <th class="right"><span class="th-tip" tabindex="0" data-tip="Tỷ lệ Lợi nhuận thực tế / Giá bán, dùng để đánh giá hiệu quả." title="Tỷ lệ lãi so với tiền về, dùng để đánh giá hiệu quả.">% chuẩn</span></th>
               <th><span class="th-tip" tabindex="0" data-tip="Đạt/Chưa đạt % mục tiêu theo % chuẩn." title="Đạt/Chưa đạt % mục tiêu theo % chuẩn.">Đạt?</span></th>
 
               <th class="right adv"><span class="th-tip" tabindex="0" data-tip="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt." title="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt.">Phí cố định</span></th>
@@ -920,7 +988,21 @@ th.col-be, td.be-col{
     </div>
   </div>
 
-  <div class="footer">
+  
+  <!-- Mobile cards view -->
+  <div id="mobileCards" class="mobileCards" aria-label="Bảng nhập liệu dạng thẻ (mobile)"></div>
+
+  <!-- Mobile bottom bar -->
+  <div class="mobileBar" id="mobileBar" aria-label="Thanh thao tác nhanh">
+    <div class="barRow">
+      <div class="barBtn primary" id="mbAdd">+ Thêm</div>
+      <div class="barBtn" id="mbImport">Import</div>
+      <div class="barBtn" id="mbApply">Áp dụng</div>
+      <div class="barBtn" id="mbMore">⋯</div>
+    </div>
+  </div>
+
+<div class="footer">
     <div>Phiên bản online • Không lưu dữ liệu (mỗi lần mở trang là phiên mới).</div>
     <div>Made by <b>Thịnh Nguyễn</b></div>
   </div>
@@ -977,7 +1059,7 @@ function safePct(p){
 const STORAGE_KEY = "tiktok_profit_2026_professional_v3";
 const DEFAULT_STATE = {
   settings: {
-    targetPct: 7,            // % mục tiêu: RealProfit / MoneyBack
+    targetPct: 7,            // % mục tiêu: RealProfit / Giá bán
     roundStep: 1000,         // làm tròn lên
     moneyBackFeePct: 27,     // phí % trên giá bán để ra tiền về
     taxPct: 17,              // thuế suất
@@ -1024,7 +1106,7 @@ function saveDebounced(){ /* no persistence in online public mode */ }
      Tax = taxPct * max(0, TaxableProfit)
 
      RealProfit = MoneyBack - C_real - Tax
-     ROI_standard = RealProfit / MoneyBack
+     ROI_standard = RealProfit / Giá bán
 
      Fixed = processFee (if on) + refundFee (if on)
      Net = RealProfit - Fixed
@@ -1066,9 +1148,9 @@ function calcRow(r){
   const realProfitRaw = isFinite(diffMoney) ? (diffMoney - taxAmt) : NaN;
   const realProfit = isFinite(realProfitRaw) ? Math.round(realProfitRaw) : NaN;
 
-  // % chuẩn dựa trên tiền về (Lợi nhuận thực tế / Tiền về)
-  const roiOnMoneyBack = (isFinite(realProfit) && isFinite(moneyBack) && moneyBack > 0)
-    ? (realProfit / moneyBack)
+  // % chuẩn dựa trên giá bán (Lợi nhuận thực tế / Giá bán)
+  const roiOnSale = (isFinite(realProfit) && isFinite(P) && P > 0)
+    ? (realProfit / P)
     : NaN;
 
   // Chi phí cố định (nếu bật)
@@ -1087,7 +1169,7 @@ function calcRow(r){
     taxAmt,
     diffMoney,
     realProfit,
-    roiOnMoneyBack,
+    roiOnSale,
     fixed,
     net,
     status
@@ -1095,7 +1177,7 @@ function calcRow(r){
 }
 
 /* ================= Suggest price =================
-   Goal: RealProfit / MoneyBack >= r
+   Goal: RealProfit / Giá bán >= r
    Solve 2 cases (no tax / taxable) and pick the correct minimal P.
 */
 function suggestSaleMinForTarget(costInvoiceValue, costRealValue){
@@ -1105,50 +1187,71 @@ function suggestSaleMinForTarget(costInvoiceValue, costRealValue){
   if(!isFinite(Creal) || Creal <= 0) return { ok:false, reason:"Giá vốn thực tế không hợp lệ" };
   if(!isFinite(Cinv) || Cinv <= 0) return { ok:false, reason:"Giá vốn hóa đơn không hợp lệ" };
 
-  // Mục tiêu: (Lợi nhuận thực tế / Tiền về) >= r
-  // RealProfit = MoneyBack - Creal - Tax
-  // MoneyBack = mP, Tax = t*max(0, kP - Cinv)
+  // Mục tiêu: (Lợi nhuận thực tế / Giá bán) >= r
+  // Lợi nhuận thực tế = Tiền về - Giá vốn thực tế - Thuế
+  // Tiền về = P * (1 - moneyBackFeePct)
+  // Thuế = taxPct * max(0, (P - Cinv - feeTaxPct*P))
   const r = safePct(state.settings.targetPct)/100;
   const step = Math.max(1, Number(state.settings.roundStep || 1000));
 
-  const feeMB  = safePct(state.settings.moneyBackFeePct)/100;
+  const feeMB = safePct(state.settings.moneyBackFeePct)/100;
   const feeTax = safePct(state.settings.feeTaxPct)/100;
-  const t      = safePct(state.settings.taxPct)/100;
+  const t = safePct(state.settings.taxPct)/100;
 
   if(!isFinite(r) || r < 0 || r >= 0.999) return { ok:false, reason:"% mục tiêu không hợp lệ" };
-  if(feeMB >= 1)  return { ok:false, reason:"Phí % tiền về không hợp lệ" };
-  if(feeTax >= 1) return { ok:false, reason:"Phí sàn tính thuế không hợp lệ" };
-  if(t >= 1)      return { ok:false, reason:"Thuế không hợp lệ" };
+  if(feeMB >= 1) return { ok:false, reason:"Phí % tiền về không hợp lệ" };
+  if(feeTax >= 1) return { ok:false, reason:"Chi phí sàn tính thuế không hợp lệ" };
+  if(t >= 1) return { ok:false, reason:"Thuế suất không hợp lệ" };
 
-  const m = 1 - feeMB;     // MoneyBack = mP
-  const k = 1 - feeTax;    // TaxBase = kP - Cinv
-  const Pth = Cinv / k;    // ngưỡng bắt đầu phát sinh thuế
+  const m = 1 - feeMB;
 
-  // ---------- Case A: Không thuế (kP <= Cinv) ----------
-  // Tax=0, RealProfit = mP - Creal
-  // (mP - Creal)/(mP) >= r  => mP >= Creal/(1-r)
-  const P_noTax_raw = Creal / ((1 - r) * m);
-  const feasibleNoTax = isFinite(P_noTax_raw) && isFinite(Pth) && (P_noTax_raw <= Pth);
+  function realProfitAt(P){
+    if(!isFinite(P) || P <= 0) return -Infinity;
 
-  // ---------- Case B: Có thuế (kP > Cinv) ----------
-  // Tax = t(kP - Cinv)
-  // RealProfit = (m - t*k)P - (Creal - t*Cinv)
-  // Constraint: RealProfit >= r*mP
-  // => (m - t*k - r*m)P >= (Creal - t*Cinv)
-  const denom = (m - t*k - r*m);
-  if(denom <= 0) return { ok:false, reason:"% mục tiêu quá cao so với phí/thuế" };
+    const moneyBack = Math.round(P * m);
 
-  const P_tax_raw = (Creal - t*Cinv) / denom;
-  const P_tax_candidate = Math.max(Pth, (isFinite(P_tax_raw) ? P_tax_raw : Infinity));
-  const feasibleTax = isFinite(P_tax_candidate) && P_tax_candidate > 0;
+    const taxBase = P - Cinv - (P * feeTax);
+    const taxAmt = (isFinite(taxBase) && taxBase > 0) ? Math.round(taxBase * t) : 0;
 
-  let Pmin = Infinity;
-  if(feasibleNoTax) Pmin = Math.min(Pmin, P_noTax_raw);
-  if(feasibleTax)   Pmin = Math.min(Pmin, P_tax_candidate);
+    const rp = moneyBack - Creal - taxAmt;
+    return isFinite(rp) ? rp : -Infinity;
+  }
 
-  if(!isFinite(Pmin) || Pmin === Infinity) return { ok:false, reason:"Không tìm được giá đề xuất" };
+  function okAt(P){
+    const rp = realProfitAt(P);
+    if(!isFinite(rp) || !isFinite(P) || P <= 0) return false;
+    return (rp / P) >= r;
+  }
 
-  return { ok:true, sale: roundUp(Math.max(Pmin, 0), step) };
+  // Tìm khoảng [lo, hi] sao cho lo không đạt, hi đạt
+  let lo = 0;
+  let hi = Math.max(
+    // Hi xấp xỉ để không lỗ trước thuế
+    Creal / Math.max(m, 1e-9),
+    // Hi xấp xỉ để có thể phát sinh thuế (an toàn)
+    Cinv / Math.max(1 - feeTax, 1e-9)
+  );
+
+  // đệm để tránh kẹt do làm tròn/thuế
+  if(!isFinite(hi) || hi <= 0) hi = 1000;
+  hi = Math.max(hi, 1000) * 1.2;
+
+  // tăng dần đến khi đạt hoặc quá giới hạn
+  const HI_CAP = 2_000_000_000; // 2 tỷ
+  while(hi < HI_CAP && !okAt(hi)){
+    hi *= 1.5;
+  }
+  if(!okAt(hi)) return { ok:false, reason:"Không tìm được giá đề xuất (phí/thuế quá cao hoặc dữ liệu không hợp lệ)" };
+
+  // Bisection để tìm giá nhỏ nhất đạt mục tiêu
+  for(let it=0; it<60; it++){
+    const mid = (lo + hi) / 2;
+    if(okAt(mid)) hi = mid;
+    else lo = mid;
+  }
+
+  const out = roundUp(hi, step);
+  return { ok:true, sale: out };
 }
 
 
@@ -1253,12 +1356,266 @@ function breakEvenSaleBySolve(costInvoiceValue, costRealValue){
 /* ================= DOM build/update ================= */
 const tbody = $("tbody");
 
+const mobileCards = $("mobileCards");
+
+/* ===== Mobile cards (auto on small screens) ===== */
+function buildMobileCardDOM(i){
+  const r = state.rows[i];
+  const card = document.createElement("div");
+  card.className = "mcard";
+  card.dataset.i = String(i);
+  card.innerHTML = `
+    <div class="mcard-hd">
+      <div style="min-width:0;flex:1">
+        <div class="mtitle">#${i+1} · <span class="mono">${escapeHtml(r.name || ("SP "+(i+1)))}</span></div>
+        <div class="msub">Nhập giá → xem tiền về / thuế / lợi nhuận thực tế / hòa vốn / đề xuất.</div>
+      </div>
+      <button class="danger smallBtn" data-action="del" data-del="${i}" title="Xóa dòng">Xóa</button>
+    </div>
+
+    <div class="mgrid">
+      <div class="mfield">
+        <label>Sản phẩm</label>
+        <input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP">
+      </div>
+
+      <div class="mfield">
+        <label>Giá bán</label>
+        <input class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 1.500.000">
+      </div>
+
+      <div class="mfield">
+        <label>Giá vốn (hóa đơn)</label>
+        <input class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 350.000">
+      </div>
+
+      <div class="mfield">
+        <label>Giá vốn thực tế</label>
+        <input class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 1.000.000">
+      </div>
+
+      <div class="mfield">
+        <label>Tiền về</label>
+        <div class="mout" data-out="moneyBack"></div>
+      </div>
+
+      <div class="mfield">
+        <label>Thuế (kế toán)</label>
+        <div class="mout" data-out="taxAmt"></div>
+      </div>
+
+      <div class="mfield">
+        <label>Tiền chênh lệch</label>
+        <div class="mout" data-out="diffMoney"></div>
+      </div>
+
+      <div class="mfield">
+        <label>Lợi nhuận thực tế</label>
+        <div class="mout" data-out="realProfit"></div>
+      </div>
+
+      <div class="mfield">
+        <label>Hòa vốn (không đủ HĐ)</label>
+        <div class="mout" data-out="breakEvenNoHD"></div>
+      </div>
+
+      <div class="mfield">
+        <label>Hòa vốn (đủ HĐ)</label>
+        <div class="mout" data-out="breakEvenFullHD"></div>
+      </div>
+
+      <div class="mfield">
+        <label>% chuẩn (RealProfit / Giá bán)</label>
+        <div class="mout" data-out="roiMb"></div>
+      </div>
+
+      <div class="mfield">
+        <label>Trạng thái</label>
+        <div data-out="status"></div>
+      </div>
+    </div>
+
+    <div class="mactions" data-out="action"></div>
+  `;
+  return card;
+}
+
+function updateMobileCardDOM(i){
+  const card = mobileCards ? mobileCards.querySelector(`.mcard[data-i="${i}"]`) : null;
+  if(!card) return;
+
+  const row = state.rows[i];
+  const c = calcRow(row);
+
+  const set = (key, html) => {
+    const el = card.querySelector(`[data-out="${key}"]`);
+    if(el) el.innerHTML = html;
+  };
+
+  set("moneyBack", fmt(c.moneyBack));
+  set("taxAmt", fmt(c.taxAmt));
+  set("diffMoney", fmt(c.diffMoney));
+
+  const realProfitHtml = isFinite(c.realProfit)
+    ? `<span class="${c.realProfit>=0?'positive':'negative'}">${fmt(c.realProfit)}</span>`
+    : "";
+  set("realProfit", realProfitHtml);
+
+  // break-even outputs are already computed in updateRowDOM; reuse same helpers here
+  const costInv0 = parseNum(row.costInvoice ?? row.cost);
+  const costReal0 = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+  const costInv = isFinite(costInv0) ? costInv0 : costReal0;
+  const costReal = isFinite(costReal0) ? costReal0 : costInv;
+
+  const beNo = (isFinite(costInv) && isFinite(costReal)) ? suggestBreakEvenSale(costInv, costReal, false) : { ok:false };
+  const beFull = (isFinite(costReal)) ? suggestBreakEvenSale(costReal, costReal, true) : { ok:false };
+
+  set("breakEvenNoHD", beNo.ok ? fmt(beNo.sale) : "");
+  set("breakEvenFullHD", beFull.ok ? fmt(beFull.sale) : "");
+
+  const rTarget = safePct(state.settings.targetPct)/100;
+  const roiOnSale = c.roiOnSale;
+  const roiHtml = isFinite(roiOnSale)
+    ? `<span class="${roiOnSale>=rTarget?'positive':'negative'}">${fmtPct(roiOnSale)}</span>`
+    : "";
+  set("roiMb", roiHtml);
+
+  let badge = `<span class="badge na"><span class="dot"></span>—</span>`;
+  if (c.status === "LÃI") badge = `<span class="badge ok"><span class="dot"></span>LÃI</span>`;
+  if (c.status === "LỖ")  badge = `<span class="badge bad"><span class="dot"></span>LỖ</span>`;
+  set("status", badge);
+
+  // Suggested price/action (reuse same HTML builder by calling updateRowDOM then copying?)
+  // We'll generate minimal equivalent action cell here (same logic as table).
+  const saleNow = parseNum(row.sale);
+  const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
+
+  if(sug.ok){
+    const warn = isFinite(saleNow) && saleNow > 0 && saleNow < sug.sale;
+    const suggestHtml = `<span class="suggest ${warn?'warn':''}">${fmt(sug.sale)}</span>`;
+    const warnPill = warn ? `<span class="pillWarn">⚠ Giá bán &lt; đề xuất</span>` : ``;
+    set("action", `
+      <div class="actionCell" style="justify-content:flex-end">
+        ${suggestHtml}
+        ${warnPill}
+        <button class="smallBtn primary" data-action="applySuggest" data-i="${i}" title="Áp dụng giá bán đề xuất">Áp dụng</button>
+      </div>
+    `);
+  } else {
+    set("action", `<span class="hint">Nhập giá vốn</span>`);
+  }
+}
+
+function rebuildMobileCards(){
+  if(!mobileCards) return;
+  mobileCards.innerHTML = "";
+  state.rows.forEach((_, i)=>{
+    mobileCards.appendChild(buildMobileCardDOM(i));
+  });
+  state.rows.forEach((_, i)=> updateMobileCardDOM(i));
+}
+
+/* Mirror table listeners on mobile cards */
+if(mobileCards){
+  mobileCards.addEventListener("input", (e)=>{
+    const el = e.target;
+    if(!(el instanceof HTMLInputElement)) return;
+    const i = el.getAttribute("data-i");
+    const k = el.getAttribute("data-k");
+    if(i === null || k === null) return;
+    const idx = Number(i);
+    if(!state.rows[idx]) return;
+    state.rows[idx][k] = el.value;
+    updateRowDOM(idx);
+    updateMobileCardDOM(idx);
+    updateKPIs();
+    saveDebounced();
+  });
+
+  mobileCards.addEventListener("blur", (e)=>{
+    const el = e.target;
+    if(!(el instanceof HTMLInputElement)) return;
+    const i = el.getAttribute("data-i");
+    const k = el.getAttribute("data-k");
+    if(i === null || k === null) return;
+    const idx = Number(i);
+    if(!state.rows[idx]) return;
+
+    if(k === "sale" || k === "costInvoice" || k === "costReal"){
+      el.value = formatMoneyString(el.value);
+      state.rows[idx][k] = el.value;
+      updateRowDOM(idx);
+      updateMobileCardDOM(idx);
+      updateKPIs();
+      saveDebounced();
+    }
+  }, true);
+
+  mobileCards.addEventListener("click", (e)=>{
+    const delBtn = e.target.closest('button[data-action="del"]');
+    if(delBtn){
+      const idx = Number(delBtn.getAttribute("data-del"));
+      if(isFinite(idx)){
+        state.rows.splice(idx, 1);
+        rebuildTable();
+        saveDebounced();
+      }
+      return;
+    }
+    const applyBtn = e.target.closest('button[data-action="applySuggest"]');
+    if(applyBtn){
+      const idx = Number(applyBtn.getAttribute("data-i"));
+      if(!state.rows[idx]) return;
+      const row = state.rows[idx];
+      const costInv0 = parseNum(row.costInvoice ?? row.cost);
+      const costReal0 = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+      const costInv = isFinite(costInv0) ? costInv0 : costReal0;
+      const costReal = isFinite(costReal0) ? costReal0 : costInv;
+      const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
+      if(!sug.ok){
+        alert("Chưa có giá bán đề xuất. Hãy nhập Giá vốn trước.");
+        return;
+      }
+      row.sale = fmt(sug.sale);
+
+      // sync inputs in both views
+      const saleInputT = tbody.querySelector(`input[data-k="sale"][data-i="${idx}"]`);
+      if(saleInputT) saleInputT.value = row.sale;
+      const saleInputM = mobileCards.querySelector(`input[data-k="sale"][data-i="${idx}"]`);
+      if(saleInputM) saleInputM.value = row.sale;
+
+      updateRowDOM(idx);
+      updateMobileCardDOM(idx);
+      updateKPIs();
+      saveDebounced();
+      return;
+    }
+  });
+}
+
+/* Mobile bottom bar: map to existing buttons */
+function clickIf(id){
+  const el = $(id);
+  if(el) el.click();
+}
+$("mbAdd") && $("mbAdd").addEventListener("click", ()=> clickIf("addRowBtn"));
+$("mbImport") && $("mbImport").addEventListener("click", ()=> clickIf("importBtn"));
+$("mbApply") && $("mbApply").addEventListener("click", ()=> clickIf("bulkApplyBtn"));
+$("mbMore") && $("mbMore").addEventListener("click", ()=>{
+  // open settings drawer on mobile as "more"
+  try{ openSettings(); }catch(e){
+    clickIf("settingsBtn");
+  }
+});
+
+
+
 function buildRowDOM(i){
   const r = state.rows[i];
   const tr = document.createElement("tr");
   tr.dataset.i = String(i);
   tr.innerHTML = `
-    <td class="sticky-left"><input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP"></td>
+    <td><input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP"></td>
 
     <td class="right">
       <input class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 348000">
@@ -1277,8 +1634,8 @@ function buildRowDOM(i){
 <td class="right num" data-out="diffMoney"></td>
 <td class="right num" data-out="realProfit"></td>
 
-    <td class="right num be-col" data-out="breakEvenNoHD"></td>
-    <td class="right num be-col" data-out="breakEvenFullHD"></td>
+    <td class="right num" data-out="breakEvenNoHD"></td>
+    <td class="right num" data-out="breakEvenFullHD"></td>
     <td class="right num" data-out="roiMb"></td>
     <td data-out="hitTarget"></td>
 
@@ -1334,7 +1691,7 @@ function updateRowDOM(i){
   set("fixed", fmt(c.fixed));
 
   const rTarget = safePct(state.settings.targetPct)/100;
-  const roiMb = c.roiOnMoneyBack;
+  const roiMb = c.roiOnSale;
   const roiHtml = isFinite(roiMb)
     ? `<span class="net ${roiMb>=rTarget?'positive':'negative'}">${fmtPct(roiMb)}</span>`
     : "";
@@ -1400,7 +1757,7 @@ function getRowMeta(i){
   const saleNow = parseNum(row.sale);
   const warn = isFinite(sugSale) && isFinite(saleNow) && saleNow > 0 && saleNow < sugSale;
   const rTarget = safePct(state.settings.targetPct)/100;
-  const hit = isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget;
+  const hit = isFinite(c.roiOnSale) && c.roiOnSale >= rTarget;
   const loss = isFinite(c.net) && c.net < 0;
   return { c, sugSale, warn, hit, loss };
 }
@@ -1426,8 +1783,8 @@ function getVisibleIndices(){
   const num = (x)=> (isFinite(x) ? x : -Infinity);
 
   withMeta.sort((a,b)=>{
-    if(s === "roi_desc") return num(b.c.roiOnMoneyBack) - num(a.c.roiOnMoneyBack);
-    if(s === "roi_asc")  return num(a.c.roiOnMoneyBack) - num(b.c.roiOnMoneyBack);
+    if(s === "roi_desc") return num(b.c.roiOnSale) - num(a.c.roiOnSale);
+    if(s === "roi_asc")  return num(a.c.roiOnSale) - num(b.c.roiOnSale);
     if(s === "net_desc") return num(b.c.net) - num(a.c.net);
     if(s === "net_asc")  return num(a.c.net) - num(b.c.net);
     if(s === "suggest_desc") return num(b.sugSale) - num(a.sugSale);
@@ -1445,6 +1802,7 @@ function rebuildTable(){
   visible.forEach((i) => updateRowDOM(i));
   updateKPIs();
   applyAdvancedCols();
+  rebuildMobileCards();
 }
 
 /* ================= KPI ================= */
@@ -1457,7 +1815,7 @@ function updateKPIs(){
     if(isFinite(c.moneyBack)) sumMoney += c.moneyBack;
     if(isFinite(c.realProfit)) sumReal += c.realProfit;
     if(isFinite(c.net)) sumNet += c.net;
-    if(isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget) hit++;
+    if(isFinite(c.roiOnSale) && c.roiOnSale >= rTarget) hit++;
   });
 
   const e1=$("kpiMoneyBack"), e2=$("kpiAfterTax"), e3=$("kpiNet"), e4=$("kpiHit");
@@ -1501,6 +1859,7 @@ function applyStateToUI(){
 }
 function refreshAllOutputs(){
   state.rows.forEach((_, i)=> updateRowDOM(i));
+  state.rows.forEach((_, i)=> updateMobileCardDOM(i));
   updateKPIs();
   saveDebounced();
 }
@@ -1521,7 +1880,7 @@ function calcKPIForExport(filtered){
     if(isFinite(c.moneyBack)) sumMoneyBack += c.moneyBack;
     if(isFinite(c.realProfit)) sumRealProfit += c.realProfit;
     if(isFinite(c.net)) sumNet += c.net;
-    if(isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget) hit++;
+    if(isFinite(c.roiOnSale) && c.roiOnSale >= rTarget) hit++;
   });
   return {
     count: filtered.length,
@@ -1589,8 +1948,8 @@ function exportExcelPretty(filterMode = "all"){
       Math.round(c.realProfit || 0),
       (function(){ const be = (isFinite(costInv) && isFinite(costReal)) ? suggestBreakEvenSale(costInv, costReal) : {ok:false}; return be.ok ? be.sale : 0; })(),
       (function(){ const be = (isFinite(costReal)) ? breakEvenSaleBySolve(costReal, costReal) : {ok:false}; return be.ok ? be.sale : 0; })(),
-      isFinite(c.roiOnMoneyBack) ? c.roiOnMoneyBack : 0,
-      isFinite(c.roiOnMoneyBack) ? (c.roiOnMoneyBack >= rTarget ? "ĐẠT" : "CHƯA") : "",
+      isFinite(c.roiOnSale) ? c.roiOnSale : 0,
+      isFinite(c.roiOnSale) ? (c.roiOnSale >= rTarget ? "ĐẠT" : "CHƯA") : "",
       sug.ok ? sug.sale : 0,
       Math.round(c.fixed || 0),
       Math.round(c.net || 0),
@@ -1665,7 +2024,7 @@ function exportExcelPretty(filterMode = "all"){
   const wsKPI = XLSX.utils.aoa_to_sheet([
     ["TỔNG QUAN", ""],
     ["Xuất theo", filterText],
-    ["% mục tiêu (RealProfit / MoneyBack)", (safePct(state.settings.targetPct)) + "%"],
+    ["% mục tiêu (RealProfit / Giá bán)", (safePct(state.settings.targetPct)) + "%"],
     ["Phí % tiền về", (safePct(state.settings.moneyBackFeePct)) + "%"],
     ["Thuế (kế toán) suất (%)", (safePct(state.settings.taxPct)) + "%"],
     ["Chi phí sàn tính thuế (%)", (safePct(state.settings.feeTaxPct)) + "%"],
@@ -1871,7 +2230,7 @@ $("bulkApplyBtn").addEventListener("click", () => {
     const c = calcRow(row);
     const saleNow = parseNum(row.sale);
 
-    const notMeet = !(isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget);
+    const notMeet = !(isFinite(c.roiOnSale) && c.roiOnSale >= rTarget);
     const belowSuggest = isFinite(saleNow) && saleNow > 0 ? (saleNow < sug.sale) : true;
 
     if(notMeet || belowSuggest){
@@ -2068,36 +2427,24 @@ $("excelInput").addEventListener("change", async (e) => {
 });
 
 
-
 /* ================= Excel Template Export =================
 Creates a simple template with required columns and example rows.
-*/ 
+*/
 $("downloadTemplateBtn").addEventListener("click", () => {
   if(typeof XLSX === "undefined"){
     alert("Thiếu thư viện Excel (xlsx.bundle.js). Không thể tạo file mẫu.");
     return;
   }
 
-  // INPUT COLUMNS ONLY (đúng chuẩn import)
-  // - Bắt buộc: Sản phẩm, Giá vốn (hóa đơn)
-  // - Tuỳ chọn: Giá vốn thực tế (để trống = tự lấy theo Giá vốn (hóa đơn)), Giá bán (có thể để trống)
   const aoa = [
     ["Sản phẩm", "Giá vốn (hóa đơn)", "Giá vốn thực tế", "Giá bán"],
-    ["Bu lông M8", 225000, "", 348000],
+    ["Bu lông M8", 225000, 225000, 348000],
     ["SP 2", 120000, 118000, ""],
-    ["SP 3", 98000, "", ""]
+    ["SP 3", 98000, ""]
   ];
 
   const ws = XLSX.utils.aoa_to_sheet(aoa);
-
-  // Column widths
-  ws["!cols"] = [
-    { wch: 28 }, // Sản phẩm
-    { wch: 18 }, // Giá vốn (hóa đơn)
-    { wch: 18 }, // Giá vốn thực tế
-    { wch: 16 }, // Giá bán
-  ];
-  ws["!rows"] = [{ hpt: 22 }];
+  ws["!cols"] = [{ wch: 26 }, { wch: 14 }, { wch: 14 }];
 
   // Header style (xlsx-js-style)
   const headerStyle = {
@@ -2105,45 +2452,35 @@ $("downloadTemplateBtn").addEventListener("click", () => {
     fill: { fgColor: { rgb: "2563EB" } },
     alignment: { vertical: "center", horizontal: "center" }
   };
-  ["A1","B1","C1","D1"].forEach(a=>{
+  ["A1","B1","C1"].forEach(a=>{
     if(ws[a]) ws[a].s = headerStyle;
   });
 
-  // Number formats for money columns (B,C,D) on sample rows
-  const moneyCells = ["B2","C2","D2","B3","C3","D3","B4","C4","D4"];
-  moneyCells.forEach(a=>{
+  // Number formats
+  ["B2","C2","B3","B4"].forEach(a=>{
     if(ws[a]){
       ws[a].t = "n";
       ws[a].z = "#,##0";
-      ws[a].s = { ...(ws[a].s||{}), alignment:{ horizontal:"right", vertical:"center" } };
     }
   });
-  // Align product names left
-  ["A2","A3","A4"].forEach(a=>{
-    if(ws[a]) ws[a].s = { ...(ws[a].s||{}), alignment:{ horizontal:"left", vertical:"center" } };
-  });
+  if(ws["C2"]){ ws["C2"].t="n"; ws["C2"].z="#,##0"; }
 
-  // Notes (merged across A:D)
-  const noteRow = aoa.length + 2; // 1-based row index
+  // Add a note row at bottom
+  const noteRow = 6;
   ws["A"+noteRow] = { t:"s", v:"Ghi chú:" };
   ws["A"+noteRow].s = { font:{bold:true} };
-
-  ws["A"+(noteRow+1)] = { t:"s", v:"- Dòng 1 là tiêu đề. Bắt buộc có: Sản phẩm, Giá vốn (hóa đơn)." };
-  ws["A"+(noteRow+2)] = { t:"s", v:"- Giá vốn thực tế: để trống nếu bạn nhập đủ hóa đơn (tool tự lấy = Giá vốn (hóa đơn))." };
-  ws["A"+(noteRow+3)] = { t:"s", v:"- Giá bán: có thể để trống để app tự gợi ý. Có thể nhập 348000 hoặc 348.000 (app tự format)." };
-
+  ws["A"+(noteRow+1)] = { t:"s", v:"- Dòng 1 là tiêu đề, phải có: Sản phẩm, Giá vốn. Cột Giá bán có thể để trống." };
+  ws["A"+(noteRow+2)] = { t:"s", v:"- Giá vốn/giá bán có thể nhập 348000 hoặc 348.000 (tool tự format)." };
   ws["!merges"] = ws["!merges"] || [];
-  // merge A..D for notes
-  [noteRow, noteRow+1, noteRow+2, noteRow+3].forEach(r=>{
-    ws["!merges"].push({ s:{r:r-1,c:0}, e:{r:r-1,c:3} });
-  });
+  ws["!merges"].push({ s:{r:noteRow-1,c:0}, e:{r:noteRow-1,c:2} });
+  ws["!merges"].push({ s:{r:noteRow,c:0}, e:{r:noteRow,c:2} });
+  ws["!merges"].push({ s:{r:noteRow+1,c:0}, e:{r:noteRow+1,c:2} });
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Mau import");
 
   XLSX.writeFile(wb, "mau_import_gia_ban.xlsx");
 });
-
 
 
 /* ================= Custom Dropdowns ================= */
