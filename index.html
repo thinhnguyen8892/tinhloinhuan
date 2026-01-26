@@ -701,6 +701,10 @@ th, td{ box-sizing: border-box; }
 
 @media (max-width: 720px){
   .topbar{ gap:10px; }
+
+  /* Mobile typing comfort */
+  input.cell-input{ font-size:16px; }
+  .mfield label{ font-size:12.5px; }
   .brand{ min-width: unset; width:100%; }
   h1{ font-size:16px; }
   .sub{ font-size:12px; line-height:1.35; }
@@ -926,7 +930,7 @@ th, td{ box-sizing: border-box; }
       <div class="card-hd">
         <div>
           <div class="title">Bảng tính</div>
-          <div class="mini">Tip: nhập <b>Giá bán</b> & <b>Giá vốn (hóa đơn)</b> (và nếu có thì thêm <b>Giá vốn thực tế</b>). Rời ô sẽ tự format <span class="mono">348000 → 348.000</span>. Phím tắt: <kbd>Ctrl</kbd> + <kbd>F</kbd> để tìm trên trang.</div>
+          <div class="mini">Tip: nhập <b>Giá bán</b> & <b>Giá vốn (hóa đơn)</b> (và nếu có thì thêm <b>Giá vốn thực tế</b>). Rời ô sẽ tự format <span class="mono">348000 → 348.000</span> (và nhập nhanh <span class="mono">380 → 380.000</span>). Phím tắt: <kbd>Ctrl</kbd> + <kbd>F</kbd> để tìm trên trang.</div>
         </div>
         <div class="mini">
           “% chuẩn” = <span class="mono">Lợi nhuận thực tế / Giá bán</span> • Trạng thái dựa trên <span class="mono">Lãi ròng</span>.
@@ -1044,6 +1048,30 @@ const formatMoneyString = (raw) => {
   const n = parseNum(raw);
   return isFinite(n) ? fmt(n) : "";
 };
+// Money input helper: allow shorthand "380" => 380.000 (x1000), or "380k" => 380.000
+const parseMoney = (v) => {
+  if (v === "" || v === null || v === undefined) return NaN;
+  const raw = String(v).trim();
+  if (!raw) return NaN;
+
+  const hasK = /k\s*$/i.test(raw);
+  const hasSep = raw.includes(".") || raw.includes(",") || raw.includes(" ");
+  const digits = raw.replace(/[^\d]/g, "");
+  if (!digits) return NaN;
+
+  let n = Number(digits);
+  if (!isFinite(n)) return NaN;
+
+  // If user types small number (e.g., 380) we assume it's in "nghìn"
+  if (hasK || (!hasSep && n > 0 && n < 10000)) n = n * 1000;
+  return n;
+};
+
+const formatMoneyStringK = (raw) => {
+  const n = parseMoney(raw);
+  return isFinite(n) ? fmt(n) : "";
+};
+
 const escapeHtml = (s) => (s ?? "").toString()
   .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
   .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
@@ -1075,8 +1103,7 @@ const DEFAULT_STATE = {
     exportMode: "all"
   },
   rows: [
-    { name: "SP 1", sale: "", costInvoice: "", costReal: "" },
-    { name: "SP 2", sale: "", costInvoice: "", costReal: "" }
+    { name: "SP 1", sale: "", costInvoice: "", costReal: "" }
   ]
 };
 let state = loadState() || deepClone(DEFAULT_STATE);
@@ -1112,9 +1139,9 @@ function saveDebounced(){ /* no persistence in online public mode */ }
      Net = RealProfit - Fixed
 */
 function calcRow(r){
-  const P = parseNum(r.sale); // Giá bán
-  const C_invoice = parseNum(r.costInvoice ?? r.cost); // Giá vốn trên hóa đơn (kế toán)
-  const C_real = parseNum(r.costReal ?? r.costInvoice ?? r.cost);   // Giá vốn thực tế nhập
+  const P = parseMoney(r.sale); // Giá bán
+  const C_invoice = parseMoney(r.costInvoice ?? r.cost); // Giá vốn trên hóa đơn (kế toán)
+  const C_real = parseMoney(r.costReal ?? r.costInvoice ?? r.cost);   // Giá vốn thực tế nhập
 
   const feeMB = safePct(state.settings.moneyBackFeePct)/100; // % phí ảnh hưởng tiền về
   const feeTax = safePct(state.settings.feeTaxPct)/100;      // % phí sàn tính thuế (kế toán)
@@ -1381,17 +1408,17 @@ function buildMobileCardDOM(i){
 
       <div class="mfield">
         <label>Giá bán</label>
-        <input class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 1.500.000">
+        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 380 (=> 380.000) hoặc 1.500.000">
       </div>
 
       <div class="mfield">
         <label>Giá vốn (hóa đơn)</label>
-        <input class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 350.000">
+        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 380 (=> 380.000) hoặc 350.000">
       </div>
 
       <div class="mfield">
         <label>Giá vốn thực tế</label>
-        <input class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 1.000.000">
+        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 380 (=> 380.000) hoặc 1.000.000">
       </div>
 
       <div class="mfield">
@@ -1462,7 +1489,7 @@ function updateMobileCardDOM(i){
   set("realProfit", realProfitHtml);
 
   // break-even outputs are already computed in updateRowDOM; reuse same helpers here
-  const costInv0 = parseNum(row.costInvoice ?? row.cost);
+  const costInv0 = parseMoney(row.costInvoice ?? row.cost);
   const costReal0 = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
   const costInv = isFinite(costInv0) ? costInv0 : costReal0;
   const costReal = isFinite(costReal0) ? costReal0 : costInv;
@@ -1487,7 +1514,7 @@ function updateMobileCardDOM(i){
 
   // Suggested price/action (reuse same HTML builder by calling updateRowDOM then copying?)
   // We'll generate minimal equivalent action cell here (same logic as table).
-  const saleNow = parseNum(row.sale);
+  const saleNow = parseMoney(row.sale);
   const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
 
   if(sug.ok){
@@ -1542,7 +1569,7 @@ if(mobileCards){
     if(!state.rows[idx]) return;
 
     if(k === "sale" || k === "costInvoice" || k === "costReal"){
-      el.value = formatMoneyString(el.value);
+      el.value = formatMoneyStringK(el.value);
       state.rows[idx][k] = el.value;
       updateRowDOM(idx);
       updateMobileCardDOM(idx);
@@ -1567,7 +1594,7 @@ if(mobileCards){
       const idx = Number(applyBtn.getAttribute("data-i"));
       if(!state.rows[idx]) return;
       const row = state.rows[idx];
-      const costInv0 = parseNum(row.costInvoice ?? row.cost);
+      const costInv0 = parseMoney(row.costInvoice ?? row.cost);
       const costReal0 = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
       const costInv = isFinite(costInv0) ? costInv0 : costReal0;
       const costReal = isFinite(costReal0) ? costReal0 : costInv;
@@ -1618,15 +1645,15 @@ function buildRowDOM(i){
     <td><input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP"></td>
 
     <td class="right">
-      <input class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 348000">
+      <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 348000">
     </td>
 
     <td class="right">
-      <input class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
+      <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
     </td>
 
 <td class="right">
-  <input class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
+  <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
 </td>
 
     <td class="right num" data-out="moneyBack"></td>
@@ -1713,10 +1740,10 @@ function updateRowDOM(i){
     saleInput.title = "";
   }
 
-const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
-  const costInv0 = parseNum(row.costInvoice ?? row.cost);
+const costReal = parseMoney(row.costReal ?? row.costInvoice ?? row.cost);
+  const costInv0 = parseMoney(row.costInvoice ?? row.cost);
   const costInv = isFinite(costInv0) ? costInv0 : costReal;
-  const saleNow = parseNum(row.sale);
+  const saleNow = parseMoney(row.sale);
   const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
 
   if (sug.ok) {
@@ -1749,12 +1776,12 @@ const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
 function getRowMeta(i){
   const row = state.rows[i];
   const c = calcRow(row);
-  const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
-  const costInv0 = parseNum(row.costInvoice ?? row.cost);
+  const costReal = parseMoney(row.costReal ?? row.costInvoice ?? row.cost);
+  const costInv0 = parseMoney(row.costInvoice ?? row.cost);
   const costInv = isFinite(costInv0) ? costInv0 : costReal;
   const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
   const sugSale = sug.ok ? sug.sale : NaN;
-  const saleNow = parseNum(row.sale);
+  const saleNow = parseMoney(row.sale);
   const warn = isFinite(sugSale) && isFinite(saleNow) && saleNow > 0 && saleNow < sugSale;
   const rTarget = safePct(state.settings.targetPct)/100;
   const hit = isFinite(c.roiOnSale) && c.roiOnSale >= rTarget;
@@ -1931,8 +1958,8 @@ function exportExcelPretty(filterMode = "all"){
   const rowsAoa = [header];
 
   filtered.forEach(({ r, c }) => {
-    const costReal = parseNum(r.costReal ?? r.costInvoice ?? r.cost);
-    const costInv0 = parseNum(r.costInvoice ?? r.cost);
+    const costReal = parseMoney(r.costReal ?? r.costInvoice ?? r.cost);
+    const costInv0 = parseMoney(r.costInvoice ?? r.cost);
     const costInv = isFinite(costInv0) ? costInv0 : costReal;
     const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
     rowsAoa.push([
@@ -2150,7 +2177,7 @@ tbody.addEventListener("blur", (e) => {
   if(!state.rows[idx]) return;
 
   if(k === "sale" || k === "cost" || k === "costInvoice" || k === "costReal"){
-    el.value = formatMoneyString(el.value);
+    el.value = formatMoneyStringK(el.value);
     state.rows[idx][k] = el.value;
     updateRowDOM(idx);
     updateKPIs();
@@ -2176,8 +2203,8 @@ tbody.addEventListener("click", (e) => {
     const idx = Number(applyBtn.getAttribute("data-i"));
     if(!state.rows[idx]) return;
 
-    const costReal = parseNum(state.rows[idx].costReal ?? state.rows[idx].costInvoice ?? state.rows[idx].cost);
-    const costInv0 = parseNum(state.rows[idx].costInvoice ?? state.rows[idx].cost);
+    const costReal = parseMoney(state.rows[idx].costReal ?? state.rows[idx].costInvoice ?? state.rows[idx].cost);
+    const costInv0 = parseMoney(state.rows[idx].costInvoice ?? state.rows[idx].cost);
     const costInv = isFinite(costInv0) ? costInv0 : costReal;
     const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
     if(!sug.ok){
@@ -2219,8 +2246,8 @@ $("bulkApplyBtn").addEventListener("click", () => {
   let changed = 0;
 
   state.rows.forEach((row, i) => {
-    const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
-    const costInv0 = parseNum(row.costInvoice ?? row.cost);
+    const costReal = parseMoney(row.costReal ?? row.costInvoice ?? row.cost);
+    const costInv0 = parseMoney(row.costInvoice ?? row.cost);
     const costInv = isFinite(costInv0) ? costInv0 : costReal;
     if(!isFinite(costReal) || costReal <= 0) return;
 
@@ -2228,7 +2255,7 @@ $("bulkApplyBtn").addEventListener("click", () => {
     if(!sug.ok) return;
 
     const c = calcRow(row);
-    const saleNow = parseNum(row.sale);
+    const saleNow = parseMoney(row.sale);
 
     const notMeet = !(isFinite(c.roiOnSale) && c.roiOnSale >= rTarget);
     const belowSuggest = isFinite(saleNow) && saleNow > 0 ? (saleNow < sug.sale) : true;
