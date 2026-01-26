@@ -720,6 +720,65 @@ th, td{ box-sizing: border-box; }
   .mgrid{ grid-template-columns: 1fr; }
 }
 
+
+/* ===== Compact UI refresh (PC + Mobile) ===== */
+@media (min-width: 721px){
+  .actions{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    gap:8px;
+    padding-bottom:6px;
+  }
+  .actions::-webkit-scrollbar{height:6px}
+  .actions::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:999px}
+  @media (prefers-color-scheme: light){
+    .actions::-webkit-scrollbar-thumb{background:rgba(2,6,23,.18)}
+  }
+  button, .select, .chipbtn{ padding:9px 10px; font-size:12.5px; border-radius:11px; }
+}
+
+/* Mobile cards: show essentials first, details collapsible */
+.mcard{ padding:12px; }
+.msub{ display:none; } /* bớt dài dòng */
+.mgrid{ grid-template-columns: 1fr 1fr; gap:10px; }
+@media (max-width: 380px){ .mgrid{ grid-template-columns:1fr; } }
+
+.mkpis{
+  display:grid;
+  grid-template-columns: 1.1fr 1.1fr .8fr .8fr;
+  gap:10px;
+  margin:10px 0 8px;
+}
+@media (max-width: 380px){
+  .mkpis{ grid-template-columns: 1fr 1fr; }
+}
+.mchip{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.02);
+  border-radius:14px;
+  padding:10px 10px;
+  min-height:56px;
+}
+@media (prefers-color-scheme: light){ .mchip{ background:#f8fafc; } }
+.mchip .k{ font-size:12px; color:var(--muted); font-weight:850; }
+.mchip .v{ margin-top:6px; font-family:var(--mono); font-weight:950; font-size:15px; }
+.mchip .v.big{ font-size:17px; }
+.mchip .v .positive{ color:var(--ok); }
+.mchip .v .negative{ color:var(--bad); }
+
+.mtoggle{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
+  margin:6px 0 8px;
+}
+.mtoggle .hint{ margin:0; }
+.mtoggle .smallBtn{ padding:8px 10px; border-radius:12px; font-size:12.5px; }
+
+.mdetails{ display:none; }
+.mcard.open .mdetails{ display:block; }
+.mcard.open .toggleIcon{ transform: rotate(180deg); }
+
 </style>
 </head>
 
@@ -1386,6 +1445,7 @@ const tbody = $("tbody");
 const mobileCards = $("mobileCards");
 
 /* ===== Mobile cards (auto on small screens) ===== */
+
 function buildMobileCardDOM(i){
   const r = state.rows[i];
   const card = document.createElement("div");
@@ -1395,7 +1455,6 @@ function buildMobileCardDOM(i){
     <div class="mcard-hd">
       <div style="min-width:0;flex:1">
         <div class="mtitle">#${i+1} · <span class="mono">${escapeHtml(r.name || ("SP "+(i+1)))}</span></div>
-        <div class="msub">Nhập giá → xem tiền về / thuế / lợi nhuận thực tế / hòa vốn / đề xuất.</div>
       </div>
       <button class="danger smallBtn" data-action="del" data-del="${i}" title="Xóa dòng">Xóa</button>
     </div>
@@ -1408,57 +1467,67 @@ function buildMobileCardDOM(i){
 
       <div class="mfield">
         <label>Giá bán</label>
-        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 380 (=> 380.000) hoặc 1.500.000">
+        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 380 (=> 380.000)">
       </div>
 
       <div class="mfield">
-        <label>Giá vốn (hóa đơn)</label>
-        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 380 (=> 380.000) hoặc 350.000">
+        <label>Giá vốn (HĐ)</label>
+        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 225 (=> 225.000)">
       </div>
 
       <div class="mfield">
-        <label>Giá vốn thực tế</label>
-        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 380 (=> 380.000) hoặc 1.000.000">
+        <label>Giá vốn (thực)</label>
+        <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 225 (=> 225.000)">
       </div>
+    </div>
 
-      <div class="mfield">
-        <label>Tiền về</label>
-        <div class="mout" data-out="moneyBack"></div>
+    <div class="mkpis">
+      <div class="mchip">
+        <div class="k">Tiền về</div>
+        <div class="v big mono" data-out="moneyBack"></div>
       </div>
-
-      <div class="mfield">
-        <label>Thuế (kế toán)</label>
-        <div class="mout" data-out="taxAmt"></div>
+      <div class="mchip">
+        <div class="k">Lợi nhuận</div>
+        <div class="v big mono" data-out="realProfit"></div>
       </div>
-
-      <div class="mfield">
-        <label>Tiền chênh lệch</label>
-        <div class="mout" data-out="diffMoney"></div>
+      <div class="mchip">
+        <div class="k">% chuẩn</div>
+        <div class="v mono" data-out="roiMb"></div>
       </div>
-
-      <div class="mfield">
-        <label>Lợi nhuận thực tế</label>
-        <div class="mout" data-out="realProfit"></div>
+      <div class="mchip">
+        <div class="k">Trạng thái</div>
+        <div class="v" data-out="status"></div>
       </div>
+    </div>
 
-      <div class="mfield">
-        <label>Hòa vốn (không đủ HĐ)</label>
-        <div class="mout" data-out="breakEvenNoHD"></div>
-      </div>
+    <div class="mtoggle">
+      <span class="hint">Chi tiết (thuế, chênh, hòa vốn)</span>
+      <button class="smallBtn ghost" data-action="toggleDetails" data-i="${i}">
+        <span class="toggleText">Xem thêm</span> <span class="toggleIcon" style="display:inline-block;transition:.15s">▾</span>
+      </button>
+    </div>
 
-      <div class="mfield">
-        <label>Hòa vốn (đủ HĐ)</label>
-        <div class="mout" data-out="breakEvenFullHD"></div>
-      </div>
+    <div class="mdetails">
+      <div class="mgrid">
+        <div class="mfield">
+          <label>Thuế (kế toán)</label>
+          <div class="mout" data-out="taxAmt"></div>
+        </div>
 
-      <div class="mfield">
-        <label>% chuẩn (RealProfit / Giá bán)</label>
-        <div class="mout" data-out="roiMb"></div>
-      </div>
+        <div class="mfield">
+          <label>Tiền chênh lệch</label>
+          <div class="mout" data-out="diffMoney"></div>
+        </div>
 
-      <div class="mfield">
-        <label>Trạng thái</label>
-        <div data-out="status"></div>
+        <div class="mfield">
+          <label>Hòa vốn (không đủ HĐ)</label>
+          <div class="mout" data-out="breakEvenNoHD"></div>
+        </div>
+
+        <div class="mfield">
+          <label>Hòa vốn (đủ HĐ)</label>
+          <div class="mout" data-out="breakEvenFullHD"></div>
+        </div>
       </div>
     </div>
 
@@ -1466,6 +1535,7 @@ function buildMobileCardDOM(i){
   `;
   return card;
 }
+
 
 function updateMobileCardDOM(i){
   const card = mobileCards ? mobileCards.querySelector(`.mcard[data-i="${i}"]`) : null;
@@ -1589,6 +1659,17 @@ if(mobileCards){
       }
       return;
     }
+    const toggleBtn = e.target.closest('button[data-action="toggleDetails"]');
+    if(toggleBtn){
+      const cardEl = e.target.closest('.mcard');
+      if(cardEl){
+        const isOpen = cardEl.classList.toggle('open');
+        const t = cardEl.querySelector('.toggleText');
+        if(t) t.textContent = isOpen ? 'Thu gọn' : 'Xem thêm';
+      }
+      return;
+    }
+
     const applyBtn = e.target.closest('button[data-action="applySuggest"]');
     if(applyBtn){
       const idx = Number(applyBtn.getAttribute("data-i"));
@@ -2198,7 +2279,18 @@ tbody.addEventListener("click", (e) => {
     return;
   }
 
-  const applyBtn = e.target.closest('button[data-action="applySuggest"]');
+  const toggleBtn = e.target.closest('button[data-action="toggleDetails"]');
+    if(toggleBtn){
+      const cardEl = e.target.closest('.mcard');
+      if(cardEl){
+        const isOpen = cardEl.classList.toggle('open');
+        const t = cardEl.querySelector('.toggleText');
+        if(t) t.textContent = isOpen ? 'Thu gọn' : 'Xem thêm';
+      }
+      return;
+    }
+
+    const applyBtn = e.target.closest('button[data-action="applySuggest"]');
   if(applyBtn){
     const idx = Number(applyBtn.getAttribute("data-i"));
     if(!state.rows[idx]) return;
