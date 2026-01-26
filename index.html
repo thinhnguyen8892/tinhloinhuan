@@ -1,0 +1,2273 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Tính lợi nhuận TikTok Shop 2026 – Professional (Chuẩn kế toán + Đề xuất giá bán theo % tiền về)</title>
+
+<!-- OFFLINE: đặt file xlsx.bundle.js (xlsx-js-style) cùng thư mục với file HTML này -->
+<script src="./xlsx.bundle.js"></script>
+
+<style>
+:root{
+  --bg:#0b1020;
+  --bg2:#0e1730;
+  --card:#0f1a33;
+  --card2:#111f3d;
+  --text:#e7ecff;
+  --muted:#a8b3d6;
+  --line:rgba(231,236,255,.10);
+  --line2:rgba(231,236,255,.16);
+  --ok:#22c55e;
+  --bad:#ef4444;
+  --warn:#f59e0b;
+  --accent:#7c3aed;
+  --accent2:#2563eb;
+
+  --radius:16px;
+  --shadow:0 18px 60px rgba(0,0,0,.35);
+  --mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --sans:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f6f8ff;
+    --bg2:#eef2ff;
+    --card:#ffffff;
+    --card2:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --line:rgba(15,23,42,.10);
+    --line2:rgba(15,23,42,.14);
+    --shadow:0 16px 46px rgba(2,6,23,.12);
+  }
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--text);
+  background:
+    radial-gradient(1100px 620px at 15% -10%, rgba(124,58,237,.20), transparent 55%),
+    radial-gradient(1000px 560px at 90% 0%, rgba(37,99,235,.18), transparent 55%),
+    radial-gradient(900px 500px at 70% 90%, rgba(34,197,94,.12), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
+
+.wrap{max-width:1380px;margin:auto;padding:18px 14px 34px}
+
+.topbar{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:260px}
+.logo{
+  width:44px;height:44px;border-radius:14px;
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow:0 18px 40px rgba(124,58,237,.25);
+}
+h1{margin:0;font-size:18px;letter-spacing:.2px}
+.sub{
+  margin-top:4px;color:var(--muted);font-size:12.5px;line-height:1.4;
+  max-width:820px;
+}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+button, .select, .chipbtn{
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  padding:10px 12px;border-radius:12px;
+  cursor:pointer;font-weight:850;font-size:13px;
+  transition:.15s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+button:hover, .chipbtn:hover{transform:translateY(-1px)}
+.primary{
+  background:linear-gradient(135deg, rgba(124,58,237,.92), rgba(37,99,235,.82));
+  border-color:rgba(124,58,237,.35);
+}
+.danger{
+  background:rgba(239,68,68,.10);
+  border-color:rgba(239,68,68,.25);
+  color:#fecaca;
+}
+@media (prefers-color-scheme: light){
+  .danger{color:#991b1b}
+}
+.ghost{background:rgba(255,255,255,.02)}
+.select{outline:none;padding:10px 12px}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+@media (max-width: 1040px){
+  .grid{grid-template-columns:1fr}
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+@media (prefers-color-scheme: light){
+  .card{background:var(--card)}
+}
+.card-hd{
+  padding:14px 14px;
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.title{font-weight:950;font-size:13.5px;letter-spacing:.25px}
+.mini{font-size:12px;color:var(--muted);line-height:1.35}
+.mono{font-family:var(--mono)}
+.hr{height:1px;background:var(--line);margin:10px 0}
+
+@media (prefers-color-scheme: light){
+  .kpi.ok{background:linear-gradient(180deg, rgba(34,197,94,.10), #fff)}
+  .kpi.bad{background:linear-gradient(180deg, rgba(239,68,68,.10), #fff)}
+}
+.kpi .k{font-size:12px;color:var(--muted);font-weight:850}
+.kpi .v{margin-top:6px;font-size:18px;font-weight:950;font-family:var(--mono)}
+
+.section{padding:12px 14px}
+.section h3{
+  margin:0 0 10px 0;
+  font-size:12px;
+  letter-spacing:.35px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.field{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 10px;border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  margin-bottom:10px;
+}
+@media (prefers-color-scheme: light){
+  .field{background:#f8fafc}
+}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:850}
+input[type="number"], input[type="text"]{
+  width:100%;
+  border:0;background:transparent;outline:none;
+  font-size:14px;color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+.suffix{font-size:12px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width: 420px){ .row2{grid-template-columns:1fr} }
+
+.switch{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  padding:10px 12px;border-radius:14px;
+  margin-bottom:10px;
+}
+@media (prefers-color-scheme: light){
+  .switch{background:#f8fafc}
+}
+.switch .txt{display:flex;flex-direction:column;gap:2px}
+.switch .txt b{font-size:13px}
+.switch .txt span{font-size:12px;color:var(--muted);font-weight:650}
+
+.toggle{
+  width:46px;height:28px;border-radius:999px;
+  background:rgba(255,255,255,.10);
+  border:1px solid var(--line2);
+  position:relative;cursor:pointer;flex:0 0 auto;
+}
+.knob{
+  position:absolute;top:3px;left:3px;
+  width:22px;height:22px;border-radius:999px;background:rgba(255,255,255,.90);
+  box-shadow:0 8px 16px rgba(0,0,0,.22);
+  transition:.18s ease;
+}
+.toggle.on{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.38)}
+.toggle.on .knob{left:21px}
+
+.hint{font-size:12px;color:var(--muted);font-weight:650;line-height:1.45}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 12px;border-radius:999px;
+  font-weight:950;font-size:12px;border:1px solid var(--line2);
+  background:rgba(255,255,255,.02);
+}
+.badge .dot{width:9px;height:9px;border-radius:999px;background:#94a3b8}
+.badge.ok{border-color:rgba(34,197,94,.30);background:rgba(34,197,94,.12);color:var(--ok)}
+.badge.ok .dot{background:var(--ok)}
+.badge.bad{border-color:rgba(239,68,68,.30);background:rgba(239,68,68,.12);color:var(--bad)}
+.badge.bad .dot{background:var(--bad)}
+.badge.na{opacity:.9}
+
+.tablewrap{overflow:auto;border-top:1px solid var(--line)}
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  min-width:2080px;
+  font-variant-numeric:tabular-nums;
+}
+thead th{
+  position:sticky;top:0;z-index:3;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border-bottom:1px solid var(--line2);
+  padding:10px 10px;font-size:12px;color:var(--muted);
+  text-align:left;white-space:nowrap;
+}
+@media (prefers-color-scheme: light){
+  thead th{background:#f8fafc}
+}
+tbody td{
+  border-bottom:1px solid var(--line);
+  padding:10px 10px;vertical-align:middle;white-space:nowrap;
+}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+
+tbody tr:hover td.sticky-action,
+tbody tr:hover td.sticky-del{
+  background: var(--sticky-bg) !important;
+}
+
+@media (prefers-color-scheme: light){
+  tbody tr:hover{background:#f1f5f9}
+}
+.right{text-align:right}
+.num{font-family:var(--mono)}
+.cell-input{
+  width:100%;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.02);
+  color:var(--text);
+  border-radius:12px;
+  padding:9px 10px;
+  outline:none;font-size:13px;
+  transition:.12s ease;
+}
+@media (prefers-color-scheme: light){
+  .cell-input{background:#fff}
+}
+.cell-input:focus{border-color:rgba(124,58,237,.55);box-shadow:0 0 0 4px rgba(124,58,237,.18)}
+.cell-input.small{width:160px}
+.cell-input.name{width:240px}
+.net.positive{color:var(--ok);font-weight:950}
+.net.negative{color:var(--bad);font-weight:950}
+.net.warn{color:var(--warn);font-weight:950}
+
+.smallBtn{
+  padding:8px 10px;border-radius:12px;font-weight:900;
+}
+.smallBtn.primary{padding:8px 10px}
+.footer{
+  margin-top:10px;
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  color:var(--muted);font-size:12px;
+}
+kbd{
+  font-family:var(--mono);
+  padding:2px 6px;border-radius:8px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+}
+
+.backdrop{
+  position:fixed;inset:0;
+  background:rgba(2,6,23,.55);
+  backdrop-filter: blur(3px);
+  z-index:40;
+  display:none;
+}
+.backdrop.show{display:block}
+
+.settingsDrawer{
+  position:fixed;
+  top:12px; left:12px;
+  width:min(380px, calc(100vw - 24px));
+  height:calc(100vh - 24px);
+  z-index:50;
+  transform:translateX(calc(-100% - 20px));
+  transition: .18s ease;
+  display:flex;
+  flex-direction:column;
+}
+.settingsDrawer.open{transform:translateX(0)}
+.settingsDrawer .section{overflow:auto; padding-bottom:18px}
+
+.drawerClose{
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  padding:8px 10px;border-radius:12px;
+  cursor:pointer;font-weight:900;font-size:13px;
+}
+
+.actionCell{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+}
+.actionCell .suggest{
+  font-family:var(--mono);
+  font-weight:950;
+}
+.actionCell .suggest.warn{
+  color:var(--warn);
+}
+.pillWarn{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid rgba(245,158,11,.35);
+  background:rgba(245,158,11,.12);
+  color:var(--warn);
+  padding:6px 10px;border-radius:999px;
+  font-size:12px;font-weight:900;
+  white-space:nowrap;
+}
+
+
+/* Sticky right columns (Action + Delete) */
+th.sticky-action, td.sticky-action{
+  position: sticky;
+  right: 0;
+  z-index: 4;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+@media (prefers-color-scheme: light){
+  th.sticky-del, td.sticky-del, th.sticky-action, td.sticky-action{
+    background:#f8fafc;
+  }
+}
+th.sticky-action{ z-index: 6; }
+
+/* Column widths */
+th.col-action, td.col-action{ min-width: 360px; }
+th.col-del, td.col-del{ min-width: 92px; }
+
+/* Locked sale input */
+.cell-input.locked{
+  opacity:.95;
+  border-color: rgba(34,197,94,.45);
+  box-shadow: 0 0 0 4px rgba(34,197,94,.12);
+}
+.lockBtn{
+  padding:8px 10px;border-radius:12px;font-weight:900;
+  border:1px solid rgba(148,163,184,.35);
+  background:rgba(255,255,255,.02);
+}
+.lockBtn:hover{transform:translateY(-1px)}
+
+
+/* Sticky columns - opaque backgrounds + divider shadow to avoid visual overlap */
+:root{
+  --sticky-bg: rgba(17,31,61,0.98);
+  --sticky-bg-hd: rgba(15,26,51,0.98);
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --sticky-bg: rgba(255,255,255,0.995);
+    --sticky-bg-hd: rgba(248,250,252,0.995);
+  }
+}
+th.sticky-del, td.sticky-del{
+  background: var(--sticky-bg) !important;
+}
+th.sticky-action, td.sticky-action{
+  background: var(--sticky-bg) !important;
+  box-shadow: -14px 0 24px rgba(0,0,0,.18);
+}
+thead th.sticky-action, thead th.sticky-del{
+  background: var(--sticky-bg-hd) !important;
+}
+/* If sticky is OFF, fall back */
+.sticky-off th.sticky-action, .sticky-off td.sticky-action{
+  position: static !important;
+  right: auto !important;
+  box-shadow: none !important;
+}
+
+
+/* Better native <select> dropdown colors (dark mode) */
+select.select{
+  color-scheme: dark;
+  background-color: rgba(255,255,255,.03);
+  color: var(--text);
+}
+select.select option{
+  background-color: #0f1a33;
+  color: var(--text);
+}
+@media (prefers-color-scheme: light){
+  select.select{
+    color-scheme: light;
+    background-color: #ffffff;
+    color: var(--text);
+  }
+  select.select option{
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+}
+
+
+/* Custom dropdown (match UI 100%) */
+.dd{ position:relative; }
+.dd-btn{
+  width: 220px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  padding:10px 12px;border-radius:12px;
+  cursor:pointer;font-weight:850;font-size:13px;
+  transition:.15s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+.dd-btn:hover{transform:translateY(-1px)}
+.dd-caret{opacity:.8;font-size:12px}
+.dd-menu{
+  position:absolute;
+  top: calc(100% + 8px);
+  left:0;
+  min-width: 260px;
+  max-width: 340px;
+  z-index:60;
+  border:1px solid var(--line2);
+  background: var(--sticky-bg);
+  border-radius:14px;
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+  overflow:hidden;
+  display:none;
+}
+.dd.open .dd-menu{display:block}
+.dd-item{
+  padding:10px 12px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  cursor:pointer;
+  font-weight:850;
+  font-size:13px;
+  color:var(--text);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.dd-item:first-child{border-top:0}
+.dd-item:hover{background:rgba(124,58,237,.12)}
+.dd-item .sub{color:var(--muted);font-weight:750;font-size:12px}
+.dd-item.active{
+  background:rgba(124,58,237,.20);
+}
+.dd-item.active .check{opacity:1}
+.check{opacity:0;color:var(--text)}
+@media (max-width: 980px){
+  .dd-btn{width: 100%;}
+  .dd-menu{min-width: 100%; max-width: 100%;}
+}
+
+
+/* Help panel content */
+#helpPanel .box{
+  border:1px solid rgba(148,163,184,.18);
+  background:rgba(255,255,255,.02);
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:10px;
+}
+#helpPanel .h{font-weight:950;margin-bottom:6px}
+#helpPanel .p{color:var(--muted);font-weight:750;line-height:1.5}
+#helpPanel .ul{margin:0;padding-left:18px;color:var(--muted);font-weight:750;line-height:1.55}
+#helpPanel b{color:var(--text)}
+
+
+.disclaimer{
+  margin:24px auto 12px;
+  max-width:1200px;
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px dashed rgba(148,163,184,.25);
+  background:rgba(255,255,255,.02);
+  color:var(--muted);
+  font-size:12.5px;
+  font-weight:700;
+}
+
+
+/* Tooltips */
+.th-tip{position:relative;cursor:help}
+.th-tip::after{
+  content: attr(data-tip);
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  transform:translateX(-50%);
+  min-width:220px;
+  max-width:320px;
+  background:rgba(15,26,51,.98);
+  color:#e5e7eb;
+  padding:10px 12px;
+  border-radius:10px;
+  font-size:12.5px;
+  font-weight:600;
+  line-height:1.45;
+  box-shadow:0 16px 40px rgba(0,0,0,.45);
+  opacity:0; pointer-events:none;
+  margin-bottom:10px;
+  z-index:80;
+}
+.th-tip::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:rgba(15,26,51,.98);
+  opacity:0;
+  margin-bottom:-2px;
+}
+.th-tip:hover::after,
+.th-tip:hover::before{opacity:1}
+
+
+/* Ensure tooltips are not clipped in table header */
+thead th{ overflow: visible !important; }
+
+
+/* Hide accounting tax base column for public */
+.hide-tax-base { display: none !important; }
+
+/* Force-hide Tax Base column (public) */
+th[data-col="taxBase"],
+td[data-col="taxBase"]{
+  display:none !important;
+}
+
+
+/* Keep header and body column widths aligned */
+table{ table-layout: fixed; width:100%; }
+th, td{ box-sizing: border-box; }
+
+/* ===== Column alignment polish ===== */
+.tableWrap table{ table-layout: fixed; width: 100%; }
+.tableWrap th, .tableWrap td{ padding: 12px 12px; vertical-align: middle; }
+.tableWrap th{ font-weight: 850; }
+.tableWrap td .money, .tableWrap td .pct, .tableWrap td .badge{ display:inline-flex; align-items:center; justify-content:flex-end; width:100%; }
+.tableWrap td input, .tableWrap td .in{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.tableWrap th.right, .tableWrap td.right{ text-align: right; }
+.tableWrap th.center, .tableWrap td.center{ text-align: center; }
+
+ /* Sticky action column visual separation */
+.tableWrap .sticky-action{
+  position: sticky;
+  right: 110px; /* = width of delete column */
+  z-index: 5;
+  background: rgba(10,16,32,.92);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 20px rgba(0,0,0,.25);
+}
+.tableWrap td.sticky-action{ z-index: 4; }
+
+.tableWrap th.col-del, .tableWrap td.col-del{
+  position: sticky;
+  right: 0;
+  z-index: 6;
+  background: rgba(10,16,32,.92);
+  backdrop-filter: blur(10px);
+}
+
+
+/* Prevent cell content overlap */
+.tableWrap td{ overflow: hidden; }
+.tableWrap td .cell, .tableWrap td .inWrap{ display:block; width:100%; }
+.tableWrap td input{
+  min-width: 0;
+}
+
+
+/* ===== Fix input overlap (respect column width) ===== */
+.cell-input.small{ width:100% !important; }
+.cell-input.name{ width:100% !important; }
+.tableWrap td.right{ padding-left:12px; padding-right:12px; }
+.tableWrap td{ overflow:hidden; }
+
+
+/* Tooltip appears on focus too */
+.th-tip:focus::after, .th-tip:focus::before{opacity:1}
+.th-tip{outline:none}
+
+
+/* ===== UI polish (Jan 2026) ===== */
+.tableWrap{ border-radius: var(--radius); overflow:auto; }
+.tableWrap table{ min-width: 1320px; }
+
+/* Two-line header labels for long columns */
+.thLabel{ display:block; font-weight:950; line-height:1.05; }
+.thSub{ display:block; margin-top:4px; font-size:11px; color: var(--muted); font-weight:800; }
+
+/* Compact rows + zebra */
+.tableWrap tbody tr:nth-child(odd){ background: rgba(255,255,255,.02); }
+.tableWrap tbody tr:hover{ background: rgba(124,58,237,.08); }
+.tableWrap th{ white-space:nowrap; }
+.tableWrap td{ white-space:nowrap; }
+.tableWrap td .net{ white-space:nowrap; }
+
+/* Sticky left (Product) */
+th.sticky-left, td.sticky-left{
+  position: sticky;
+  left: 0;
+  z-index: 7;
+  background: rgba(10,16,32,.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 10px 0 20px rgba(0,0,0,.18);
+}
+td.sticky-left{ z-index: 6; }
+@media (prefers-color-scheme: light){
+  th.sticky-left, td.sticky-left{ background:#f8fafc; }
+}
+
+/* Visual group for Break-even columns */
+th.col-be, td.be-col{
+  background: rgba(245,158,11,.08);
+}
+.tableWrap th.col-be{ border-bottom: 1px solid rgba(245,158,11,.25); }
+
+/* Better column widths on medium screens */
+@media (max-width: 1100px){
+  .wrap{ max-width: 100%; }
+  .tableWrap table{ min-width: 1480px; } /* allow horizontal scroll instead of squeezing */
+  .tableWrap th, .tableWrap td{ padding: 10px 10px; }
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>Tính lợi nhuận TikTok Shop 2026 <span class="badge na" style="margin-left:8px;"><span class="dot"></span>Professional</span></h1>
+        <div class="sub">
+          <b>Công cụ định giá bán:</b> nhập giá vốn, giá bán và chi phí của bạn để xem ngay tiền về, lợi nhuận,
+          trạng thái đạt/chưa đạt và <b>giá bán đề xuất</b> cho từng sản phẩm.
+          <span class="hint">Không hiển thị công thức tính.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="addRowBtn">+ Thêm dòng</button>
+      <button id="importBtn" class="ghost" title="Import Excel">Import Excel</button>
+      <button id="downloadTemplateBtn" class="ghost" title="Tải file Excel mẫu">Tải mẫu Excel</button>
+      <button id="bulkApplyBtn" class="ghost" title="Áp dụng giá bán đề xuất cho các dòng chưa đạt">Áp dụng đề xuất (chưa đạt)</button>
+
+      <div id="exportFilterDD" class="dd" data-dd="export"></div>
+
+      <div id="quickFilterDD" class="dd" data-dd="filter"></div>
+
+      <div id="sortByDD" class="dd" data-dd="sort"></div>
+
+      <button id="exportBtn">Xuất Excel</button>
+      <button class="ghost" id="helpBtn" title="Hướng dẫn sử dụng">Hướng dẫn</button>
+      <button class="ghost" id="settingsBtn" title="Mở cài đặt">Cài đặt</button>
+      <button class="ghost" id="stickyToggleBtn" title="Bật/tắt cố định cột Giá bán lẻ đề xuất">Sticky: ON</button>
+      <button class="ghost" id="toggleAdvancedBtn" title="Ẩn/hiện cột nâng cao">Cột nâng cao: ON</button>
+      <button class="danger" id="resetBtn">Reset</button>
+    </div>
+  <input type="file" id="excelInput" accept=".xlsx,.xls,.csv" style="display:none"/>
+  
+</div>
+
+  <div class="card settingsDrawer" id="helpPanel">
+    <div class="card-hd">
+      <div>
+        <div class="title">Hướng dẫn sử dụng</div>
+        <div class="sub">Dành cho người mới – làm theo 4 bước để ra giá bán chuẩn.</div>
+      </div>
+      <button class="drawerClose" id="helpCloseBtn" title="Đóng hướng dẫn">Đóng</button>
+    </div>
+
+    <div class="section">
+      <div class="box">
+        <div class="h">1) Nhập dữ liệu</div>
+        <div class="p">Có 2 cách: <b>nhập tay</b> trực tiếp trong bảng, hoặc bấm <b>Import Excel</b> (khuyên dùng khi nhiều sản phẩm).</div>
+      </div>
+
+      <div class="box">
+        <div class="h">2) Ý nghĩa các cột kết quả</div>
+        <ul class="ul">
+          <li><b>Tiền về</b>: số tiền bạn dự kiến nhận về sau phí.</li>
+          <li><b>Lợi nhuận thực tế</b>: lợi nhuận còn lại sau thuế, theo giá vốn thực tế.</li>
+          <li><b>% chuẩn</b>: tỷ lệ <b>Lợi nhuận thực tế / Tiền về</b> (dùng để so với mục tiêu).</li>
+          <li><b>Lãi ròng</b>: lợi nhuận cuối cùng sau các khoản chi phí cố định (nếu bạn bật).</li>
+          <li><b>Trạng thái</b>: báo hiệu nhanh dòng đang Lãi / Lỗ / Cần chú ý.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="h">3) Cột Giá bán lẻ đề xuất</div>
+        <ul class="ul">
+          <li><b>Giá bán lẻ đề xuất</b>: mức giá tối thiểu để đạt <b>% mục tiêu</b> theo cấu hình hiện tại.</li>
+          <li><b>Áp dụng</b>: tự điền <b>Giá bán</b> theo giá đề xuất.</li>
+          <li><b>Chỉnh sửa giá bán</b>: bạn luôn có thể sửa <b>Giá bán</b>, kể cả khi đã đạt mục tiêu.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="h">4) Lọc & sắp xếp</div>
+        <div class="p">Dùng dropdown <b>Lọc</b> để chỉ xem các dòng <i>Chưa đạt / Lỗ / Cảnh báo</i>. Dùng <b>Sắp xếp</b> để ưu tiên xử lý các dòng quan trọng trước.</div>
+      </div>
+
+      <div class="box">
+        <div class="h">Mẹo nhanh</div>
+        <ul class="ul">
+          <li>Nhập xong nhiều dòng → bấm <b>Áp dụng đề xuất (chưa đạt)</b> để chốt giá nhanh.</li>
+          <li>Muốn đúng format Excel → bấm <b>Tải mẫu Excel</b>.</li>
+          <li>Dữ liệu được lưu ngay trên trình duyệt của bạn (không gửi đi đâu) trừ khi bạn tự chia sẻ file.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="backdrop" class="backdrop" aria-hidden="true"></div>
+
+  <div class="grid" style="margin-top:12px;">
+    <!-- Settings -->
+    <div class="card settingsDrawer" id="settingsPanel">
+      <div class="card-hd">
+        <div>
+
+          <div class="title">Cài đặt chung</div>
+          <div class="mini">Tập trung đúng “chuẩn kế toán”: tách <span class="mono">Lợi nhuận tính thuế</span> và <span class="mono">Lãi ròng</span>.</div>
+        </div>
+        <button class="drawerClose" id="settingsCloseBtn" title="Đóng cài đặt">Đóng</button>
+      </div>
+
+      <div class="section">
+        <h3>Mục tiêu & làm tròn</h3>
+
+        <div class="field">
+          <div style="width:100%">
+            <label>% mục tiêu (Lợi nhuận thực tế / Tiền về)</label>
+            <input id="targetPct" type="number" value="7" step="0.01" min="0" max="99">
+          </div>
+          <div class="suffix">%</div>
+        </div>
+
+        <div class="field">
+          <div style="width:100%">
+            <label>Làm tròn giá đề xuất</label>
+            <input id="roundStep" type="number" value="1000" step="100" min="1">
+          </div>
+          <div class="suffix">VNĐ</div>
+        </div>
+
+        <div class="hint">
+          <b>Logic đề xuất giá:</b> hệ thống giải <span class="mono">P</span> tối thiểu để đạt mục tiêu trong 2 trường hợp (không thuế / có thuế),
+          sau đó <b>làm tròn lên</b> theo bậc.
+        </div>
+
+        <div class="hr"></div>
+
+        <h3>Tiền về & thuế</h3>
+
+        <div class="field">
+          <div style="width:100%">
+            <label>Phí % tiền về (phí sàn/affiliate/khác)</label>
+            <input id="moneyBackFeePct" type="number" value="27" step="0.01" min="0" max="99">
+          </div>
+          <div class="suffix">%</div>
+        </div>
+
+        <div class="row2">
+          <div class="field" style="margin-bottom:0">
+            <div style="width:100%">
+              <label>Thuế (kế toán) suất (%)</label>
+              <input id="taxPct" type="number" value="17" step="0.01" min="0" max="100">
+            </div>
+            <div class="suffix">%</div>
+          </div>
+
+          <div class="field" style="margin-bottom:0">
+            <div style="width:100%">
+              <label>Chi phí sàn tính thuế (%)</label>
+              <input id="feeTaxPct" type="number" value="22" step="0.01" min="0" max="100">
+            </div>
+            <div class="suffix">%</div>
+          </div>
+        </div>
+
+        <div class="hint" style="margin-top:10px;">
+          <b>Lợi nhuận tính thuế</b> = <span class="mono">Giá bán − Giá vốn − (Chi phí sàn tính thuế × Giá bán)</span><br/>
+          <b>Thuế (kế toán)</b> = <span class="mono">Thuế (kế toán) suất × MAX(0, Lợi nhuận tính thuế)</span><br/>
+          <b>Lợi nhuận thực tế</b> = <span class="mono">Tiền về − Giá vốn thực tế − Thuế (thuế tính theo hóa đơn)</span>
+        </div>
+
+        <div class="hr"></div>
+
+        <h3>Chi phí cố định (ảnh hưởng lãi ròng)</h3>
+
+        <div class="switch">
+          <div class="txt">
+            <b>Áp phí xử lý đơn (trừ vào lãi ròng)</b>
+            <span>Không ảnh hưởng “% chuẩn”, chỉ ảnh hưởng lãi ròng.</span>
+          </div>
+          <div class="toggle on" id="processToggle" role="switch" aria-checked="true" tabindex="0"><div class="knob"></div></div>
+        </div>
+
+        <div class="field">
+          <div style="width:100%">
+            <label>Phí xử lý / đơn</label>
+            <input id="processFee" type="number" value="3000" step="1" min="0">
+          </div>
+          <div class="suffix">VNĐ</div>
+        </div>
+
+        <div class="switch">
+          <div class="txt">
+            <b>Áp phí hoàn (SFR / hoàn vận chuyển) (trừ vào lãi ròng)</b>
+            <span>Bật nếu muốn trừ thêm phí hoàn. Tắt = 0.</span>
+          </div>
+          <div class="toggle" id="refundToggle" role="switch" aria-checked="false" tabindex="0"><div class="knob"></div></div>
+        </div>
+
+        <div class="field" style="margin-bottom:0">
+          <div style="width:100%">
+            <label>Phí hoàn / đơn (khi bật)</label>
+            <input id="refundFee" type="number" value="3000" step="1" min="0">
+          </div>
+          <div class="suffix">VNĐ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <div class="card-hd">
+        <div>
+          <div class="title">Bảng tính</div>
+          <div class="mini">Tip: nhập <b>Giá bán</b> & <b>Giá vốn (hóa đơn)</b> (và nếu có thì thêm <b>Giá vốn thực tế</b>). Rời ô sẽ tự format <span class="mono">348000 → 348.000</span>. Phím tắt: <kbd>Ctrl</kbd> + <kbd>F</kbd> để tìm trên trang.</div>
+        </div>
+        <div class="mini">
+          “% chuẩn” = <span class="mono">Lợi nhuận thực tế / Tiền về</span> • Trạng thái dựa trên <span class="mono">Lãi ròng</span>.
+        </div>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <colgroup>
+            <col style="width:220px">
+            <col style="width:130px">
+            <col style="width:140px">
+            <col style="width:140px">
+            <col style="width:130px">
+            <col style="width:120px">
+            <col style="width:140px">
+            <col style="width:150px">
+            <col style="width:170px">
+            <col style="width:170px">
+            <col style="width:110px">
+            <col style="width:90px">
+            <col style="width:120px">
+            <col style="width:120px">
+            <col style="width:120px">
+            <col style="width:330px">
+            <col style="width:92px">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="sticky-left"><span class="th-tip" tabindex="0" data-tip="Tên sản phẩm/SKU để bạn quản lý." title="Tên sản phẩm/SKU để bạn quản lý.">Sản phẩm</span></th>
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bạn dự định bán ra (P)." title="Giá bạn dự định bán ra (P).">Giá bán</span></th>
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế." title="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế.">Giá vốn (hóa đơn)</span></th>
+
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá vốn thực tế bạn nhập (C_real) – dùng để ra lãi thực tế." title="Giá vốn thực tế bạn nhập (C_real) – dùng để ra lãi thực tế.">Giá vốn thực tế</span></th>
+
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Số tiền bạn dự kiến thực nhận sau khi trừ các khoản phí theo cài đặt." title="Số tiền bạn dự kiến thực nhận sau khi trừ các khoản phí theo cài đặt.">Tiền về</span></th>
+<th class="right"><span class="th-tip" tabindex="0" data-tip="Khoản thuế/chi phí ước tính, chỉ phát sinh khi có lãi." title="Khoản thuế/chi phí ước tính, chỉ phát sinh khi có lãi.">Thuế (kế toán)</span></th>
+
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Tiền về − Giá vốn thực tế." title="Tiền về − Giá vốn thực tế.">Tiền chênh lệch</span></th>
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Tiền chênh lệch − Thuế (kế toán)." title="Tiền chênh lệch − Thuế (kế toán).">Lợi nhuận thực tế</span></th>
+
+              <th class="right col-be"><span class="th-tip" tabindex="0" data-tip="Giá bán tối thiểu để Lợi nhuận thực tế = 0 theo giá vốn thực tế (không đủ HĐ)." title="Giá bán tối thiểu để Lợi nhuận thực tế = 0 theo giá vốn thực tế (không đủ HĐ)."><span class="thLabel">Giá bán hòa vốn</span><span class="thSub">không đủ HĐ</span></span></th>
+<th class="right col-be"><span class="th-tip" tabindex="0" data-tip="Giá bán tối thiểu để Lợi nhuận thực tế = 0 khi giá vốn hóa đơn = giá vốn thực tế (đủ hóa đơn)." title="Giá bán tối thiểu để Lợi nhuận thực tế = 0 khi giá vốn hóa đơn = giá vốn thực tế (đủ hóa đơn)."><span class="thLabel">Giá bán hòa vốn</span><span class="thSub">đủ hóa đơn</span></span></th>
+
+                            <th class="right"><span class="th-tip" tabindex="0" data-tip="Tỷ lệ Lợi nhuận thực tế / Tiền về, dùng để đánh giá hiệu quả." title="Tỷ lệ lãi so với tiền về, dùng để đánh giá hiệu quả.">% chuẩn</span></th>
+              <th><span class="th-tip" tabindex="0" data-tip="Đạt/Chưa đạt % mục tiêu theo % chuẩn." title="Đạt/Chưa đạt % mục tiêu theo % chuẩn.">Đạt?</span></th>
+
+              <th class="right adv"><span class="th-tip" tabindex="0" data-tip="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt." title="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt.">Phí cố định</span></th>
+              <th class="right"><span class="th-tip" tabindex="0" data-tip="Lãi thực nhận cuối cùng sau mọi chi phí." title="Lãi thực nhận cuối cùng sau mọi chi phí.">Lãi ròng</span></th>
+              <th><span class="th-tip" tabindex="0" data-tip="Tổng quan nhanh: LÃI hoặc LỖ theo lãi ròng." title="Tổng quan nhanh: LÃI hoặc LỖ theo lãi ròng.">Trạng thái</span></th>
+
+              <th class="right sticky-action col-action"><span class="th-tip" tabindex="0" data-tip="Hiển thị giá bán lẻ đề xuất theo % mục tiêu trong Cài đặt và cho phép áp dụng nhanh." title="Hiển thị giá bán lẻ đề xuất theo % mục tiêu trong Cài đặt và cho phép áp dụng nhanh.">Giá bán lẻ đề xuất</span></th>
+              <th class="right col-del"></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Phiên bản online • Không lưu dữ liệu (mỗi lần mở trang là phiên mới).</div>
+    <div>Made by <b>Thịnh Nguyễn</b></div>
+  </div>
+</div>
+
+<script>
+/* ================= Helpers ================= */
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => {
+  if (!isFinite(n)) return "";
+  // Do NOT round: keep raw value. Add thousand separators for integer part.
+  let s = String(n);
+
+  // avoid scientific notation if possible (rare here)
+  if (s.includes("e") || s.includes("E")) {
+    const abs = (n < 0 ? -n : n);
+    s = abs.toFixed(10).replace(/0+$/,"").replace(/\.$/,"");
+    if(n < 0) s = "-" + s;
+  }
+
+  const neg = s.startsWith("-");
+  if (neg) s = s.slice(1);
+
+  const parts = s.split(".");
+  const intPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const fracPart = parts[1] ? parts[1].replace(/0+$/,"") : "";
+  const out = fracPart ? (intPart + "." + fracPart) : intPart;
+  return (neg ? "-" : "") + out;
+};
+
+const parseNum = (v) => {
+  if (v === "" || v === null || v === undefined) return NaN;
+  const s = String(v).replace(/[^\d]/g, "");
+  if (!s) return NaN;
+  const x = Number(s);
+  return isFinite(x) ? x : NaN;
+};
+const formatMoneyString = (raw) => {
+  const n = parseNum(raw);
+  return isFinite(n) ? fmt(n) : "";
+};
+const escapeHtml = (s) => (s ?? "").toString()
+  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+const fmtPct = (x) => isFinite(x) ? (Math.round(x * 10000) / 100).toFixed(2) + "%" : "";
+const roundUp = (n, step=1000) => Math.ceil(n/step) * step;
+
+function safePct(p){
+  const x = Number(p);
+  return isFinite(x) ? Math.min(Math.max(x, 0), 99.99) : 0;
+}
+
+/* ================= State ================= */
+const STORAGE_KEY = "tiktok_profit_2026_professional_v3";
+const DEFAULT_STATE = {
+  settings: {
+    targetPct: 7,            // % mục tiêu: RealProfit / MoneyBack
+    roundStep: 1000,         // làm tròn lên
+    moneyBackFeePct: 27,     // phí % trên giá bán để ra tiền về
+    taxPct: 17,              // thuế suất
+    feeTaxPct: 22,           // chi phí sàn tính thuế (% của giá bán)
+    processOn: true,
+    processFee: 3000,
+    refundOn: false,
+    refundFee: 3000,
+    advancedColsOn: true,
+    stickyOn: true,
+    quickFilter: "all",
+    sortBy: "none",
+    exportMode: "all"
+  },
+  rows: [
+    { name: "SP 1", sale: "", costInvoice: "", costReal: "" },
+    { name: "SP 2", sale: "", costInvoice: "", costReal: "" }
+  ]
+};
+let state = loadState() || deepClone(DEFAULT_STATE);
+// apply sticky preference early
+try{ document.body.classList.toggle('sticky-off', !(state.settings && state.settings.stickyOn)); }catch(e){}
+function deepClone(obj){ return JSON.parse(JSON.stringify(obj)); }
+function loadState(){ return null; }
+let saveTimer = null;
+function saveDebounced(){ /* no persistence in online public mode */ }
+
+/* ================= Core logic (Chuẩn kế toán) =================
+   Inputs:
+     P = Giá bán
+     C = Giá vốn
+
+   Settings:
+     moneyBackFeePct = % phí để ra tiền về
+     m = 1 - moneyBackFeePct/100
+     feeTaxPct = % chi phí sàn tính thuế (tính theo P)
+     taxPct = thuế suất
+
+   Definitions:
+     MoneyBack = P * m
+     FeeMoneyBack = P * (1 - m)
+
+     TaxableProfit = P - C - feeTaxPct*P   (cách tính theo yêu cầu hiện tại)
+     Tax = taxPct * max(0, TaxableProfit)
+
+     RealProfit = MoneyBack - C_real - Tax
+     ROI_standard = RealProfit / MoneyBack
+
+     Fixed = processFee (if on) + refundFee (if on)
+     Net = RealProfit - Fixed
+*/
+function calcRow(r){
+  const P = parseNum(r.sale); // Giá bán
+  const C_invoice = parseNum(r.costInvoice ?? r.cost); // Giá vốn trên hóa đơn (kế toán)
+  const C_real = parseNum(r.costReal ?? r.costInvoice ?? r.cost);   // Giá vốn thực tế nhập
+
+  const feeMB = safePct(state.settings.moneyBackFeePct)/100; // % phí ảnh hưởng tiền về
+  const feeTax = safePct(state.settings.feeTaxPct)/100;      // % phí sàn tính thuế (kế toán)
+  const taxRate = safePct(state.settings.taxPct)/100;        // thuế suất
+
+  // Tiền về (cash in) theo phí ảnh hưởng tiền về
+  const moneyBackRaw = isFinite(P) ? (P * (1 - feeMB)) : NaN;
+  const moneyBack = isFinite(moneyBackRaw) ? Math.round(moneyBackRaw) : NaN;
+  const feeMoneyBack = isFinite(P) ? Math.round(P * feeMB) : NaN;
+
+  // Lợi nhuận tính thuế (kế toán) theo phí sàn tính thuế
+  const taxBase = (isFinite(P) && isFinite(C_invoice))
+    ? (P - C_invoice - (P * feeTax))
+    : NaN;
+
+  // Thuế kế toán: chỉ tính khi lợi nhuận tính thuế dương
+  const taxAmtRaw = (isFinite(taxBase) && taxBase > 0)
+    ? (taxBase * taxRate)
+    : 0;
+
+  // FIX floating point: round tax to integer VND
+  const taxAmt = Math.round(taxAmtRaw);
+
+  // Tiền chênh lệch (dòng tiền thực tế): Tiền về - Giá vốn thực tế nhập
+  const diffMoneyRaw = (isFinite(moneyBack) && isFinite(C_real))
+    ? (moneyBack - C_real)
+    : NaN;
+  const diffMoney = isFinite(diffMoneyRaw) ? Math.round(diffMoneyRaw) : NaN;
+
+  // Lợi nhuận thực tế: Tiền chênh lệch - Thuế (kế toán)
+  const realProfitRaw = isFinite(diffMoney) ? (diffMoney - taxAmt) : NaN;
+  const realProfit = isFinite(realProfitRaw) ? Math.round(realProfitRaw) : NaN;
+
+  // % chuẩn dựa trên tiền về (Lợi nhuận thực tế / Tiền về)
+  const roiOnMoneyBack = (isFinite(realProfit) && isFinite(moneyBack) && moneyBack > 0)
+    ? (realProfit / moneyBack)
+    : NaN;
+
+  // Chi phí cố định (nếu bật)
+  const fixed =
+    (state.settings.processOn ? Number(state.settings.processFee || 0) : 0) +
+    (state.settings.refundOn ? Number(state.settings.refundFee || 0) : 0);
+
+  const netRaw = isFinite(realProfit) ? (realProfit - fixed) : NaN;
+  const net = isFinite(netRaw) ? Math.round(netRaw) : NaN;
+  const status = isFinite(net) ? (net >= 0 ? "LÃI" : "LỖ") : "";
+
+  return {
+    moneyBack,
+    feeMoneyBack,
+    profitBeforeCost: taxBase, // keep key mapped to column "Lợi nhuận tính thuế"
+    taxAmt,
+    diffMoney,
+    realProfit,
+    roiOnMoneyBack,
+    fixed,
+    net,
+    status
+  };
+}
+
+/* ================= Suggest price =================
+   Goal: RealProfit / MoneyBack >= r
+   Solve 2 cases (no tax / taxable) and pick the correct minimal P.
+*/
+function suggestSaleMinForTarget(costInvoiceValue, costRealValue){
+  const Cinv = Number(costInvoiceValue);   // Giá vốn (hóa đơn) – dùng để tính thuế
+  const Creal = Number(costRealValue);     // Giá vốn thực tế – dùng để đạt % lợi nhuận thực tế
+
+  if(!isFinite(Creal) || Creal <= 0) return { ok:false, reason:"Giá vốn thực tế không hợp lệ" };
+  if(!isFinite(Cinv) || Cinv <= 0) return { ok:false, reason:"Giá vốn hóa đơn không hợp lệ" };
+
+  // Mục tiêu: (Lợi nhuận thực tế / Tiền về) >= r
+  // RealProfit = MoneyBack - Creal - Tax
+  // MoneyBack = mP, Tax = t*max(0, kP - Cinv)
+  const r = safePct(state.settings.targetPct)/100;
+  const step = Math.max(1, Number(state.settings.roundStep || 1000));
+
+  const feeMB  = safePct(state.settings.moneyBackFeePct)/100;
+  const feeTax = safePct(state.settings.feeTaxPct)/100;
+  const t      = safePct(state.settings.taxPct)/100;
+
+  if(!isFinite(r) || r < 0 || r >= 0.999) return { ok:false, reason:"% mục tiêu không hợp lệ" };
+  if(feeMB >= 1)  return { ok:false, reason:"Phí % tiền về không hợp lệ" };
+  if(feeTax >= 1) return { ok:false, reason:"Phí sàn tính thuế không hợp lệ" };
+  if(t >= 1)      return { ok:false, reason:"Thuế không hợp lệ" };
+
+  const m = 1 - feeMB;     // MoneyBack = mP
+  const k = 1 - feeTax;    // TaxBase = kP - Cinv
+  const Pth = Cinv / k;    // ngưỡng bắt đầu phát sinh thuế
+
+  // ---------- Case A: Không thuế (kP <= Cinv) ----------
+  // Tax=0, RealProfit = mP - Creal
+  // (mP - Creal)/(mP) >= r  => mP >= Creal/(1-r)
+  const P_noTax_raw = Creal / ((1 - r) * m);
+  const feasibleNoTax = isFinite(P_noTax_raw) && isFinite(Pth) && (P_noTax_raw <= Pth);
+
+  // ---------- Case B: Có thuế (kP > Cinv) ----------
+  // Tax = t(kP - Cinv)
+  // RealProfit = (m - t*k)P - (Creal - t*Cinv)
+  // Constraint: RealProfit >= r*mP
+  // => (m - t*k - r*m)P >= (Creal - t*Cinv)
+  const denom = (m - t*k - r*m);
+  if(denom <= 0) return { ok:false, reason:"% mục tiêu quá cao so với phí/thuế" };
+
+  const P_tax_raw = (Creal - t*Cinv) / denom;
+  const P_tax_candidate = Math.max(Pth, (isFinite(P_tax_raw) ? P_tax_raw : Infinity));
+  const feasibleTax = isFinite(P_tax_candidate) && P_tax_candidate > 0;
+
+  let Pmin = Infinity;
+  if(feasibleNoTax) Pmin = Math.min(Pmin, P_noTax_raw);
+  if(feasibleTax)   Pmin = Math.min(Pmin, P_tax_candidate);
+
+  if(!isFinite(Pmin) || Pmin === Infinity) return { ok:false, reason:"Không tìm được giá đề xuất" };
+
+  return { ok:true, sale: roundUp(Math.max(Pmin, 0), step) };
+}
+
+
+
+function suggestBreakEvenSale(costInvoiceValue, costRealValue){
+  const Cinv = Number(costInvoiceValue);
+  const Creal = Number(costRealValue);
+  if(!isFinite(Creal) || Creal <= 0) return { ok:false, reason:"Giá vốn thực tế không hợp lệ" };
+  if(!isFinite(Cinv) || Cinv <= 0) return { ok:false, reason:"Giá vốn hóa đơn không hợp lệ" };
+
+  const step = Math.max(1, Number(state.settings.roundStep || 1000));
+
+  const feeMB  = safePct(state.settings.moneyBackFeePct)/100;
+  const feeTax = safePct(state.settings.feeTaxPct)/100;
+  const t      = safePct(state.settings.taxPct)/100;
+
+  if(feeMB >= 1)  return { ok:false, reason:"Phí % tiền về không hợp lệ" };
+  if(feeTax >= 1) return { ok:false, reason:"Phí sàn tính thuế không hợp lệ" };
+  if(t >= 1)      return { ok:false, reason:"Thuế không hợp lệ" };
+
+  // Hòa vốn theo LỢI NHUẬN THỰC TẾ: RealProfit = 0
+  // mP - Creal - t*max(0, kP - Cinv) = 0
+  const m = 1 - feeMB;
+  const k = 1 - feeTax;
+  const Pth = Cinv / k;
+
+  // Case A: Không thuế
+  const P0 = Creal / m;
+  if(P0 <= Pth){
+    return { ok:true, sale: roundUp(P0, step), mode:"no_tax" };
+  }
+
+  // Case B: Có thuế
+  const denom = (m - t*k);
+  if(denom <= 0) return { ok:false, reason:"Phí/thuế quá cao, khó hòa vốn" };
+
+  const P1 = (Creal - t*Cinv) / denom;
+  const Pmin = roundUp(Math.max(P1, Pth), step);
+  return { ok:true, sale: Pmin, mode:"taxed" };
+}
+
+
+
+
+function breakEvenSaleBySolve(costInvoiceValue, costRealValue){
+  // Robust solver: tìm P nhỏ nhất sao cho Lợi nhuận thực tế >= 0
+  // Dùng đúng công thức y như calcRow (MoneyBack, TaxBase, Tax)
+  const Cinv = Number(costInvoiceValue);
+  const Creal = Number(costRealValue);
+  if(!isFinite(Creal) || Creal <= 0) return { ok:false, reason:"Giá vốn thực tế không hợp lệ" };
+  if(!isFinite(Cinv) || Cinv <= 0) return { ok:false, reason:"Giá vốn hóa đơn không hợp lệ" };
+
+  const step = Math.max(1, Number(state.settings.roundStep || 1000));
+
+  const feeMB  = safePct(state.settings.moneyBackFeePct)/100;
+  const feeTax = safePct(state.settings.feeTaxPct)/100;
+  const t      = safePct(state.settings.taxPct)/100;
+
+  if(feeMB >= 1)  return { ok:false, reason:"Phí % tiền về không hợp lệ" };
+  if(feeTax >= 1) return { ok:false, reason:"Phí sàn tính thuế không hợp lệ" };
+  if(t >= 1)      return { ok:false, reason:"Thuế không hợp lệ" };
+
+  const m = 1 - feeMB;
+  const k = 1 - feeTax;
+
+  const realProfitAt = (P)=>{
+    const moneyBack = m * P;
+    const taxBase = k * P - Cinv;
+    const taxAmt = taxBase > 0 ? (t * taxBase) : 0;
+    return moneyBack - Creal - taxAmt;
+  };
+
+  // Expand upper bound until profit >= 0
+  let lo = 0;
+  let hi = Math.max(1000, Creal / Math.max(m, 1e-9));
+  hi = Math.max(hi, 1000);
+
+  // Cap to avoid infinite loop if impossible
+  const HI_CAP = 5e9; // 5 tỷ
+  while(realProfitAt(hi) < 0 && hi < HI_CAP){
+    hi *= 1.5;
+  }
+  if(hi >= HI_CAP && realProfitAt(hi) < 0){
+    return { ok:false, reason:"Không tìm được điểm hòa vốn (phí/thuế quá cao?)" };
+  }
+
+  // Integer bisection to find minimal integer price (VND)
+  lo = Math.floor(lo);
+  hi = Math.ceil(hi);
+
+  while(hi - lo > 1){
+    const mid = Math.floor((lo + hi) / 2);
+    if(realProfitAt(mid) >= 0) hi = mid;
+    else lo = mid;
+  }
+
+  const sale = roundUp(hi, step);
+  return { ok:true, sale, mode:"solve" };
+}
+
+
+/* ================= DOM build/update ================= */
+const tbody = $("tbody");
+
+function buildRowDOM(i){
+  const r = state.rows[i];
+  const tr = document.createElement("tr");
+  tr.dataset.i = String(i);
+  tr.innerHTML = `
+    <td class="sticky-left"><input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP"></td>
+
+    <td class="right">
+      <input class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 348000">
+    </td>
+
+    <td class="right">
+      <input class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
+    </td>
+
+<td class="right">
+  <input class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
+</td>
+
+    <td class="right num" data-out="moneyBack"></td>
+<td class="right num" data-out="taxAmt"></td>
+<td class="right num" data-out="diffMoney"></td>
+<td class="right num" data-out="realProfit"></td>
+
+    <td class="right num be-col" data-out="breakEvenNoHD"></td>
+    <td class="right num be-col" data-out="breakEvenFullHD"></td>
+    <td class="right num" data-out="roiMb"></td>
+    <td data-out="hitTarget"></td>
+
+    <td class="right num adv" data-out="fixed"></td>
+    <td class="right num" data-out="net"></td>
+    <td data-out="status"></td>
+
+    <td class="right sticky-action col-action" data-out="action"></td>
+
+    <td class="right col-del"><button class="danger smallBtn" data-action="del" data-del="${i}" title="Xóa dòng">Xóa</button></td>
+  `;
+  return tr;
+}
+
+function updateRowDOM(i){
+  const tr = tbody.querySelector(`tr[data-i="${i}"]`);
+  if(!tr) return;
+
+  const row = state.rows[i];
+  const c = calcRow(row);
+
+  const set = (key, html) => {
+    const el = tr.querySelector(`[data-out="${key}"]`);
+    if (el) el.innerHTML = html;
+  };
+
+  set("moneyBack", fmt(c.moneyBack));
+    set("profitBeforeCost", isFinite(c.profitBeforeCost) ? fmt(c.profitBeforeCost) : "");
+  set("taxAmt", fmt(c.taxAmt));
+  set("diffMoney", fmt(c.diffMoney));
+  const realProfitHtml = isFinite(c.realProfit)
+    ? `<span class="net ${c.realProfit>=0?'positive':'negative'}">${fmt(c.realProfit)}</span>`
+    : "";
+  set("realProfit", realProfitHtml);
+
+  // Giá bán hòa vốn (RealProfit = 0)
+  const cInv = parseNum(row.costInvoice ?? row.cost);
+  const cReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+
+  // 1) Hòa vốn theo giá vốn THỰC TẾ (trường hợp không đủ hóa đơn)
+  const beNoHD = (isFinite(cInv) && isFinite(cReal))
+    ? suggestBreakEvenSale(cInv, cReal)
+    : { ok:false };
+
+  // 2) Hòa vốn khi ĐỦ hóa đơn (giả định cReal = cInv)
+  const beFullHD = (isFinite(cReal))
+    ? breakEvenSaleBySolve(cReal, cReal)
+    : { ok:false };
+
+  set("breakEvenNoHD", beNoHD.ok ? fmt(beNoHD.sale) : "");
+  set("breakEvenFullHD", beFullHD.ok ? fmt(beFullHD.sale) : "");
+
+  set("fixed", fmt(c.fixed));
+
+  const rTarget = safePct(state.settings.targetPct)/100;
+  const roiMb = c.roiOnMoneyBack;
+  const roiHtml = isFinite(roiMb)
+    ? `<span class="net ${roiMb>=rTarget?'positive':'negative'}">${fmtPct(roiMb)}</span>`
+    : "";
+  set("roiMb", roiHtml);
+
+  let hitBadge = `<span class="badge na"><span class="dot"></span>—</span>`;
+  if (isFinite(roiMb)) {
+    hitBadge = (roiMb >= rTarget)
+      ? `<span class="badge ok"><span class="dot"></span>ĐẠT</span>`
+      : `<span class="badge bad"><span class="dot"></span>CHƯA</span>`;
+  }
+  set("hitTarget", hitBadge);
+
+  // Auto-lock sale when meeting target: DISABLED (do not lock after import or when đạt %)
+  const saleInput = tr.querySelector('input[data-k="sale"][data-i="'+i+'"]');
+  if(saleInput){
+    saleInput.readOnly = false;
+    saleInput.classList.remove("locked");
+    saleInput.title = "";
+  }
+
+const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+  const costInv0 = parseNum(row.costInvoice ?? row.cost);
+  const costInv = isFinite(costInv0) ? costInv0 : costReal;
+  const saleNow = parseNum(row.sale);
+  const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
+
+  if (sug.ok) {
+    const warn = isFinite(saleNow) && saleNow > 0 && saleNow < sug.sale;
+    const suggestHtml = `<span class="suggest ${warn?'warn':''}">${fmt(sug.sale)}</span>`;
+    const warnPill = warn ? `<span class="pillWarn">⚠ Giá bán &lt; đề xuất</span>` : ``;
+
+    set("action", `
+      <div class="actionCell">
+        ${suggestHtml}
+        ${warnPill}
+        <button class="smallBtn primary" data-action="applySuggest" data-i="${i}" title="Áp dụng giá bán đề xuất">Áp dụng giá đề xuất</button>
+      </div>
+    `);
+  } else {
+    set("action", `<span class="hint">Nhập giá vốn</span>`);
+  }
+
+  const netHtml = isFinite(c.net)
+    ? `<span class="net ${c.net>=0?'positive':'negative'}">${fmt(c.net)}</span>`
+    : "";
+  set("net", netHtml);
+
+  let badge = `<span class="badge na"><span class="dot"></span>—</span>`;
+  if (c.status === "LÃI") badge = `<span class="badge ok"><span class="dot"></span>LÃI</span>`;
+  if (c.status === "LỖ")  badge = `<span class="badge bad"><span class="dot"></span>LỖ</span>`;
+  set("status", badge);
+}
+
+function getRowMeta(i){
+  const row = state.rows[i];
+  const c = calcRow(row);
+  const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+  const costInv0 = parseNum(row.costInvoice ?? row.cost);
+  const costInv = isFinite(costInv0) ? costInv0 : costReal;
+  const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
+  const sugSale = sug.ok ? sug.sale : NaN;
+  const saleNow = parseNum(row.sale);
+  const warn = isFinite(sugSale) && isFinite(saleNow) && saleNow > 0 && saleNow < sugSale;
+  const rTarget = safePct(state.settings.targetPct)/100;
+  const hit = isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget;
+  const loss = isFinite(c.net) && c.net < 0;
+  return { c, sugSale, warn, hit, loss };
+}
+
+function getVisibleIndices(){
+  const idxs = state.rows.map((_, i)=>i);
+
+  // Filter
+  const f = state.settings.quickFilter || "all";
+  const filtered = idxs.filter(i=>{
+    const meta = getRowMeta(i);
+    if(f === "not_hit") return !meta.hit; // includes empty rows
+    if(f === "loss") return meta.loss;
+    if(f === "warn") return meta.warn;
+    return true;
+  });
+
+  // Sort
+  const s = state.settings.sortBy || "none";
+  if(s === "none") return filtered;
+
+  const withMeta = filtered.map(i=>({i, ...getRowMeta(i)}));
+  const num = (x)=> (isFinite(x) ? x : -Infinity);
+
+  withMeta.sort((a,b)=>{
+    if(s === "roi_desc") return num(b.c.roiOnMoneyBack) - num(a.c.roiOnMoneyBack);
+    if(s === "roi_asc")  return num(a.c.roiOnMoneyBack) - num(b.c.roiOnMoneyBack);
+    if(s === "net_desc") return num(b.c.net) - num(a.c.net);
+    if(s === "net_asc")  return num(a.c.net) - num(b.c.net);
+    if(s === "suggest_desc") return num(b.sugSale) - num(a.sugSale);
+    if(s === "suggest_asc")  return num(a.sugSale) - num(b.sugSale);
+    return 0;
+  });
+
+  return withMeta.map(x=>x.i);
+}
+
+function rebuildTable(){
+  tbody.innerHTML = "";
+  const visible = getVisibleIndices();
+  visible.forEach((i) => tbody.appendChild(buildRowDOM(i)));
+  visible.forEach((i) => updateRowDOM(i));
+  updateKPIs();
+  applyAdvancedCols();
+}
+
+/* ================= KPI ================= */
+function updateKPIs(){
+  let sumMoney=0, sumReal=0, sumNet=0, hit=0;
+  const rTarget = safePct(state.settings.targetPct)/100;
+
+  state.rows.forEach(r=>{
+    const c = calcRow(r);
+    if(isFinite(c.moneyBack)) sumMoney += c.moneyBack;
+    if(isFinite(c.realProfit)) sumReal += c.realProfit;
+    if(isFinite(c.net)) sumNet += c.net;
+    if(isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget) hit++;
+  });
+
+  const e1=$("kpiMoneyBack"), e2=$("kpiAfterTax"), e3=$("kpiNet"), e4=$("kpiHit");
+  if(e1) e1.textContent = fmt(sumMoney);
+  if(e2) e2.textContent = fmt(sumReal);
+  if(e3) e3.textContent = fmt(sumNet);
+  if(e4) e4.textContent = String(hit);
+}
+
+/* ================= Settings UI ================= */
+const targetPctEl = $("targetPct");
+const roundStepEl = $("roundStep");
+const moneyBackFeePctEl = $("moneyBackFeePct");
+const taxPctEl = $("taxPct");
+const feeTaxPctEl = $("feeTaxPct");
+const processFeeEl = $("processFee");
+const refundFeeEl = $("refundFee");
+const processToggle = $("processToggle");
+const refundToggle = $("refundToggle");
+
+function setToggle(el, on){
+  el.classList.toggle("on", !!on);
+  el.setAttribute("aria-checked", !!on);
+}
+function applyStateToUI(){
+  targetPctEl.value = state.settings.targetPct;
+  roundStepEl.value = state.settings.roundStep;
+  moneyBackFeePctEl.value = state.settings.moneyBackFeePct;
+  taxPctEl.value = state.settings.taxPct;
+  feeTaxPctEl.value = state.settings.feeTaxPct;
+  processFeeEl.value = state.settings.processFee;
+  refundFeeEl.value = state.settings.refundFee;
+  setToggle(processToggle, state.settings.processOn);
+  setToggle(refundToggle, state.settings.refundOn);
+  $("toggleAdvancedBtn").textContent = `Cột nâng cao: ${state.settings.advancedColsOn ? "ON" : "OFF"}`;
+  $("stickyToggleBtn").textContent = `Sticky: ${state.settings.stickyOn ? "ON" : "OFF"}`;
+
+  document.body.classList.toggle("sticky-off", !state.settings.stickyOn);
+  updateKPIs();
+  applyAdvancedCols();
+}
+function refreshAllOutputs(){
+  state.rows.forEach((_, i)=> updateRowDOM(i));
+  updateKPIs();
+  saveDebounced();
+}
+
+/* ================= Advanced columns toggle ================= */
+function applyAdvancedCols(){
+  const on = !!state.settings.advancedColsOn;
+  document.querySelectorAll(".adv").forEach(el=>{
+    el.style.display = on ? "" : "none";
+  });
+}
+
+/* ================= Excel Export (đẹp + sheet tổng quan) ================= */
+function calcKPIForExport(filtered){
+  let sumMoneyBack=0, sumRealProfit=0, sumNet=0, hit=0;
+  const rTarget = safePct(state.settings.targetPct)/100;
+  filtered.forEach(({c})=>{
+    if(isFinite(c.moneyBack)) sumMoneyBack += c.moneyBack;
+    if(isFinite(c.realProfit)) sumRealProfit += c.realProfit;
+    if(isFinite(c.net)) sumNet += c.net;
+    if(isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget) hit++;
+  });
+  return {
+    count: filtered.length,
+    hit,
+    sumMoneyBack: Math.round(sumMoneyBack),
+    sumRealProfit: Math.round(sumRealProfit),
+    sumNet: Math.round(sumNet),
+  };
+}
+
+function exportExcelPretty(filterMode = "all"){
+  if (typeof XLSX === "undefined") {
+    alert("Thiếu thư viện Excel (xlsx.bundle.js).\n\nOFFLINE FIX:\n- Tải xlsx.bundle.js (xlsx-js-style)\n- Đặt cạnh file HTML\n- Mở lại app");
+    return;
+  }
+
+  const filtered = state.rows
+    .map((r) => ({ r, c: calcRow(r) }))
+    .filter(({ c }) => {
+      if (filterMode === "profit") return isFinite(c.net) && c.net >= 0;
+      if (filterMode === "loss") return isFinite(c.net) && c.net < 0;
+      return true;
+    });
+
+  const rTarget = safePct(state.settings.targetPct)/100;
+
+  const header = [
+    "Sản phẩm",
+    "Giá bán",
+    "Giá vốn (hóa đơn)",
+    "Giá vốn thực tế",
+    "Tiền về",
+    "Phí % tiền về",
+    "Lợi nhuận tính thuế",
+    "Thuế (kế toán)",
+    "Tiền chênh lệch",
+    "Lợi nhuận thực tế",
+    "Giá bán hòa vốn không đủ HD",
+    "Giá bán hòa vốn đủ hóa đơn",
+    "% chuẩn (RealProfit/MoneyBack)",
+    "Đạt mục tiêu?",
+    "Giá bán đề xuất",
+    "Phí cố định",
+    "Lãi ròng",
+    "Trạng thái"
+  ];
+
+  const rowsAoa = [header];
+
+  filtered.forEach(({ r, c }) => {
+    const costReal = parseNum(r.costReal ?? r.costInvoice ?? r.cost);
+    const costInv0 = parseNum(r.costInvoice ?? r.cost);
+    const costInv = isFinite(costInv0) ? costInv0 : costReal;
+    const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
+    rowsAoa.push([
+      r.name || "",
+      Math.round(parseNum(r.sale) || 0),
+      Math.round(parseNum(r.costInvoice ?? r.cost) || 0),
+      Math.round(parseNum(r.costReal ?? r.costInvoice ?? r.cost) || 0),
+      Math.round(c.moneyBack || 0),
+      Math.round(c.feeMoneyBack || 0),
+      Math.round(c.profitBeforeCost || 0),
+      Math.round(c.taxAmt || 0),
+      Math.round(c.diffMoney || 0),
+      Math.round(c.realProfit || 0),
+      (function(){ const be = (isFinite(costInv) && isFinite(costReal)) ? suggestBreakEvenSale(costInv, costReal) : {ok:false}; return be.ok ? be.sale : 0; })(),
+      (function(){ const be = (isFinite(costReal)) ? breakEvenSaleBySolve(costReal, costReal) : {ok:false}; return be.ok ? be.sale : 0; })(),
+      isFinite(c.roiOnMoneyBack) ? c.roiOnMoneyBack : 0,
+      isFinite(c.roiOnMoneyBack) ? (c.roiOnMoneyBack >= rTarget ? "ĐẠT" : "CHƯA") : "",
+      sug.ok ? sug.sale : 0,
+      Math.round(c.fixed || 0),
+      Math.round(c.net || 0),
+      c.status || ""
+    ]);
+  });
+
+  const wsDetail = XLSX.utils.aoa_to_sheet(rowsAoa);
+  wsDetail["!cols"] = [
+    { wch: 26 }, // A Sản phẩm
+    { wch: 14 }, // B Giá bán
+    { wch: 16 }, // C Giá vốn (hóa đơn)
+    { wch: 16 }, // D Giá vốn thực tế
+    { wch: 14 }, // E Tiền về
+    { wch: 14 }, // F Phí % tiền về
+    { wch: 16 }, // G Lợi nhuận tính thuế
+    { wch: 14 }, // H Thuế (kế toán)
+    { wch: 16 }, // I Tiền chênh lệch
+    { wch: 16 }, // J Lợi nhuận thực tế
+    { wch: 20 }, // K Giá bán hòa vốn không đủ HD
+    { wch: 20 }, // L Giá bán hòa vốn đủ hóa đơn
+    { wch: 18 }, // M % chuẩn
+    { wch: 12 }, // N Đạt?
+    { wch: 18 }, // O Giá bán đề xuất
+    { wch: 12 }, // P Phí cố định
+    { wch: 14 }, // Q Lãi ròng
+    { wch: 12 }, // R Trạng thái
+  ];
+  wsDetail["!rows"] = [{ hpt: 22 }];
+
+  const headerStyle = {
+    font: { bold: true, color: { rgb: "FFFFFF" } },
+    fill: { fgColor: { rgb: "7C3AED" } },
+    alignment: { vertical: "center", horizontal: "center" }
+  };
+  for (let col = 0; col < header.length; col++) {
+    const addr = XLSX.utils.encode_cell({ r: 0, c: col });
+    if (wsDetail[addr]) wsDetail[addr].s = headerStyle;
+  }
+
+  const moneyCols = [1,2,3,4,5,6,7,8,9,10,11,14,15,16]; // money columns
+  for (let rr = 1; rr < rowsAoa.length; rr++) {
+    for (let cc = 0; cc < header.length; cc++) {
+      const addr = XLSX.utils.encode_cell({ r: rr, c: cc });
+      if (!wsDetail[addr]) continue;
+      wsDetail[addr].s = {
+        ...(wsDetail[addr].s || {}),
+        alignment: { vertical: "center", horizontal: (cc === 0 || cc === 12 || cc === 16) ? "left" : "right" }
+      };
+    }
+    moneyCols.forEach((cidx)=>{
+      const addr = XLSX.utils.encode_cell({ r: rr, c: cidx });
+      const cell = wsDetail[addr];
+      if(cell){
+        cell.t = "n";
+        cell.z = "#,##0";
+      }
+    });
+    // Percent col M index 12
+    const pctAddr = XLSX.utils.encode_cell({ r: rr, c: 12 });
+    const pctCell = wsDetail[pctAddr];
+    if (pctCell) {
+      pctCell.t = "n";
+      pctCell.z = "0.00%";
+    }
+  }
+  wsDetail["!autofilter"] = { ref: "A1:R1" };
+
+  const kpi = calcKPIForExport(filtered);
+  const filterText = filterMode === "profit" ? "Chỉ LÃI (ròng ≥ 0)" : filterMode === "loss" ? "Chỉ LỖ (ròng < 0)" : "Tất cả";
+
+  const wsKPI = XLSX.utils.aoa_to_sheet([
+    ["TỔNG QUAN", ""],
+    ["Xuất theo", filterText],
+    ["% mục tiêu (RealProfit / MoneyBack)", (safePct(state.settings.targetPct)) + "%"],
+    ["Phí % tiền về", (safePct(state.settings.moneyBackFeePct)) + "%"],
+    ["Thuế (kế toán) suất (%)", (safePct(state.settings.taxPct)) + "%"],
+    ["Chi phí sàn tính thuế (%)", (safePct(state.settings.feeTaxPct)) + "%"],
+    ["Làm tròn giá đề xuất", fmt(Number(state.settings.roundStep||1000)) + "đ"],
+    ["", ""],
+    ["Số dòng", kpi.count],
+    ["Số dòng đạt % mục tiêu", kpi.hit],
+    ["Tổng tiền về", kpi.sumMoneyBack],
+    ["Tổng lợi nhuận thực tế", kpi.sumRealProfit],
+    ["Tổng lãi ròng", kpi.sumNet],
+  ]);
+
+  wsKPI["!cols"] = [{ wch: 34 }, { wch: 22 }];
+  wsKPI["!rows"] = [{ hpt: 26 }];
+  if (wsKPI["A1"]) {
+    wsKPI["A1"].s = {
+      font: { bold: true, color: { rgb: "FFFFFF" }, sz: 14 },
+      fill: { fgColor: { rgb: "0F172A" } },
+      alignment: { horizontal: "left", vertical: "center" }
+    };
+  }
+  ["B11","B12","B13"].forEach(a=>{
+    if(wsKPI[a]){
+      wsKPI[a].t = "n";
+      wsKPI[a].z = "#,##0";
+      wsKPI[a].s = { ...(wsKPI[a].s||{}), alignment:{horizontal:"right"} };
+    }
+  });
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, wsDetail, "Chi tiet san pham");
+  XLSX.utils.book_append_sheet(wb, wsKPI, "Tong quan");
+
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth()+1).padStart(2,"0");
+  const dd = String(d.getDate()).padStart(2,"0");
+  XLSX.writeFile(wb, `tiktok_profit_2026_professional_${yyyy}-${mm}-${dd}.xlsx`);
+}
+
+/* ================= Events ================= */
+function bindSettings(){
+  targetPctEl.addEventListener("input", () => {
+    state.settings.targetPct = Number(targetPctEl.value || 0);
+    refreshAllOutputs();
+  });
+  roundStepEl.addEventListener("input", () => {
+    state.settings.roundStep = Number(roundStepEl.value || 1000);
+    refreshAllOutputs();
+  });
+  moneyBackFeePctEl.addEventListener("input", () => {
+    state.settings.moneyBackFeePct = Number(moneyBackFeePctEl.value || 0);
+    refreshAllOutputs();
+  });
+  taxPctEl.addEventListener("input", () => {
+    state.settings.taxPct = Number(taxPctEl.value || 0);
+    refreshAllOutputs();
+  });
+  feeTaxPctEl.addEventListener("input", () => {
+    state.settings.feeTaxPct = Number(feeTaxPctEl.value || 0);
+    refreshAllOutputs();
+  });
+  processFeeEl.addEventListener("input", () => {
+    state.settings.processFee = Number(processFeeEl.value || 0);
+    refreshAllOutputs();
+  });
+  refundFeeEl.addEventListener("input", () => {
+    state.settings.refundFee = Number(refundFeeEl.value || 0);
+    refreshAllOutputs();
+  });
+  processToggle.addEventListener("click", () => {
+    state.settings.processOn = !state.settings.processOn;
+    setToggle(processToggle, state.settings.processOn);
+    refreshAllOutputs();
+  });
+  refundToggle.addEventListener("click", () => {
+    state.settings.refundOn = !state.settings.refundOn;
+    setToggle(refundToggle, state.settings.refundOn);
+    refreshAllOutputs();
+  });
+
+  $("stickyToggleBtn").addEventListener("click", () => {
+    state.settings.stickyOn = !state.settings.stickyOn;
+    $("stickyToggleBtn").textContent = `Sticky: ${state.settings.stickyOn ? "ON" : "OFF"}`;
+
+    document.body.classList.toggle("sticky-off", !state.settings.stickyOn);
+    saveDebounced();
+  });
+
+
+  $("toggleAdvancedBtn").addEventListener("click", () => {
+    state.settings.advancedColsOn = !state.settings.advancedColsOn;
+    $("toggleAdvancedBtn").textContent = `Cột nâng cao: ${state.settings.advancedColsOn ? "ON" : "OFF"}`;
+    applyAdvancedCols();
+    saveDebounced();
+  });
+}
+
+// Table input: update only row outputs (no rerender => no cursor jump)
+tbody.addEventListener("input", (e) => {
+  const el = e.target;
+  if(!(el instanceof HTMLInputElement)) return;
+  const i = el.getAttribute("data-i");
+  const k = el.getAttribute("data-k");
+  if(i === null || k === null) return;
+  const idx = Number(i);
+  if(!state.rows[idx]) return;
+
+  state.rows[idx][k] = el.value; // keep raw while typing
+  updateRowDOM(idx);
+  updateKPIs();
+  saveDebounced();
+});
+
+// Format money on blur
+tbody.addEventListener("blur", (e) => {
+  const el = e.target;
+  if(!(el instanceof HTMLInputElement)) return;
+  const i = el.getAttribute("data-i");
+  const k = el.getAttribute("data-k");
+  if(i === null || k === null) return;
+  const idx = Number(i);
+  if(!state.rows[idx]) return;
+
+  if(k === "sale" || k === "cost" || k === "costInvoice" || k === "costReal"){
+    el.value = formatMoneyString(el.value);
+    state.rows[idx][k] = el.value;
+    updateRowDOM(idx);
+    updateKPIs();
+    saveDebounced();
+  }
+}, true);
+
+// Click actions: apply suggest / delete
+tbody.addEventListener("click", (e) => {
+  const delBtn = e.target.closest('button[data-action="del"]');
+  if(delBtn){
+    const idx = Number(delBtn.getAttribute("data-del"));
+    if(isFinite(idx)){
+      state.rows.splice(idx, 1);
+      rebuildTable();
+      saveDebounced();
+    }
+    return;
+  }
+
+  const applyBtn = e.target.closest('button[data-action="applySuggest"]');
+  if(applyBtn){
+    const idx = Number(applyBtn.getAttribute("data-i"));
+    if(!state.rows[idx]) return;
+
+    const costReal = parseNum(state.rows[idx].costReal ?? state.rows[idx].costInvoice ?? state.rows[idx].cost);
+    const costInv0 = parseNum(state.rows[idx].costInvoice ?? state.rows[idx].cost);
+    const costInv = isFinite(costInv0) ? costInv0 : costReal;
+    const sug = isFinite(costReal) ? suggestSaleMinForTarget(costInv, costReal) : { ok:false };
+    if(!sug.ok){
+      alert("Chưa có giá bán đề xuất. Hãy nhập Giá vốn trước.");
+      return;
+    }
+    state.rows[idx].sale = fmt(sug.sale);
+    const saleInput = tbody.querySelector(`input[data-k="sale"][data-i="${idx}"]`);
+    if(saleInput) saleInput.value = state.rows[idx].sale;
+
+    updateRowDOM(idx);
+    updateKPIs();
+    saveDebounced();
+    return;
+  }
+});
+
+$("addRowBtn").addEventListener("click", () => {
+  state.rows.push({ name: `SP ${state.rows.length+1}`, sale:"", costInvoice:"", costReal:"" });
+  rebuildTable();
+  saveDebounced();
+});
+
+$("resetBtn").addEventListener("click", () => {
+  if(!confirm("Reset toàn bộ dữ liệu về mặc định?")) return;
+  state = deepClone(DEFAULT_STATE);
+  applyStateToUI();
+  rebuildTable();
+  saveDebounced();
+});
+
+$("exportBtn").addEventListener("click", () => {
+  const mode = (state.settings.exportMode || "all");
+  exportExcelPretty(mode);
+
+
+$("bulkApplyBtn").addEventListener("click", () => {
+  const rTarget = safePct(state.settings.targetPct)/100;
+  let changed = 0;
+
+  state.rows.forEach((row, i) => {
+    const costReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+    const costInv0 = parseNum(row.costInvoice ?? row.cost);
+    const costInv = isFinite(costInv0) ? costInv0 : costReal;
+    if(!isFinite(costReal) || costReal <= 0) return;
+
+    const sug = suggestSaleMinForTarget(costInv, costReal);
+    if(!sug.ok) return;
+
+    const c = calcRow(row);
+    const saleNow = parseNum(row.sale);
+
+    const notMeet = !(isFinite(c.roiOnMoneyBack) && c.roiOnMoneyBack >= rTarget);
+    const belowSuggest = isFinite(saleNow) && saleNow > 0 ? (saleNow < sug.sale) : true;
+
+    if(notMeet || belowSuggest){
+      row.sale = fmt(sug.sale);
+      const saleInput = tbody.querySelector(`input[data-k="sale"][data-i="${i}"]`);
+      if(saleInput) saleInput.value = row.sale;
+      changed++;
+    }
+  });
+
+  // refresh outputs
+  state.rows.forEach((_, i)=> updateRowDOM(i));
+  updateKPIs();
+  saveDebounced();
+
+  if(changed === 0){
+    alert("Không có dòng nào cần áp dụng (tất cả đã đạt hoặc không có giá vốn).");
+  }
+});
+
+
+});
+
+
+/* ================= Settings Drawer ================= */
+const settingsBtn = $("settingsBtn");
+const settingsPanel = $("settingsPanel");
+const settingsCloseBtn = $("settingsCloseBtn");
+const backdrop = $("backdrop");
+
+function openSettings(){
+  settingsPanel.classList.add("open");
+  backdrop.classList.add("show");
+  backdrop.setAttribute("aria-hidden","false");
+}
+function closeSettings(){
+  settingsPanel.classList.remove("open");
+  backdrop.classList.remove("show");
+  backdrop.setAttribute("aria-hidden","true");
+}
+settingsBtn.addEventListener("click", openSettings);
+settingsCloseBtn.addEventListener("click", closeSettings);
+backdrop.addEventListener("click", () => { closeSettings();
+try{ helpPanel.classList.remove("open"); }catch(e){} closeHelp(); });
+
+/* ================= Help Drawer ================= */
+const helpBtn = $("helpBtn");
+const helpPanel = $("helpPanel");
+const helpCloseBtn = $("helpCloseBtn");
+
+function openHelp(){
+  helpPanel.classList.add("open");
+  backdrop.classList.add("show");
+  backdrop.setAttribute("aria-hidden","false");
+}
+function closeHelp(){
+  helpPanel.classList.remove("open");
+  // only hide backdrop if settings also closed
+  if(!settingsPanel.classList.contains("open")){
+    backdrop.classList.remove("show");
+    backdrop.setAttribute("aria-hidden","true");
+  }
+}
+helpBtn.addEventListener("click", () => {
+  // close settings if open, then open help
+  settingsPanel.classList.remove("open");
+  openHelp();
+});
+helpCloseBtn.addEventListener("click", closeHelp);
+
+document.addEventListener("keydown", (e)=>{ if(e.key === "Escape"){ closeSettings(); closeHelp(); } });
+
+// default closed
+closeSettings();
+
+
+/* ================= Excel Import =================
+Required columns (row 1 header):
+- Sản phẩm (text)
+- Giá vốn (hóa đơn) (number)
+- Giá vốn thực tế (number) [optional]
+- Giá bán (number) [optional]
+
+Rules:
+- Header names must match exactly (case-insensitive)
+- Numbers may contain thousand separators
+*/
+function normalizeHeader(h){
+  return (h||"").toString().trim().toLowerCase();
+}
+
+$("importBtn").addEventListener("click", () => {
+  $("excelInput").value = "";
+  $("excelInput").click();
+});
+
+$("excelInput").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+
+  if(typeof XLSX === "undefined"){
+    alert("Thiếu thư viện Excel (xlsx.bundle.js). Không thể import.");
+    return;
+  }
+
+  const data = await file.arrayBuffer();
+  const wb = XLSX.read(data, { type: "array" });
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(ws, { header: 1, raw: true });
+
+  if(rows.length < 2){
+    alert("File Excel không có dữ liệu.");
+    return;
+  }
+
+  const header = rows[0].map(normalizeHeader);
+
+  const idxName = header.indexOf("sản phẩm");
+  const idxCostInvoice = header.indexOf("giá vốn (hóa đơn)") !== -1 ? header.indexOf("giá vốn (hóa đơn)") : header.indexOf("giá vốn");
+  const idxCostReal = header.indexOf("giá vốn thực tế");
+  const idxSale = header.indexOf("giá bán");
+
+  if(idxName === -1 || idxCostInvoice === -1){
+    alert("File không đúng mẫu.\n\nBắt buộc có cột: 'Sản phẩm' và 'Giá vốn (hóa đơn)' (dòng 1). (Chấp nhận cả tên cũ: 'Giá vốn')\nGợi ý: bấm 'Tải mẫu Excel' để lấy đúng format.");
+    return;
+  }
+
+  const newRows = [];
+  const errors = [];
+
+  for(let i=1;i<rows.length;i++){
+    const r = rows[i] || [];
+    const excelRowNo = i + 1;
+
+    const name = r[idxName];
+    const costInvoiceRaw = r[idxCostInvoice];
+    const costRealRaw = (idxCostReal !== -1 ? r[idxCostReal] : "");
+    const saleRaw = (idxSale !== -1 ? r[idxSale] : "");
+
+    const nameOk = !!(name && String(name).trim().length > 0);
+    const costInvoiceNum = parseNum(costInvoiceRaw);
+    const costRealNum = parseNum(costRealRaw);
+    const saleNum = parseNum(saleRaw);
+
+    if(!nameOk && (costInvoiceRaw==="" || costInvoiceRaw==null) && (saleRaw==="" || saleRaw==null)){
+      // skip fully empty row
+      continue;
+    }
+
+    if(!nameOk){
+      errors.push(`Dòng ${excelRowNo}: thiếu 'Sản phẩm'`);
+      continue;
+    }
+    if(!isFinite(costInvoiceNum) || costInvoiceNum <= 0){
+      errors.push(`Dòng ${excelRowNo}: 'Giá vốn (hóa đơn)' không hợp lệ`);
+      continue;
+    }
+    if(idxSale !== -1 && saleRaw !== "" && saleRaw != null && (!isFinite(saleNum) || saleNum < 0)){
+      errors.push(`Dòng ${excelRowNo}: 'Giá bán' không hợp lệ`);
+      continue;
+    }
+
+    newRows.push({
+      name: String(name).trim(),
+      sale: formatMoneyString(saleRaw),
+      costInvoice: formatMoneyString(costInvoiceNum),
+      costReal: (isFinite(costRealNum) ? formatMoneyString(costRealRaw) : formatMoneyString(costInvoiceNum))
+    });
+  }
+
+  if(newRows.length === 0){
+    alert("Không có dòng hợp lệ để import.\n\nGợi ý: bấm 'Tải mẫu Excel' để xem định dạng.");
+    return;
+  }
+
+  if(errors.length > 0){
+    const preview = errors.slice(0, 10).join("\n");
+    const more = errors.length > 10 ? `\n... và ${errors.length - 10} lỗi khác` : "";
+    const ok = confirm(
+      `Phát hiện ${errors.length} lỗi khi kiểm tra file:\n\n${preview}${more}\n\nBạn có muốn IMPORT các dòng HỢP LỆ (${newRows.length} dòng) và BỎ QUA dòng lỗi không?`
+    );
+    if(!ok) return;
+  }
+
+  const ok2 = confirm(`Import ${newRows.length} dòng? Dữ liệu hiện tại sẽ được THAY THẾ.`);
+  if(!ok2) return;
+
+  state.rows = newRows;
+  // reset filter/sort to avoid confusion
+  state.settings.quickFilter = "all";
+  state.settings.sortBy = "none";
+  rebuildTable();
+  saveDebounced();
+});
+
+
+
+/* ================= Excel Template Export =================
+Creates a simple template with required columns and example rows.
+*/ 
+$("downloadTemplateBtn").addEventListener("click", () => {
+  if(typeof XLSX === "undefined"){
+    alert("Thiếu thư viện Excel (xlsx.bundle.js). Không thể tạo file mẫu.");
+    return;
+  }
+
+  // INPUT COLUMNS ONLY (đúng chuẩn import)
+  // - Bắt buộc: Sản phẩm, Giá vốn (hóa đơn)
+  // - Tuỳ chọn: Giá vốn thực tế (để trống = tự lấy theo Giá vốn (hóa đơn)), Giá bán (có thể để trống)
+  const aoa = [
+    ["Sản phẩm", "Giá vốn (hóa đơn)", "Giá vốn thực tế", "Giá bán"],
+    ["Bu lông M8", 225000, "", 348000],
+    ["SP 2", 120000, 118000, ""],
+    ["SP 3", 98000, "", ""]
+  ];
+
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+
+  // Column widths
+  ws["!cols"] = [
+    { wch: 28 }, // Sản phẩm
+    { wch: 18 }, // Giá vốn (hóa đơn)
+    { wch: 18 }, // Giá vốn thực tế
+    { wch: 16 }, // Giá bán
+  ];
+  ws["!rows"] = [{ hpt: 22 }];
+
+  // Header style (xlsx-js-style)
+  const headerStyle = {
+    font: { bold: true, color: { rgb: "FFFFFF" } },
+    fill: { fgColor: { rgb: "2563EB" } },
+    alignment: { vertical: "center", horizontal: "center" }
+  };
+  ["A1","B1","C1","D1"].forEach(a=>{
+    if(ws[a]) ws[a].s = headerStyle;
+  });
+
+  // Number formats for money columns (B,C,D) on sample rows
+  const moneyCells = ["B2","C2","D2","B3","C3","D3","B4","C4","D4"];
+  moneyCells.forEach(a=>{
+    if(ws[a]){
+      ws[a].t = "n";
+      ws[a].z = "#,##0";
+      ws[a].s = { ...(ws[a].s||{}), alignment:{ horizontal:"right", vertical:"center" } };
+    }
+  });
+  // Align product names left
+  ["A2","A3","A4"].forEach(a=>{
+    if(ws[a]) ws[a].s = { ...(ws[a].s||{}), alignment:{ horizontal:"left", vertical:"center" } };
+  });
+
+  // Notes (merged across A:D)
+  const noteRow = aoa.length + 2; // 1-based row index
+  ws["A"+noteRow] = { t:"s", v:"Ghi chú:" };
+  ws["A"+noteRow].s = { font:{bold:true} };
+
+  ws["A"+(noteRow+1)] = { t:"s", v:"- Dòng 1 là tiêu đề. Bắt buộc có: Sản phẩm, Giá vốn (hóa đơn)." };
+  ws["A"+(noteRow+2)] = { t:"s", v:"- Giá vốn thực tế: để trống nếu bạn nhập đủ hóa đơn (tool tự lấy = Giá vốn (hóa đơn))." };
+  ws["A"+(noteRow+3)] = { t:"s", v:"- Giá bán: có thể để trống để app tự gợi ý. Có thể nhập 348000 hoặc 348.000 (app tự format)." };
+
+  ws["!merges"] = ws["!merges"] || [];
+  // merge A..D for notes
+  [noteRow, noteRow+1, noteRow+2, noteRow+3].forEach(r=>{
+    ws["!merges"].push({ s:{r:r-1,c:0}, e:{r:r-1,c:3} });
+  });
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Mau import");
+
+  XLSX.writeFile(wb, "mau_import_gia_ban.xlsx");
+});
+
+
+
+/* ================= Custom Dropdowns ================= */
+function mountDropdown(rootId, items, getValue, setValue){
+  const root = $(rootId);
+  if(!root) return;
+
+  root.innerHTML = `
+    <button class="dd-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+      <span class="dd-label"></span>
+      <span class="dd-caret">▾</span>
+    </button>
+    <div class="dd-menu" role="listbox"></div>
+  `;
+
+  const btn = root.querySelector(".dd-btn");
+  const label = root.querySelector(".dd-label");
+  const menu = root.querySelector(".dd-menu");
+
+  function render(){
+    const val = getValue();
+    const active = items.find(x=>x.value===val) || items[0];
+    label.textContent = active.label;
+
+    menu.innerHTML = items.map(x=>`
+      <div class="dd-item ${x.value===val?'active':''}" role="option" aria-selected="${x.value===val}">
+        <div>
+          <div>${x.label}</div>
+          ${x.hint?`<div class="sub">${x.hint}</div>`:''}
+        </div>
+        <div class="check">✓</div>
+      </div>
+    `).join("");
+
+    // click handlers
+    [...menu.querySelectorAll(".dd-item")].forEach((el, idx)=>{
+      el.addEventListener("click", ()=>{
+        const v = items[idx].value;
+        setValue(v);
+        close();
+      });
+    });
+  }
+
+  function open(){
+    root.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+    render();
+  }
+  function close(){
+    root.classList.remove("open");
+    btn.setAttribute("aria-expanded","false");
+  }
+  function toggle(){
+    root.classList.contains("open") ? close() : open();
+  }
+
+  btn.addEventListener("click", (e)=>{ e.stopPropagation(); toggle(); });
+  document.addEventListener("click", (e)=>{
+    if(!root.contains(e.target)) close();
+  });
+  document.addEventListener("keydown", (e)=>{
+    if(e.key === "Escape") close();
+  });
+
+  // initial
+  render();
+
+  return { render, open, close };
+}
+
+let ddExport, ddFilter, ddSort;
+
+function initDropdowns(){
+  ddExport = mountDropdown("exportFilterDD", [
+    {value:"all", label:"Xuất: Tất cả"},
+    {value:"profit", label:"Xuất: Chỉ LÃI (ròng ≥ 0)"},
+    {value:"loss", label:"Xuất: Chỉ LỖ (ròng < 0)"},
+  ], ()=> state.settings.exportMode || "all", (v)=>{
+    state.settings.exportMode = v;
+    saveDebounced();
+    ddExport && ddExport.render();
+  });
+
+  ddFilter = mountDropdown("quickFilterDD", [
+    {value:"all", label:"Lọc: Tất cả"},
+    {value:"not_hit", label:"Lọc: CHƯA ĐẠT % mục tiêu"},
+    {value:"loss", label:"Lọc: LỖ (lãi ròng < 0)"},
+    {value:"warn", label:"Lọc: CẢNH BÁO (Giá bán < đề xuất)"},
+  ], ()=> state.settings.quickFilter || "all", (v)=>{
+    state.settings.quickFilter = v;
+    rebuildTable();
+    saveDebounced();
+    ddFilter && ddFilter.render();
+  });
+
+  ddSort = mountDropdown("sortByDD", [
+    {value:"none", label:"Sắp xếp: Mặc định"},
+    {value:"roi_desc", label:"Sắp xếp: % chuẩn ↓"},
+    {value:"roi_asc", label:"Sắp xếp: % chuẩn ↑"},
+    {value:"net_desc", label:"Sắp xếp: Lãi ròng ↓"},
+    {value:"net_asc", label:"Sắp xếp: Lãi ròng ↑"},
+    {value:"suggest_desc", label:"Sắp xếp: Giá bán lẻ đề xuất ↓"},
+    {value:"suggest_asc", label:"Sắp xếp: Giá bán lẻ đề xuất ↑"},
+  ], ()=> state.settings.sortBy || "none", (v)=>{
+    state.settings.sortBy = v;
+    rebuildTable();
+    saveDebounced();
+    ddSort && ddSort.render();
+  });
+}
+
+/* Init */
+bindSettings();
+applyStateToUI();
+initDropdowns();
+rebuildTable();
+saveDebounced();
+</script>
+
+<div class="disclaimer">
+  <b>Lưu ý:</b> Công cụ này dùng để <b>hỗ trợ ra quyết định giá bán</b> dựa trên các thông tin người dùng cung cấp.
+  Kết quả hiển thị mang tính tham khảo, <b>không phải tư vấn tài chính hay kế toán</b>.
+</div>
+
+</body>
+</html>
