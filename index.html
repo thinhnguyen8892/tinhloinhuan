@@ -620,7 +620,7 @@ th, td{ box-sizing: border-box; }
 .mobileBar{
   display:none;
   position:fixed;
-  left:12px; right:12px; bottom:12px;
+  left:12px; right:12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   z-index:30;
   padding:10px;
   border-radius:18px;
@@ -670,8 +670,10 @@ th, td{ box-sizing: border-box; }
   .actions{ display:none; }
   .tablewrap{ display:none; }
   .mobileCards{ display:block; }
+  /* Reserve space so the fixed mobile action bar doesn't cover cards */
+  .mobileCards{ padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
   .mobileBar{ display:block; }
-  .grid{ grid-template-columns: 1fr; }
+.grid{ grid-template-columns: 1fr; }
   .settingsDrawer{ width:min(420px, calc(100vw - 24px)); }
   .dd{ width:100%; }
 }
