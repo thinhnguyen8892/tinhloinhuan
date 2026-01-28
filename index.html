@@ -30,18 +30,6 @@
   --sans:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 }
 
-@media (prefers-color-scheme: light){
-  :root{
-    --bg:#f6f8ff;
-    --bg2:#eef2ff;
-    --card:#ffffff;
-    --card2:#ffffff;
-    --text:#0f172a;
-    --muted:#64748b;
-    --line:rgba(15,23,42,.10);
-    --line2:rgba(15,23,42,.14);
-    --shadow:0 16px 46px rgba(2,6,23,.12);
-  }
 }
 
 *{box-sizing:border-box}
@@ -50,11 +38,7 @@ body{
   margin:0;
   font-family:var(--sans);
   color:var(--text);
-  background:
-    radial-gradient(1100px 620px at 15% -10%, rgba(124,58,237,.20), transparent 55%),
-    radial-gradient(1000px 560px at 90% 0%, rgba(37,99,235,.18), transparent 55%),
-    radial-gradient(900px 500px at 70% 90%, rgba(34,197,94,.12), transparent 55%),
-    linear-gradient(180deg, var(--bg), var(--bg2));
+  background: linear-gradient(180deg, var(--bg), var(--bg2));
 }
 
 .wrap{max-width:1380px;margin:auto;padding:18px 14px 34px}
@@ -95,8 +79,6 @@ button:hover, .chipbtn:hover{transform:translateY(-1px)}
   border-color:rgba(239,68,68,.25);
   color:#fecaca;
 }
-@media (prefers-color-scheme: light){
-  .danger{color:#991b1b}
 }
 .ghost{background:rgba(255,255,255,.02)}
 .select{outline:none;padding:10px 12px}
@@ -117,8 +99,6 @@ button:hover, .chipbtn:hover{transform:translateY(-1px)}
   box-shadow:var(--shadow);
   overflow:hidden;
 }
-@media (prefers-color-scheme: light){
-  .card{background:var(--card)}
 }
 .card-hd{
   padding:14px 14px;
@@ -130,9 +110,7 @@ button:hover, .chipbtn:hover{transform:translateY(-1px)}
 .mono{font-family:var(--mono)}
 .hr{height:1px;background:var(--line);margin:10px 0}
 
-@media (prefers-color-scheme: light){
-  .kpi.ok{background:linear-gradient(180deg, rgba(34,197,94,.10), #fff)}
-  .kpi.bad{background:linear-gradient(180deg, rgba(239,68,68,.10), #fff)}
+.kpi.bad{background:linear-gradient(180deg, rgba(239,68,68,.10), #fff)}
 }
 .kpi .k{font-size:12px;color:var(--muted);font-weight:850}
 .kpi .v{margin-top:6px;font-size:18px;font-weight:950;font-family:var(--mono)}
@@ -152,8 +130,6 @@ button:hover, .chipbtn:hover{transform:translateY(-1px)}
   background:rgba(255,255,255,.03);
   margin-bottom:10px;
 }
-@media (prefers-color-scheme: light){
-  .field{background:#f8fafc}
 }
 label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:850}
 input[type="number"], input[type="text"]{
@@ -173,8 +149,6 @@ input[type="number"], input[type="text"]{
   padding:10px 12px;border-radius:14px;
   margin-bottom:10px;
 }
-@media (prefers-color-scheme: light){
-  .switch{background:#f8fafc}
 }
 .switch .txt{display:flex;flex-direction:column;gap:2px}
 .switch .txt b{font-size:13px}
@@ -218,14 +192,12 @@ table{
   font-variant-numeric:tabular-nums;
 }
 thead th{
-  position:sticky;top:0;z-index:3;
+  position:sticky;top:0;z-index:30;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
   border-bottom:1px solid var(--line2);
   padding:10px 10px;font-size:12px;color:var(--muted);
   text-align:left;white-space:nowrap;
 }
-@media (prefers-color-scheme: light){
-  thead th{background:#f8fafc}
 }
 tbody td{
   border-bottom:1px solid var(--line);
@@ -238,8 +210,6 @@ tbody tr:hover td.sticky-del{
   background: var(--sticky-bg) !important;
 }
 
-@media (prefers-color-scheme: light){
-  tbody tr:hover{background:#f1f5f9}
 }
 .right{text-align:right}
 .num{font-family:var(--mono)}
@@ -253,8 +223,6 @@ tbody tr:hover td.sticky-del{
   outline:none;font-size:13px;
   transition:.12s ease;
 }
-@media (prefers-color-scheme: light){
-  .cell-input{background:#fff}
 }
 .cell-input:focus{border-color:rgba(124,58,237,.55);box-shadow:0 0 0 4px rgba(124,58,237,.18)}
 .cell-input.small{width:160px}
@@ -282,7 +250,7 @@ kbd{
 .backdrop{
   position:fixed;inset:0;
   background:rgba(2,6,23,.55);
-  backdrop-filter: blur(3px);
+  backdrop-filter: none;
   z-index:40;
   display:none;
 }
@@ -310,7 +278,7 @@ kbd{
   cursor:pointer;font-weight:900;font-size:13px;
 }
 
-.actionCell{
+.actionCell{ flex-wrap:wrap; align-content:flex-end; 
   display:flex;
   align-items:center;
   justify-content:flex-end;
@@ -319,6 +287,7 @@ kbd{
 .actionCell .suggest{
   font-family:var(--mono);
   font-weight:950;
+  max-width:140px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
 }
 .actionCell .suggest.warn{
   color:var(--warn);
@@ -335,21 +304,26 @@ kbd{
 
 
 /* Sticky right columns (Action + Delete) */
-th.sticky-action, td.sticky-action{
+th.sticky-action{
   position: sticky;
   right: 0;
-  z-index: 4;
+  z-index: 40;
+}
+
+td.sticky-action{
+  position: sticky;
+  right: 0;
+  z-index: 18;
+}
+
+th.sticky-action, td.sticky-action{
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
 }
-@media (prefers-color-scheme: light){
-  th.sticky-del, td.sticky-del, th.sticky-action, td.sticky-action{
-    background:#f8fafc;
-  }
 }
 th.sticky-action{ z-index: 6; }
 
 /* Column widths */
-th.col-action, td.col-action{ min-width: 360px; }
+th.col-action, td.col-action{ min-width: 320px; }
 th.col-del, td.col-del{ min-width: 92px; }
 
 /* Locked sale input */
@@ -371,11 +345,6 @@ th.col-del, td.col-del{ min-width: 92px; }
   --sticky-bg: rgba(17,31,61,0.98);
   --sticky-bg-hd: rgba(15,26,51,0.98);
 }
-@media (prefers-color-scheme: light){
-  :root{
-    --sticky-bg: rgba(255,255,255,0.995);
-    --sticky-bg-hd: rgba(248,250,252,0.995);
-  }
 }
 th.sticky-del, td.sticky-del{
   background: var(--sticky-bg) !important;
@@ -405,13 +374,7 @@ select.select option{
   background-color: #0f1a33;
   color: var(--text);
 }
-@media (prefers-color-scheme: light){
-  select.select{
-    color-scheme: light;
-    background-color: #ffffff;
-    color: var(--text);
-  }
-  select.select option{
+select.select option{
     background-color: #ffffff;
     color: #0f172a;
   }
@@ -572,7 +535,7 @@ th, td{ box-sizing: border-box; }
   right: 110px; /* = width of delete column */
   z-index: 5;
   background: rgba(10,16,32,.92);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   box-shadow: -10px 0 20px rgba(0,0,0,.25);
 }
 .tableWrap td.sticky-action{ z-index: 4; }
@@ -582,7 +545,7 @@ th, td{ box-sizing: border-box; }
   right: 0;
   z-index: 6;
   background: rgba(10,16,32,.92);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
 }
 
 
@@ -616,8 +579,6 @@ th, td{ box-sizing: border-box; }
   box-shadow:0 10px 30px rgba(0,0,0,.18);
   margin-bottom:10px;
 }
-@media (prefers-color-scheme: light){
-  .mcard{ background:#ffffff; }
 }
 .mcard-hd{
   display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
@@ -665,11 +626,9 @@ th, td{ box-sizing: border-box; }
   border-radius:18px;
   border:1px solid var(--line2);
   background:rgba(15,26,51,.88);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   box-shadow: 0 18px 60px rgba(0,0,0,.35);
 }
-@media (prefers-color-scheme: light){
-  .mobileBar{ background:rgba(255,255,255,.90); }
 }
 .mobileBar .barRow{
   display:flex; gap:10px; justify-content:space-between; align-items:center;
@@ -732,8 +691,6 @@ th, td{ box-sizing: border-box; }
   }
   .actions::-webkit-scrollbar{height:6px}
   .actions::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:999px}
-  @media (prefers-color-scheme: light){
-    .actions::-webkit-scrollbar-thumb{background:rgba(2,6,23,.18)}
   }
   button, .select, .chipbtn{ padding:9px 10px; font-size:12.5px; border-radius:11px; }
 }
@@ -760,7 +717,7 @@ th, td{ box-sizing: border-box; }
   padding:10px 10px;
   min-height:56px;
 }
-@media (prefers-color-scheme: light){ .mchip{ background:#f8fafc; } }
+}
 .mchip .k{ font-size:12px; color:var(--muted); font-weight:850; }
 .mchip .v{ margin-top:6px; font-family:var(--mono); font-weight:950; font-size:15px; }
 .mchip .v.big{ font-size:17px; }
@@ -779,6 +736,594 @@ th, td{ box-sizing: border-box; }
 .mcard.open .mdetails{ display:block; }
 .mcard.open .toggleIcon{ transform: rotate(180deg); }
 
+
+/* ===== UI Optimization v3 (Desktop + Mobile) ===== */
+/* Sticky top controls on desktop so users don't have to scroll up */
+@media (min-width: 721px){
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 12px 10px;
+    margin: -12px -10px 12px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(15,26,51,.72);
+    backdrop-filter: none;
+  }
+  }
+  .sub{max-width: 980px;}
+}
+
+/* Better click targets + focus ring */
+button, .select, input.cell-input, input.small{
+  touch-action: manipulation;
+}
+button:focus-visible, .select:focus-visible, input:focus-visible{
+  outline: 2px solid rgba(124,58,237,.55);
+  outline-offset: 2px;
+}
+
+/* Table readability */
+table td{ padding: 10px 10px; }
+tbody tr:hover td{ background: rgba(255,255,255,.03); }
+}
+
+/* Make the first column (Sản phẩm) sticky on desktop for wide tables */
+@media (min-width: 721px){
+  th.sticky-left{
+    position: sticky;
+    left: 0;
+    z-index: 40;
+  }
+  td.sticky-left{
+    position: sticky;
+    left: 0;
+    z-index: 18;
+  }
+  th.sticky-left, td.sticky-left{
+
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    box-shadow: 10px 0 18px rgba(0,0,0,.10);
+  }
+  }
+}
+
+/* Mobile safe-area padding so bottom bar doesn't cover content */
+.mobileBar{
+  bottom: calc(12px + env(safe-area-inset-bottom));
+}
+@media (max-width: 720px){
+  .wrap{ padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+}
+
+
+/* ===== UI v4: polish for desktop + mobile ===== */
+:root{
+  --shadow1: 0 10px 30px rgba(0,0,0,.18);
+  --shadow2: 0 16px 50px rgba(0,0,0,.28);
+  --ring: 0 0 0 3px rgba(99,102,241,.28);
+}
+
+.wrap{ max-width: 1240px; margin: 0 auto; }
+@media (max-width: 1240px){ .wrap{ padding-left: 14px; padding-right: 14px; } }
+
+/* App bar */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-radius: 0 0 18px 18px;
+  box-shadow: var(--shadow1);
+  backdrop-filter: none;
+}
+
+/* Brand text density */
+.topbar .sub{ line-height: 1.35; }
+.topbar h1{ letter-spacing: .2px; }
+
+/* Actions: nicer wrapping on desktop, scroll on small widths */
+.actions{
+  align-items: center;
+  gap: 8px;
+}
+.actions button{
+  height: 38px;
+  border-radius: 12px;
+}
+.actions .primary{ box-shadow: 0 10px 26px rgba(37,99,235,.25); }
+@media (max-width: 980px){
+  .actions{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 18px), transparent);
+  }
+  .actions::-webkit-scrollbar{ height: 6px; }
+}
+
+/* Table */
+.tableWrap{
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow1);
+}
+table{
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+thead th{
+  position: sticky;
+  top: 82px; /* sits under sticky topbar */
+  z-index: 9;
+  backdrop-filter: none;
+}
+@media (max-width: 720px){
+  thead th{ top: 0; position: static; }
+}
+tbody tr:nth-child(odd){ background: rgba(255,255,255,.02); }
+tbody tr:hover{ background: rgba(255,255,255,.04); }
+td, th{ vertical-align: middle; }
+
+/* Sticky first column on desktop */
+@media (min-width: 980px){
+  th.col-name, td.col-name{
+    position: sticky;
+    left: 0;
+    z-index: 8;
+    background: rgba(18,24,35,.92);
+    backdrop-filter: none;
+    box-shadow: 8px 0 18px rgba(0,0,0,.16);
+  }
+  thead th.col-name{ z-index: 10; }
+}
+
+/* Inputs */
+input.cell-input, input, select{
+  border-radius: 12px !important;
+}
+input:focus, select:focus, button:focus{
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+/* Action cell: prevent overlay + allow wrapping */
+td.col-action .actionCell{
+  max-width: 340px;
+  white-space: normal;
+  line-height: 1.25;
+}
+td.col-action .actionCell .mono{ word-break: break-word; }
+
+/* Mobile cards: clearer grid & spacing */
+.mobileCards{ margin-top: 14px; }
+.mcard{
+  border-radius: 20px;
+  box-shadow: var(--shadow1);
+}
+.mcard-hd{ gap: 10px; }
+.mtitle{ font-weight: 800; }
+.mgrid{ gap: 10px; }
+@media (min-width: 420px){
+  .mgrid{ grid-template-columns: 1fr 1fr; }
+}
+.mfield label{ font-size: 12px; opacity: .9; }
+.mfield strong{ font-size: 15px; }
+
+/* Mobile bottom bar: nicer touch targets */
+.mobileBar{
+  box-shadow: var(--shadow2);
+  border-radius: 20px 20px 0 0;
+}
+.barBtn{ border-radius: 14px; min-height: 42px; }
+
+/* Reduce visual noise on very small screens */
+@media (max-width: 380px){
+  .topbar h1{ font-size: 16px; }
+  .topbar .sub{ display:none; }
+}
+
+
+
+/* === UI v5: Dark tối giản mạnh (override) === */
+:root{
+  --bg:#0b0f19;
+  --bg2:#0b0f19;
+  --card:#0f172a;
+  --card2:#0f172a;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --brand:#6366f1;
+  --brand2:#4f46e5;
+  --shadow:0 10px 24px rgba(0,0,0,.30);
+}
+
+/* Kill glass / glow */
+*{ text-shadow:none !important; }
+.topbar, .sheet, .card, .dd, .toast, .bottomBar, .tableWrap{
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  box-shadow:none !important;
+}
+.wrap{ padding:14px 14px 18px !important; background:var(--bg) !important; }
+body{
+  background:var(--bg) !important;
+  color:var(--text) !important;
+}
+
+/* Topbar: mỏng, rõ, ưu tiên bảng */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:10px 12px !important;
+  border:1px solid var(--line) !important;
+  background:rgba(11,15,25,.98) !important;
+}
+.brand{ gap:10px !important; }
+.logo{
+  width:38px !important; height:38px !important;
+  border-radius:12px !important;
+  background:var(--brand) !important;
+  box-shadow:none !important;
+}
+h1{ font-size:18px !important; letter-spacing:.2px !important; margin:0 !important; }
+.badge{ border:1px solid var(--line2) !important; background:transparent !important; }
+.sub{
+  margin-top:4px !important;
+  color:var(--muted) !important;
+  font-size:12.5px !important;
+  line-height:1.35 !important;
+  display:-webkit-box !important;
+  -webkit-line-clamp:2 !important;
+  -webkit-box-orient:vertical !important;
+  overflow:hidden !important;
+  max-width:980px;
+}
+.sub .hint{ display:none !important; }
+
+/* Toolbar buttons: phẳng, gọn */
+.actions{ gap:8px !important; flex-wrap:wrap !important; }
+button, .btn{
+  border-radius:10px !important;
+  border:1px solid var(--line2) !important;
+  background:transparent !important;
+  color:var(--text) !important;
+  height:38px !important;
+  padding:0 12px !important;
+  box-shadow:none !important;
+}
+button:hover, .btn:hover{ border-color:rgba(255,255,255,.28) !important; }
+button:active, .btn:active{ transform:translateY(0) !important; }
+button.primary, button#addRowBtn, .primary{
+  background:var(--brand2) !important;
+  border-color:transparent !important;
+}
+button.primary:hover, button#addRowBtn:hover, .primary:hover{ filter:brightness(1.05) !important; }
+.pill, .dd{
+  border-radius:10px !important;
+  border:1px solid var(--line2) !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.dd .ddHead{ height:38px !important; }
+
+/* Sheet/Card: ít padding hơn, đường viền rõ */
+.sheet, .card{
+  background:var(--card) !important;
+  border:1px solid var(--line) !important;
+  border-radius:14px !important;
+}
+.sheet{ padding:12px !important; }
+.card{ padding:12px !important; }
+.card h2{ font-size:15px !important; margin:0 0 6px 0 !important; }
+.tip{ color:var(--muted) !important; }
+
+/* Table: đọc số dễ hơn */
+.tableWrap{
+  border:1px solid var(--line) !important;
+  border-radius:14px !important;
+  background:var(--card) !important;
+}
+table{ border-collapse:separate !important; border-spacing:0 !important; }
+thead th{
+  background:#0b1222 !important;
+  border-bottom:1px solid var(--line2) !important;
+  color:rgba(229,231,235,.92) !important;
+  font-weight:650 !important;
+}
+tbody tr:nth-child(even){ background:rgba(255,255,255,.03) !important; }
+tbody tr:hover{ background:rgba(99,102,241,.08) !important; }
+td, th{ border-right:1px solid rgba(255,255,255,.06) !important; }
+td:last-child, th:last-child{ border-right:none !important; }
+
+/* Inputs: phẳng + focus rõ */
+input, select, textarea{
+  background:#0b1222 !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  color:var(--text) !important;
+  border-radius:10px !important;
+  height:36px !important;
+}
+input:focus, select:focus, textarea:focus{
+  outline:none !important;
+  border-color:rgba(99,102,241,.85) !important;
+  box-shadow:0 0 0 3px rgba(99,102,241,.22) !important;
+}
+
+/* Action cell (Giá bán đề xuất): không lấn */
+.actionCell{
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+  line-height:1.25 !important;
+}
+.col-action{ max-width:360px !important; }
+.actionCell .small{ color:var(--muted) !important; }
+
+/* Mobile: ưu tiên nhập liệu, giảm chữ thừa */
+@media (max-width: 760px){
+  .wrap{ padding:10px 10px 14px !important; }
+  .topbar{ padding:10px 10px !important; }
+  h1{ font-size:16px !important; }
+  .sub{ -webkit-line-clamp:1 !important; }
+  button, .btn, .dd .ddHead{ height:40px !important; }
+  .actions{ gap:8px !important; }
+}
+
+/* Bottom bar: phẳng, không che nội dung */
+.bottomBar{
+  background:rgba(11,15,25,.98) !important;
+  border-top:1px solid var(--line) !important;
+  box-shadow:none !important;
+}
+
+
+/* ===== UI v7: Dark minimal, hiệu quả PC + Mobile ===== */
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:stretch;
+}
+.actionsRow{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.actionsRow button{height:40px; padding:10px 12px}
+.primaryRow{padding-bottom:2px}
+.moreActions{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:8px;
+  background:rgba(255,255,255,.02);
+}
+.moreActions > summary{
+  list-style:none;
+  cursor:pointer;
+  user-select:none;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.03);
+  font-weight:850;
+}
+.moreActions > summary::-webkit-details-marker{display:none}
+.moreActions[open]{padding-bottom:10px}
+.secondaryRow{padding-top:8px}
+
+.sub{line-height:1.35}
+.subMore{display:inline-block;margin-left:8px}
+.subMore > summary{
+  display:inline-flex; align-items:center; gap:6px;
+  cursor:pointer; user-select:none;
+  font-weight:800;
+  color:var(--muted);
+}
+.subMore > summary::-webkit-details-marker{display:none}
+.subMoreBody{margin-top:6px;color:var(--muted);max-width:900px}
+
+button, .select, .chipbtn{
+  box-shadow:none !important;
+  background:rgba(255,255,255,.03);
+}
+button:hover, .chipbtn:hover{transform:none}
+.primary{
+  background:rgba(124,58,237,.95);
+  border-color:rgba(124,58,237,.55);
+}
+.primary:hover{filter:brightness(1.05)}
+
+@media (max-width: 900px){
+  .actionsRow{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:6px;
+  }
+  .actionsRow::-webkit-scrollbar{height:6px}
+  .actionsRow::-webkit-scrollbar-thumb{background:rgba(231,236,255,.18);border-radius:10px}
+  .moreActions{padding:6px}
+  .secondaryRow{flex-wrap:wrap}
+  .subMore{display:block;margin-left:0;margin-top:6px}
+}
+
+@media (min-width: 900px){
+  .moreActions{border:0;padding:0;background:transparent}
+  .moreActions > summary{display:none}
+  .secondaryRow{padding-top:0}
+}
+
+/* Table readability */
+.tableWrap{border-radius:18px}
+table{border-collapse:separate;border-spacing:0}
+thead th{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(10,16,32,.98);
+  backdrop-filter:none;
+}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.015)}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+td input{
+  width:100%;
+  min-width:120px;
+}
+
+/* Sticky first column stays below header */
+th.stickyLeft{z-index:60}
+td.stickyLeft{z-index:20}
+
+
+/* ===== Compact toolbar + More menu (v8) ===== */
+.actions .compactBar{
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+  align-items: center;
+  padding-right: 6px;
+}
+.actions .compactBar::-webkit-scrollbar{ height: 8px; }
+.actions .compactBar::-webkit-scrollbar-thumb{ border-radius: 999px; }
+
+.moreBtn{
+  min-width: 44px;
+  padding-inline: 14px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.moreMenu{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: min(360px, calc(100vw - 24px));
+  background: rgba(12, 16, 26, .98);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.45);
+  z-index: 2000;
+}
+
+.actionsRow{ position: relative; }
+
+.menuGroup{
+  padding: 6px;
+  border-radius: 12px;
+}
+.menuGroup + .menuGroup{
+  margin-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 10px;
+}
+.menuItem{
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-top: 6px;
+}
+.menuItem:first-child{ margin-top: 0; }
+
+.menuDD{
+  width: 100%;
+  margin-top: 6px;
+}
+.menuDD:first-child{ margin-top: 0; }
+
+/* Mobile: ưu tiên 1 dòng gọn, ẩn bớt chữ */
+@media (max-width: 520px){
+  #addRowBtn{ padding-inline: 12px; }
+  #exportBtn{ padding-inline: 12px; }
+}
+
+
+/* ===== Quick view (Nhập nhanh) ===== */
+body.quick-view .tablewrap [data-col="taxAmt"],
+body.quick-view .tablewrap [data-col="diffMoney"],
+body.quick-view .tablewrap [data-col="breakEvenNoHD"],
+body.quick-view .tablewrap [data-col="breakEvenFullHD"],
+body.quick-view .tablewrap [data-col="fixed"]{
+  display:none !important;
+}
+body.quick-view .tablewrap col[data-col="taxAmt"],
+body.quick-view .tablewrap col[data-col="diffMoney"],
+body.quick-view .tablewrap col[data-col="breakEvenNoHD"],
+body.quick-view .tablewrap col[data-col="breakEvenFullHD"],
+body.quick-view .tablewrap col[data-col="fixed"]{
+  display:none !important;
+}
+
+/* In quick view, make important columns slightly narrower/wider */
+body.quick-view .tablewrap col[data-col="name"]{ width:240px !important; }
+body.quick-view .tablewrap col[data-col="sale"]{ width:130px !important; }
+body.quick-view .tablewrap col[data-col="affFeePct"]{ width:110px !important; }
+body.quick-view .tablewrap col[data-col="costInvoice"]{ width:140px !important; }
+body.quick-view .tablewrap col[data-col="costReal"]{ width:140px !important; }
+body.quick-view .tablewrap col[data-col="moneyBack"]{ width:140px !important; }
+body.quick-view .tablewrap col[data-col="realProfit"]{ width:160px !important; }
+body.quick-view .tablewrap col[data-col="action"]{ width:220px !important; }
+
+
+/* ===== Per-row details (PRO) ===== */
+.detailBtn{ white-space:nowrap; }
+tr.detail-row td{
+  padding: 0 !important;
+  background: rgba(0,0,0,.08);
+}
+.detailBox{
+  margin: 0;
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.detailGrid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 10px 12px;
+}
+@media (max-width: 1100px){
+  .detailGrid{ grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+}
+.detailItem{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+}
+.detailItem .k{ color: var(--muted); font-size: 12px; }
+.detailItem .v{ font-variant-numeric: tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+tr.expanded > td{ border-bottom-color: transparent; }
+
+
+/* ===== Touch targets & mobile ergonomics ===== */
+@media (max-width: 720px){
+  button, .select, input, .in, .chipbtn, .smallBtn{
+    min-height: 44px;
+  }
+  button{ height: 44px; }
+  .actionsRow button, .actionsRow .select{ padding: 10px 12px; }
+  .tableWrap td, .tableWrap th{ padding: 10px 10px; }
+  .mcard input{ height: 44px; }
+}
+
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; scroll-behavior:auto !important; }
+}
+
 </style>
 </head>
 
@@ -790,33 +1335,53 @@ th, td{ box-sizing: border-box; }
       <div>
         <h1>Tính lợi nhuận TikTok Shop 2026 <span class="badge na" style="margin-left:8px;"><span class="dot"></span>Professional</span></h1>
         <div class="sub">
-          <b>Công cụ định giá bán:</b> nhập giá vốn, giá bán và chi phí của bạn để xem ngay tiền về, lợi nhuận,
-          trạng thái đạt/chưa đạt và <b>giá bán đề xuất</b> cho từng sản phẩm.
-          <span class="hint"> Nội dung chỉ mang tính chất tham khảo (Giá phụ thuộc vào phí sàn/ phí KOL....</span>
+          <b>Công cụ định giá bán:</b> nhập giá vốn, giá bán và chi phí để ra tiền về, lợi nhuận & giá bán đề xuất.
+          <details class="subMore">
+            <summary>Xem ghi chú</summary>
+            <div class="subMoreBody">
+              Nội dung chỉ mang tính chất tham khảo (Giá phụ thuộc vào phí sàn/ phí KOL....)
+            </div>
+          </details>
         </div>
       </div>
     </div>
 
     <div class="actions">
-      <button class="primary" id="addRowBtn">+ Thêm dòng</button>
-      <button id="importBtn" class="ghost" title="Import Excel">Import Excel</button>
-      <button id="downloadTemplateBtn" class="ghost" title="Tải file Excel mẫu">Tải mẫu Excel</button>
-      <button id="bulkApplyBtn" class="ghost" title="Áp dụng giá bán đề xuất cho các dòng chưa đạt">Áp dụng đề xuất (chưa đạt)</button>
 
-      <div id="exportFilterDD" class="dd" data-dd="export"></div>
+      <div class="actionsRow primaryRow compactBar" aria-label="Thao tác nhanh">
+        <button class="primary" id="addRowBtn">+ Thêm dòng</button>
+        <button id="importBtn" class="ghost" title="Import Excel">Import</button>
 
-      <div id="quickFilterDD" class="dd" data-dd="filter"></div>
+        <div id="exportFilterDD" class="dd" data-dd="export"></div>
+        <button id="exportBtn" class="ghost" title="Xuất Excel">Xuất</button>
 
-      <div id="sortByDD" class="dd" data-dd="sort"></div>
+        <button id="moreBtn" class="ghost moreBtn" aria-haspopup="menu" aria-expanded="false" title="Tuỳ chọn">⋯</button>
 
-      <button id="exportBtn">Xuất Excel</button>
-      <button class="ghost" id="helpBtn" title="Hướng dẫn sử dụng">Hướng dẫn</button>
-      <button class="ghost" id="settingsBtn" title="Mở cài đặt">Cài đặt</button>
-      <button class="ghost" id="stickyToggleBtn" title="Bật/tắt cố định cột Giá bán lẻ đề xuất">Sticky: ON</button>
-      <button class="ghost" id="toggleAdvancedBtn" title="Ẩn/hiện cột nâng cao">Cột nâng cao: ON</button>
-      <button class="danger" id="resetBtn">Reset</button>
+        <div id="moreMenu" class="moreMenu" role="menu" aria-label="Tuỳ chọn" hidden>
+          <div class="menuGroup">
+            <button id="downloadTemplateBtn" class="ghost menuItem" role="menuitem" title="Tải file Excel mẫu">Tải mẫu</button>
+            <button id="bulkApplyBtn" class="ghost menuItem" role="menuitem" title="Áp dụng giá bán đề xuất cho các dòng chưa đạt">Áp dụng đề xuất</button>
+          </div>
+
+          <div class="menuGroup">
+            <div id="quickFilterDD" class="dd menuDD" data-dd="filter"></div>
+            <div id="sortByDD" class="dd menuDD" data-dd="sort"></div>
+            <button class="ghost menuItem" id="quickViewBtn" role="menuitem" title="Chế độ nhập nhanh (gọn) / xem đầy đủ cột">Chế độ: Nhập nhanh</button>
+            <button class="ghost menuItem" id="stickyToggleBtn" role="menuitem" title="Bật/tắt cố định cột Giá bán lẻ đề xuất">Sticky: OFF</button>
+            <button class="ghost menuItem" id="toggleAdvancedBtn" role="menuitem" title="Ẩn/hiện cột nâng cao">Cột nâng cao: ON</button>
+          </div>
+
+          <div class="menuGroup">
+            <button class="ghost menuItem" id="settingsBtn" role="menuitem" title="Mở cài đặt">Cài đặt</button>
+            <button class="ghost menuItem" id="helpBtn" role="menuitem" title="Hướng dẫn sử dụng">Hướng dẫn</button>
+            <button class="danger menuItem" id="resetBtn" role="menuitem" title="Xoá dữ liệu trên trang">Reset</button>
+          </div>
+        </div>
+      </div>
+
     </div>
-  <input type="file" id="excelInput" accept=".xlsx,.xls,.csv" style="display:none"/>
+  <input type="file" id="excelInput"
+ accept=".xlsx,.xls,.csv" style="display:none"/>
   
 </div>
 
@@ -999,50 +1564,52 @@ th, td{ box-sizing: border-box; }
       <div class="tablewrap">
         <table>
           <colgroup>
-            <col style="width:260px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:110px">
-            <col style="width:110px">
-            <col style="width:120px">
-            <col style="width:140px">
-            <col style="width:140px">
-            <col style="width:180px">
-            <col style="width:190px">
-            <col style="width:110px">
+            <col style="width:260px" data-col="name">
+            <col style="width:140px" data-col="sale">
+            <col style="width:140px" data-col="affFeePct">
+            <col style="width:140px" data-col="costInvoice">
+            <col style="width:140px" data-col="costReal">
+            <col style="width:140px" data-col="moneyBack">
+            <col style="width:140px" data-col="taxAmt">
+            <col style="width:140px" data-col="diffMoney">
+            <col style="width:140px" data-col="realProfit">
+            <col style="width:110px" data-col="breakEvenNoHD">
+            <col style="width:110px" data-col="breakEvenFullHD">
+            <col style="width:120px" data-col="roiMb">
+            <col style="width:140px" data-col="hitTarget">
+            <col style="width:140px" data-col="fixed">
+            <col style="width:180px" data-col="net">
+            <col style="width:190px" data-col="status">
+            <col style="width:110px" data-col="action">
+            <col style="width:90px" data-col="del">
           </colgroup>
           <thead>
             <tr>
-              <th><span class="th-tip" tabindex="0" data-tip="Tên sản phẩm/SKU để bạn quản lý." title="Tên sản phẩm/SKU để bạn quản lý.">Sản phẩm</span></th>
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bạn dự định bán ra (P)." title="Giá bạn dự định bán ra (P).">Giá bán</span></th>
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế." title="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế.">Giá vốn (hóa đơn)</span></th>
+              <th class="sticky-left" data-col="name"><span class="th-tip" tabindex="0" data-tip="Tên sản phẩm/SKU để bạn quản lý." title="Tên sản phẩm/SKU để bạn quản lý.">Sản phẩm</span></th>
+              <th class="right" data-col="sale"><span class="th-tip" tabindex="0" data-tip="Giá bạn dự định bán ra (P)." title="Giá bạn dự định bán ra (P).">Giá bán</span></th>
+                            <th class="right" data-col="affFeePct"><span class="th-tip" tabindex="0" data-tip="Phí Affiliate/KOL ảnh hưởng trực tiếp đến Tiền về. Nếu để trống sẽ dùng mặc định 27%." title="Phí Affiliate/KOL ảnh hưởng trực tiếp đến Tiền về. Nếu để trống sẽ dùng mặc định 27%.">Phí AFF (%)</span></th>
+<th class="right" data-col="costInvoice"><span class="th-tip" tabindex="0" data-tip="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế." title="Giá vốn theo hóa đơn (C_invoice) – dùng cho kế toán/thuế.">Giá vốn (hóa đơn)</span></th>
 
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá vốn thực tế bạn nhập (C_real) – dùng để ra lãi thực tế." title="Giá vốn thực tế bạn nhập (C_real) – dùng để ra lãi thực tế.">Giá vốn thực tế</span></th>
+              <th class="right" data-col="costReal"><span class="th-tip" tabindex="0" data-tip="Giá vốn thực tế bạn nhập (C_real) – dùng để ra lãi thực tế." title="Giá vốn thực tế bạn nhập (C_real) – dùng để ra lãi thực tế.">Giá vốn thực tế</span></th>
 
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Số tiền bạn dự kiến thực nhận sau khi trừ các khoản phí theo cài đặt." title="Số tiền bạn dự kiến thực nhận sau khi trừ các khoản phí theo cài đặt.">Tiền về</span></th>
-<th class="right"><span class="th-tip" tabindex="0" data-tip="Khoản thuế/chi phí ước tính, chỉ phát sinh khi có lãi." title="Khoản thuế/chi phí ước tính, chỉ phát sinh khi có lãi.">Thuế (kế toán)</span></th>
+              <th class="right" data-col="moneyBack"><span class="th-tip" tabindex="0" data-tip="Số tiền bạn dự kiến thực nhận sau khi trừ các khoản phí theo cài đặt." title="Số tiền bạn dự kiến thực nhận sau khi trừ các khoản phí theo cài đặt.">Tiền về</span></th>
+<th class="right" data-col="taxAmt"><span class="th-tip" tabindex="0" data-tip="Khoản thuế/chi phí ước tính, chỉ phát sinh khi có lãi." title="Khoản thuế/chi phí ước tính, chỉ phát sinh khi có lãi.">Thuế (kế toán)</span></th>
 
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Tiền về − Giá vốn thực tế." title="Tiền về − Giá vốn thực tế.">Tiền chênh lệch</span></th>
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Tiền chênh lệch − Thuế (kế toán)." title="Tiền chênh lệch − Thuế (kế toán).">Lợi nhuận thực tế</span></th>
+              <th class="right" data-col="diffMoney"><span class="th-tip" tabindex="0" data-tip="Tiền về − Giá vốn thực tế." title="Tiền về − Giá vốn thực tế.">Tiền chênh lệch</span></th>
+              <th class="right" data-col="realProfit"><span class="th-tip" tabindex="0" data-tip="Tiền chênh lệch − Thuế (kế toán)." title="Tiền chênh lệch − Thuế (kế toán).">Lợi nhuận thực tế</span></th>
 
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bán hòa vốn theo GIÁ VỐN THỰC TẾ (khi hóa đơn thấp hơn thực tế). Điều kiện: Lợi nhuận thực tế = 0. Thuế vẫn tính theo giá vốn hóa đơn." title="Giá bán hòa vốn theo GIÁ VỐN THỰC TẾ (khi hóa đơn thấp hơn thực tế). Điều kiện: Lợi nhuận thực tế = 0. Thuế vẫn tính theo giá vốn hóa đơn.">Giá bán hòa vốn không đủ HD</span></th>
-<th class="right"><span class="th-tip" tabindex="0" data-tip="Giá bán hòa vốn khi ĐỦ HÓA ĐƠN (giá vốn hóa đơn = giá vốn thực tế). Điều kiện: Lợi nhuận thực tế = 0." title="Giá bán hòa vốn khi ĐỦ HÓA ĐƠN (giá vốn hóa đơn = giá vốn thực tế). Điều kiện: Lợi nhuận thực tế = 0.">Giá bán hòa vốn đủ hóa đơn</span></th>
+              <th class="right" data-col="breakEvenNoHD"><span class="th-tip" tabindex="0" data-tip="Giá bán hòa vốn theo GIÁ VỐN THỰC TẾ (khi hóa đơn thấp hơn thực tế). Điều kiện: Lợi nhuận thực tế = 0. Thuế vẫn tính theo giá vốn hóa đơn." title="Giá bán hòa vốn theo GIÁ VỐN THỰC TẾ (khi hóa đơn thấp hơn thực tế). Điều kiện: Lợi nhuận thực tế = 0. Thuế vẫn tính theo giá vốn hóa đơn.">Giá bán hòa vốn không đủ HD</span></th>
+<th class="right" data-col="breakEvenFullHD"><span class="th-tip" tabindex="0" data-tip="Giá bán hòa vốn khi ĐỦ HÓA ĐƠN (giá vốn hóa đơn = giá vốn thực tế). Điều kiện: Lợi nhuận thực tế = 0." title="Giá bán hòa vốn khi ĐỦ HÓA ĐƠN (giá vốn hóa đơn = giá vốn thực tế). Điều kiện: Lợi nhuận thực tế = 0.">Giá bán hòa vốn đủ hóa đơn</span></th>
 
-                            <th class="right"><span class="th-tip" tabindex="0" data-tip="Tỷ lệ Lợi nhuận thực tế / Giá bán, dùng để đánh giá hiệu quả." title="Tỷ lệ lãi so với tiền về, dùng để đánh giá hiệu quả.">% chuẩn</span></th>
-              <th><span class="th-tip" tabindex="0" data-tip="Đạt/Chưa đạt % mục tiêu theo % chuẩn." title="Đạt/Chưa đạt % mục tiêu theo % chuẩn.">Đạt?</span></th>
+                            <th class="right" data-col="roiMb"><span class="th-tip" tabindex="0" data-tip="Tỷ lệ Lợi nhuận thực tế / Giá bán, dùng để đánh giá hiệu quả." title="Tỷ lệ lãi so với tiền về, dùng để đánh giá hiệu quả.">% chuẩn</span></th>
+              <th data-col="hitTarget"><span class="th-tip" tabindex="0" data-tip="Đạt/Chưa đạt % mục tiêu theo % chuẩn." title="Đạt/Chưa đạt % mục tiêu theo % chuẩn.">Đạt?</span></th>
 
-              <th class="right adv"><span class="th-tip" tabindex="0" data-tip="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt." title="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt.">Phí cố định</span></th>
-              <th class="right"><span class="th-tip" tabindex="0" data-tip="Lãi thực nhận cuối cùng sau mọi chi phí." title="Lãi thực nhận cuối cùng sau mọi chi phí.">Lãi ròng</span></th>
-              <th><span class="th-tip" tabindex="0" data-tip="Tổng quan nhanh: LÃI hoặc LỖ theo lãi ròng." title="Tổng quan nhanh: LÃI hoặc LỖ theo lãi ròng.">Trạng thái</span></th>
+              <th class="right adv" data-col="fixed"><span class="th-tip" tabindex="0" data-tip="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt." title="Các khoản phí cố định (xử lý/hoàn,...) nếu bạn bật trong cài đặt.">Phí cố định</span></th>
+              <th class="right" data-col="net"><span class="th-tip" tabindex="0" data-tip="Lãi thực nhận cuối cùng sau mọi chi phí." title="Lãi thực nhận cuối cùng sau mọi chi phí.">Lãi ròng</span></th>
+              <th data-col="status"><span class="th-tip" tabindex="0" data-tip="Tổng quan nhanh: LÃI hoặc LỖ theo lãi ròng." title="Tổng quan nhanh: LÃI hoặc LỖ theo lãi ròng.">Trạng thái</span></th>
 
-              <th class="right sticky-action col-action"><span class="th-tip" tabindex="0" data-tip="Hiển thị giá bán lẻ đề xuất theo % mục tiêu trong Cài đặt và cho phép áp dụng nhanh." title="Hiển thị giá bán lẻ đề xuất theo % mục tiêu trong Cài đặt và cho phép áp dụng nhanh.">Giá bán lẻ đề xuất</span></th>
-              <th class="right col-del"></th>
+              <th class="right sticky-action col-action" data-col="action"><span class="th-tip" tabindex="0" data-tip="Hiển thị giá bán lẻ đề xuất theo % mục tiêu trong Cài đặt và cho phép áp dụng nhanh." title="Hiển thị giá bán lẻ đề xuất theo % mục tiêu trong Cài đặt và cho phép áp dụng nhanh.">Giá bán lẻ đề xuất</span></th>
+              <th class="right col-del" data-col="del"></th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -1156,13 +1723,14 @@ const DEFAULT_STATE = {
     refundOn: false,
     refundFee: 3000,
     advancedColsOn: true,
-    stickyOn: true,
+    stickyOn: false,
     quickFilter: "all",
     sortBy: "none",
-    exportMode: "all"
+    exportMode: "all",
+    quickViewOn: true
   },
   rows: [
-    { name: "SP 1", sale: "", costInvoice: "", costReal: "" }
+    { name: "SP 1", sale: "", affFeePct: "", costInvoice: "", costReal: "" }
   ]
 };
 let state = loadState() || deepClone(DEFAULT_STATE);
@@ -1202,7 +1770,7 @@ function calcRow(r){
   const C_invoice = parseMoney(r.costInvoice ?? r.cost); // Giá vốn trên hóa đơn (kế toán)
   const C_real = parseMoney(r.costReal ?? r.costInvoice ?? r.cost);   // Giá vốn thực tế nhập
 
-  const feeMB = safePct(state.settings.moneyBackFeePct)/100; // % phí ảnh hưởng tiền về
+  const feeMB = safePct((r.affFeePct!==undefined && String(r.affFeePct).trim()!=="" ? r.affFeePct : state.settings.moneyBackFeePct))/100; // % phí ảnh hưởng tiền về
   const feeTax = safePct(state.settings.feeTaxPct)/100;      // % phí sàn tính thuế (kế toán)
   const taxRate = safePct(state.settings.taxPct)/100;        // thuế suất
 
@@ -1469,6 +2037,10 @@ function buildMobileCardDOM(i){
         <label>Giá bán</label>
         <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 380 (=> 380.000)">
       </div>
+      <div class="mfield">
+        <label>Phí AFF (%)</label>
+        <input inputmode="decimal" pattern="[0-9.]*" class="cell-input small right" data-k="affFeePct" data-i="${i}" value="${escapeHtml(r.affFeePct ?? "")}" placeholder="27">
+      </div>
 
       <div class="mfield">
         <label>Giá vốn (HĐ)</label>
@@ -1595,6 +2167,7 @@ function updateMobileCardDOM(i){
       <div class="actionCell" style="justify-content:flex-end">
         ${suggestHtml}
         ${warnPill}
+        <button class="smallBtn detailBtn" data-action="expandRow" data-i="${i}" title="Xem chi tiết dòng">Chi tiết</button>
         <button class="smallBtn primary" data-action="applySuggest" data-i="${i}" title="Áp dụng giá bán đề xuất">Áp dụng</button>
       </div>
     `);
@@ -1670,7 +2243,15 @@ if(mobileCards){
       return;
     }
 
-    const applyBtn = e.target.closest('button[data-action="applySuggest"]');
+    
+  const expandBtn = e.target.closest('button[data-action="expandRow"]');
+  if(expandBtn){
+    const idx = Number(expandBtn.getAttribute("data-i"));
+    if(isFinite(idx)) toggleRowDetails(idx);
+    return;
+  }
+
+const applyBtn = e.target.closest('button[data-action="applySuggest"]');
     if(applyBtn){
       const idx = Number(applyBtn.getAttribute("data-i"));
       if(!state.rows[idx]) return;
@@ -1723,39 +2304,135 @@ function buildRowDOM(i){
   const tr = document.createElement("tr");
   tr.dataset.i = String(i);
   tr.innerHTML = `
-    <td><input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP"></td>
+    <td class="sticky-left" data-col="name"><input class="cell-input name" data-k="name" data-i="${i}" value="${escapeHtml(r.name)}" placeholder="Tên SP"></td>
 
-    <td class="right">
+    <td class="right" data-col="sale">
       <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="VD: 348000">
     </td>
 
-    <td class="right">
+    <td class="right" data-col="affFeePct">
+      <input inputmode="decimal" pattern="[0-9.]*" class="cell-input small right" data-k="affFeePct" data-i="${i}" value="${escapeHtml(r.affFeePct ?? "")}" placeholder="27">
+    </td>
+
+    <td class="right" data-col="costInvoice">
       <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
     </td>
 
-<td class="right">
+<td class="right" data-col="costReal">
   <input inputmode="numeric" pattern="[0-9]*" class="cell-input small right" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="VD: 225000">
 </td>
 
-    <td class="right num" data-out="moneyBack"></td>
-<td class="right num" data-out="taxAmt"></td>
-<td class="right num" data-out="diffMoney"></td>
-<td class="right num" data-out="realProfit"></td>
+    <td class="right num" data-out="moneyBack" data-col="moneyBack"></td>
+<td class="right num" data-out="taxAmt" data-col="taxAmt"></td>
+<td class="right num" data-out="diffMoney" data-col="diffMoney"></td>
+<td class="right num" data-out="realProfit" data-col="realProfit"></td>
 
-    <td class="right num" data-out="breakEvenNoHD"></td>
-    <td class="right num" data-out="breakEvenFullHD"></td>
-    <td class="right num" data-out="roiMb"></td>
-    <td data-out="hitTarget"></td>
+    <td class="right num" data-out="breakEvenNoHD" data-col="breakEvenNoHD"></td>
+    <td class="right num" data-out="breakEvenFullHD" data-col="breakEvenFullHD"></td>
+    <td class="right num" data-out="roiMb" data-col="roiMb"></td>
+    <td data-out="hitTarget" data-col="hitTarget"></td>
 
-    <td class="right num adv" data-out="fixed"></td>
-    <td class="right num" data-out="net"></td>
-    <td data-out="status"></td>
+    <td class="right num adv" data-out="fixed" data-col="fixed"></td>
+    <td class="right num" data-out="net" data-col="net"></td>
+    <td data-out="status" data-col="status"></td>
 
-    <td class="right sticky-action col-action" data-out="action"></td>
+    <td class="right sticky-action col-action" data-out="action" data-col="action"></td>
 
-    <td class="right col-del"><button class="danger smallBtn" data-action="del" data-del="${i}" title="Xóa dòng">Xóa</button></td>
+    <td class="right col-del" data-col="del"><button class="danger smallBtn" data-action="del" data-del="${i}" title="Xóa dòng">Xóa</button></td>
   `;
   return tr;
+}
+
+
+/* ===== Per-row details (expand row) ===== */
+const expandedRows = new Set();
+
+function buildDetailRowDOM(i){
+  const tr = document.createElement("tr");
+  tr.className = "detail-row";
+  tr.dataset.detailFor = String(i);
+  tr.innerHTML = `
+    <td colspan="100">
+      <div class="detailBox">
+        <div class="detailGrid">
+          <div class="detailItem"><div class="k">Thuế</div><div class="v" data-d="taxAmt"></div></div>
+          <div class="detailItem"><div class="k">Chênh lệch tiền về</div><div class="v" data-d="diffMoney"></div></div>
+          <div class="detailItem"><div class="k">Hòa vốn (thiếu HĐ)</div><div class="v" data-d="beNoHD"></div></div>
+          <div class="detailItem"><div class="k">Hòa vốn (đủ HĐ)</div><div class="v" data-d="beFullHD"></div></div>
+
+          <div class="detailItem"><div class="k">Sau thuế</div><div class="v" data-d="realProfit"></div></div>
+          <div class="detailItem"><div class="k">% LN / Giá bán</div><div class="v" data-d="roiOnSale"></div></div>
+          <div class="detailItem"><div class="k">Lợi nhuận ròng</div><div class="v" data-d="net"></div></div>
+          <div class="detailItem"><div class="k">Trạng thái</div><div class="v" data-d="status"></div></div>
+
+          <div class="detailItem advOnly"><div class="k">Giá cố định</div><div class="v" data-d="fixed"></div></div>
+          <div class="detailItem advOnly"><div class="k">Tiền về</div><div class="v" data-d="moneyBack"></div></div>
+        </div>
+      </div>
+    </td>
+  `;
+  return tr;
+}
+
+function updateDetailRowDOM(i){
+  const detail = tbody.querySelector(`tr.detail-row[data-detail-for="${i}"]`);
+  if(!detail) return;
+  const row = state.rows[i];
+  if(!row) return;
+  const c = calcRow(row);
+
+  const cInv = parseNum(row.costInvoice ?? row.cost);
+  const cReal = parseNum(row.costReal ?? row.costInvoice ?? row.cost);
+
+  const beNoHD = (isFinite(cInv) && isFinite(cReal)) ? suggestBreakEvenSale(cInv, cReal) : {ok:false};
+  const beFullHD = (isFinite(cReal)) ? breakEvenSaleBySolve(cReal, cReal) : {ok:false};
+
+  const set = (key, val) => {
+    const el = detail.querySelector(`[data-d="${key}"]`);
+    if(!el) return;
+    el.innerHTML = val;
+  };
+
+  set("taxAmt", fmt(c.taxAmt));
+  set("diffMoney", fmt(c.diffMoney));
+  set("beNoHD", beNoHD.ok ? fmt(beNoHD.sale) : "—");
+  set("beFullHD", beFullHD.ok ? fmt(beFullHD.sale) : "—");
+  set("realProfit", isFinite(c.realProfit) ? `<span class="net ${c.realProfit>=0?'positive':'negative'}">${fmt(c.realProfit)}</span>` : "—");
+  set("roiOnSale", isFinite(c.roiOnSale) ? fmtPct(c.roiOnSale) : "—");
+  set("net", isFinite(c.net) ? `<span class="net ${c.net>=0?'positive':'negative'}">${fmt(c.net)}</span>` : "—");
+  set("status", row.status ? escapeHtml(row.status) : "—");
+  set("fixed", fmt(c.fixed));
+  set("moneyBack", fmt(c.moneyBack));
+
+  // hide/show advanced-only items based on setting
+  const adv = !!state.settings.advancedColsOn;
+  detail.querySelectorAll(".advOnly").forEach(el=> el.style.display = adv ? "" : "none");
+}
+
+function toggleRowDetails(i){
+  const base = tbody.querySelector(`tr[data-i="${i}"]`);
+  if(!base) return;
+
+  const next = base.nextElementSibling;
+  const isOpen = next && next.classList.contains("detail-row") && next.getAttribute("data-detail-for") === String(i);
+
+  if(isOpen){
+    next.remove();
+    base.classList.remove("expanded");
+    expandedRows.delete(i);
+    return;
+  }
+
+  // close other open details (pro: one at a time)
+  [...tbody.querySelectorAll("tr.detail-row")].forEach(el=> el.remove());
+  [...tbody.querySelectorAll("tr.expanded")].forEach(el=> el.classList.remove("expanded"));
+  expandedRows.clear();
+
+  const dtr = buildDetailRowDOM(i);
+  base.insertAdjacentElement("afterend", dtr);
+  base.classList.add("expanded");
+  expandedRows.add(i);
+  updateDetailRowDOM(i);
 }
 
 function updateRowDOM(i){
@@ -1906,8 +2583,16 @@ function getVisibleIndices(){
 function rebuildTable(){
   tbody.innerHTML = "";
   const visible = getVisibleIndices();
-  visible.forEach((i) => tbody.appendChild(buildRowDOM(i)));
-  visible.forEach((i) => updateRowDOM(i));
+  visible.forEach((i) => {
+    tbody.appendChild(buildRowDOM(i));
+    if(expandedRows.has(i)){
+      tbody.appendChild(buildDetailRowDOM(i));
+    }
+  });
+  visible.forEach((i) => {
+    updateRowDOM(i);
+    if(expandedRows.has(i)) updateDetailRowDOM(i);
+  });
   updateKPIs();
   applyAdvancedCols();
   rebuildMobileCards();
@@ -1960,8 +2645,10 @@ function applyStateToUI(){
   setToggle(refundToggle, state.settings.refundOn);
   $("toggleAdvancedBtn").textContent = `Cột nâng cao: ${state.settings.advancedColsOn ? "ON" : "OFF"}`;
   $("stickyToggleBtn").textContent = `Sticky: ${state.settings.stickyOn ? "ON" : "OFF"}`;
+  if($("quickViewBtn")) $("quickViewBtn").textContent = `Chế độ: ${state.settings.quickViewOn ? "Nhập nhanh" : "Đầy đủ"}`;
 
   document.body.classList.toggle("sticky-off", !state.settings.stickyOn);
+  document.body.classList.toggle("quick-view", !!state.settings.quickViewOn);
   updateKPIs();
   applyAdvancedCols();
 }
@@ -1969,6 +2656,7 @@ function refreshAllOutputs(){
   state.rows.forEach((_, i)=> updateRowDOM(i));
   state.rows.forEach((_, i)=> updateMobileCardDOM(i));
   updateKPIs();
+  updateDetailRowDOM(idx);
   saveDebounced();
 }
 
@@ -2018,6 +2706,7 @@ function exportExcelPretty(filterMode = "all"){
   const header = [
     "Sản phẩm",
     "Giá bán",
+    "Phí AFF (%)",
     "Giá vốn (hóa đơn)",
     "Giá vốn thực tế",
     "Tiền về",
@@ -2046,6 +2735,7 @@ function exportExcelPretty(filterMode = "all"){
     rowsAoa.push([
       r.name || "",
       Math.round(parseNum(r.sale) || 0),
+      (function(){ const v = (r.affFeePct!=null && String(r.affFeePct).trim()!=="") ? safePct(r.affFeePct) : safePct(state.settings.moneyBackFeePct); return isFinite(v)? v : 0; })(),
       Math.round(parseNum(r.costInvoice ?? r.cost) || 0),
       Math.round(parseNum(r.costReal ?? r.costInvoice ?? r.cost) || 0),
       Math.round(c.moneyBack || 0),
@@ -2069,6 +2759,7 @@ function exportExcelPretty(filterMode = "all"){
   wsDetail["!cols"] = [
     { wch: 26 }, // A Sản phẩm
     { wch: 14 }, // B Giá bán
+    { wch: 10 }, // C Phí AFF (%)
     { wch: 16 }, // C Giá vốn (hóa đơn)
     { wch: 16 }, // D Giá vốn thực tế
     { wch: 14 }, // E Tiền về
@@ -2219,6 +2910,14 @@ function bindSettings(){
     $("stickyToggleBtn").textContent = `Sticky: ${state.settings.stickyOn ? "ON" : "OFF"}`;
 
     document.body.classList.toggle("sticky-off", !state.settings.stickyOn);
+    saveDebounced();
+  });
+
+  $("quickViewBtn").addEventListener("click", () => {
+    state.settings.quickViewOn = !state.settings.quickViewOn;
+    $("quickViewBtn").textContent = `Chế độ: ${state.settings.quickViewOn ? "Nhập nhanh" : "Đầy đủ"}`;
+    document.body.classList.toggle("quick-view", !!state.settings.quickViewOn);
+    // no need to rebuild; CSS handles column visibility
     saveDebounced();
   });
 
@@ -2471,8 +3170,9 @@ $("excelInput").addEventListener("change", async (e) => {
   const idxCostInvoice = header.indexOf("giá vốn (hóa đơn)") !== -1 ? header.indexOf("giá vốn (hóa đơn)") : header.indexOf("giá vốn");
   const idxCostReal = header.indexOf("giá vốn thực tế");
   const idxSale = header.indexOf("giá bán");
+  const idxAff = (header.indexOf("phí aff (%)") !== -1) ? header.indexOf("phí aff (%)") : header.indexOf("phí aff");
 
-  if(idxName === -1 || idxCostInvoice === -1){
+if(idxName === -1 || idxCostInvoice === -1){
     alert("File không đúng mẫu.\n\nBắt buộc có cột: 'Sản phẩm' và 'Giá vốn (hóa đơn)' (dòng 1). (Chấp nhận cả tên cũ: 'Giá vốn')\nGợi ý: bấm 'Tải mẫu Excel' để lấy đúng format.");
     return;
   }
@@ -2488,13 +3188,15 @@ $("excelInput").addEventListener("change", async (e) => {
     const costInvoiceRaw = r[idxCostInvoice];
     const costRealRaw = (idxCostReal !== -1 ? r[idxCostReal] : "");
     const saleRaw = (idxSale !== -1 ? r[idxSale] : "");
+    const affRaw = (idxAff !== -1 ? r[idxAff] : "");
 
-    const nameOk = !!(name && String(name).trim().length > 0);
+const nameOk = !!(name && String(name).trim().length > 0);
     const costInvoiceNum = parseNum(costInvoiceRaw);
     const costRealNum = parseNum(costRealRaw);
     const saleNum = parseNum(saleRaw);
+    const affNum = parseNum(affRaw);
 
-    if(!nameOk && (costInvoiceRaw==="" || costInvoiceRaw==null) && (saleRaw==="" || saleRaw==null)){
+if(!nameOk && (costInvoiceRaw==="" || costInvoiceRaw==null) && (saleRaw==="" || saleRaw==null)){
       // skip fully empty row
       continue;
     }
@@ -2511,10 +3213,15 @@ $("excelInput").addEventListener("change", async (e) => {
       errors.push(`Dòng ${excelRowNo}: 'Giá bán' không hợp lệ`);
       continue;
     }
+    if(idxAff !== -1 && affRaw !== "" && affRaw != null && (!isFinite(affNum) || affNum < 0 || affNum > 99.99)){
+      errors.push(`Dòng ${excelRowNo}: 'Phí AFF (%)' không hợp lệ`);
+      continue;
+    }
 
-    newRows.push({
+newRows.push({
       name: String(name).trim(),
       sale: formatMoneyString(saleRaw),
+      affFeePct: (idxAff !== -1 && affRaw !== "" && affRaw != null && isFinite(affNum)) ? String(affNum) : "",
       costInvoice: formatMoneyString(costInvoiceNum),
       costReal: (isFinite(costRealNum) ? formatMoneyString(costRealRaw) : formatMoneyString(costInvoiceNum))
     });
@@ -2556,14 +3263,14 @@ $("downloadTemplateBtn").addEventListener("click", () => {
   }
 
   const aoa = [
-    ["Sản phẩm", "Giá vốn (hóa đơn)", "Giá vốn thực tế", "Giá bán"],
-    ["Bu lông M8", 225000, 225000, 348000],
-    ["SP 2", 120000, 118000, ""],
-    ["SP 3", 98000, ""]
+    ["Sản phẩm", "Giá vốn (hóa đơn)", "Giá vốn thực tế", "Giá bán", "Phí AFF (%)"],
+    ["Bu lông M8", 225000, 225000, 348000, 27],
+    ["SP 2", 120000, 118000, "", 25],
+    ["SP 3", 98000, "", "", ""]
   ];
 
   const ws = XLSX.utils.aoa_to_sheet(aoa);
-  ws["!cols"] = [{ wch: 26 }, { wch: 14 }, { wch: 14 }];
+  ws["!cols"] = [{ wch: 26 }, { wch: 16 }, { wch: 16 }, { wch: 14 }, { wch: 10 }];
 
   // Header style (xlsx-js-style)
   const headerStyle = {
@@ -2571,7 +3278,7 @@ $("downloadTemplateBtn").addEventListener("click", () => {
     fill: { fgColor: { rgb: "2563EB" } },
     alignment: { vertical: "center", horizontal: "center" }
   };
-  ["A1","B1","C1"].forEach(a=>{
+  ["A1","B1","C1","D1","E1"].forEach(a=>{
     if(ws[a]) ws[a].s = headerStyle;
   });
 
@@ -2588,12 +3295,12 @@ $("downloadTemplateBtn").addEventListener("click", () => {
   const noteRow = 6;
   ws["A"+noteRow] = { t:"s", v:"Ghi chú:" };
   ws["A"+noteRow].s = { font:{bold:true} };
-  ws["A"+(noteRow+1)] = { t:"s", v:"- Dòng 1 là tiêu đề, phải có: Sản phẩm, Giá vốn. Cột Giá bán có thể để trống." };
+  ws["A"+(noteRow+1)] = { t:"s", v:"- Dòng 1 là tiêu đề, phải có: Sản phẩm, Giá vốn. Cột Giá bán và Phí AFF (%) có thể để trống." };
   ws["A"+(noteRow+2)] = { t:"s", v:"- Giá vốn/giá bán có thể nhập 348000 hoặc 348.000 (tool tự format)." };
   ws["!merges"] = ws["!merges"] || [];
-  ws["!merges"].push({ s:{r:noteRow-1,c:0}, e:{r:noteRow-1,c:2} });
-  ws["!merges"].push({ s:{r:noteRow,c:0}, e:{r:noteRow,c:2} });
-  ws["!merges"].push({ s:{r:noteRow+1,c:0}, e:{r:noteRow+1,c:2} });
+  ws["!merges"].push({ s:{r:noteRow-1,c:0}, e:{r:noteRow-1,c:4} });
+  ws["!merges"].push({ s:{r:noteRow,c:0}, e:{r:noteRow,c:4} });
+  ws["!merges"].push({ s:{r:noteRow+1,c:0}, e:{r:noteRow+1,c:4} });
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Mau import");
@@ -2718,12 +3425,96 @@ applyStateToUI();
 initDropdowns();
 rebuildTable();
 saveDebounced();
+
+/* UI: mở "Tuỳ chọn" trên PC để thao tác nhanh */
+try{
+  if (window.matchMedia("(min-width: 900px)").matches){
+    const d = document.getElementById("moreActions");
+    d && d.setAttribute("open","");
+    const s = document.querySelector(".subMore");
+    s && s.setAttribute("open","");
+  }
+}catch(e){}
 </script>
 
 <div class="disclaimer">
   <b>Lưu ý:</b> Công cụ này dùng để <b>hỗ trợ ra quyết định giá bán</b> dựa trên các thông tin người dùng cung cấp.
   Kết quả hiển thị mang tính tham khảo, <b>không phải tư vấn tài chính hay kế toán</b>.
 </div>
+
+
+<script>
+(function(){
+  const btn = document.getElementById('moreBtn');
+  const menu = document.getElementById('moreMenu');
+  if(!btn || !menu) return;
+
+  function positionMenu(){
+    // Use fixed positioning so it won't be clipped by any overflow:hidden ancestors
+    const r = btn.getBoundingClientRect();
+    // ensure menu has a measurable width
+    menu.style.visibility = 'hidden';
+    menu.hidden = false;
+    const mw = menu.offsetWidth || 320;
+    const mh = menu.offsetHeight || 240;
+    menu.hidden = true;
+    menu.style.visibility = '';
+
+    const gap = 10;
+    const pad = 12;
+
+    // Prefer aligning right edge of menu with right edge of button
+    let left = Math.round(r.right - mw);
+    left = Math.max(pad, Math.min(left, window.innerWidth - mw - pad));
+
+    // Prefer opening below; if not enough space, open above
+    let top = Math.round(r.bottom + gap);
+    if(top + mh + pad > window.innerHeight){
+      top = Math.round(Math.max(pad, r.top - gap - mh));
+    }
+
+    menu.style.left = left + 'px';
+    menu.style.top  = top + 'px';
+  }
+
+  function closeMenu(){
+    menu.hidden = true;
+    btn.setAttribute('aria-expanded','false');
+  }
+  function openMenu(){
+    positionMenu();
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded','true');
+  }
+
+  btn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    if(menu.hidden) openMenu(); else closeMenu();
+  });
+
+  // Keep positioned on resize/scroll
+  window.addEventListener('resize', ()=>{ if(!menu.hidden) positionMenu(); });
+  window.addEventListener('scroll', ()=>{ if(!menu.hidden) positionMenu(); }, true);
+
+  document.addEventListener('click', (e)=>{
+    if(menu.hidden) return;
+    if(menu.contains(e.target) || btn.contains(e.target)) return;
+    closeMenu();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  // Close after clicking a menu item button (but not when clicking inside a dropdown/select)
+  menu.addEventListener('click', (e)=>{
+    const b = e.target.closest('button');
+    if(!b) return;
+    // If this button is part of a dropdown wrapper, let it handle its own open state
+    setTimeout(closeMenu, 0);
+  });
+})();
+</script>
 
 </body>
 </html>
