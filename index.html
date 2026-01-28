@@ -10,6 +10,7 @@
 
 <style>
 :root{
+  --mobileBarSpace: 140px;
   --bg:#0b1020;
   --bg2:#0e1730;
   --card:#0f1a33;
@@ -629,7 +630,6 @@ th, td{ box-sizing: border-box; }
   backdrop-filter: none;
   box-shadow: 0 18px 60px rgba(0,0,0,.35);
 }
-}
 .mobileBar .barRow{
   display:flex; gap:10px; justify-content:space-between; align-items:center;
 }
@@ -671,7 +671,7 @@ th, td{ box-sizing: border-box; }
   .tablewrap{ display:none; }
   .mobileCards{ display:block; }
   /* Reserve space so the fixed mobile action bar doesn't cover cards */
-  .mobileCards{ padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
+  .mobileCards{ padding-bottom: calc(var(--mobileBarSpace, 140px) + env(safe-area-inset-bottom, 0px)); }
   .mobileBar{ display:block; }
 .grid{ grid-template-columns: 1fr; }
   .settingsDrawer{ width:min(420px, calc(100vw - 24px)); }
@@ -796,7 +796,7 @@ tbody tr:hover td{ background: rgba(255,255,255,.03); }
   bottom: calc(12px + env(safe-area-inset-bottom));
 }
 @media (max-width: 720px){
-  .wrap{ padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+  .wrap{ padding-bottom: calc(var(--mobileBarSpace, 140px) + env(safe-area-inset-bottom, 0px)); }
 }
 
 
@@ -3516,6 +3516,28 @@ try{
     setTimeout(closeMenu, 0);
   });
 })();
+
+  // --- Mobile bottom bar: prevent content from being covered (dynamic)
+  function updateMobileBarSpace(){
+    const bar = document.querySelector('.mobileBar');
+    if(!bar) return;
+    // Only apply when bar is visible (mobile breakpoint)
+    const style = window.getComputedStyle(bar);
+    if(style.display === 'none') {
+      document.documentElement.style.setProperty('--mobileBarSpace', '0px');
+      return;
+    }
+    // Measure height including padding and borders
+    const rect = bar.getBoundingClientRect();
+    const h = Math.ceil(rect.height);
+    // Add a small buffer so last row is always tappable
+    document.documentElement.style.setProperty('--mobileBarSpace', `${h + 16}px`);
+  }
+  window.addEventListener('resize', updateMobileBarSpace, {passive:true});
+  window.addEventListener('orientationchange', updateMobileBarSpace, {passive:true});
+  window.addEventListener('scroll', () => { /* keep cheap */ }, {passive:true});
+  // Run after layout
+  requestAnimationFrame(()=>{ updateMobileBarSpace(); setTimeout(updateMobileBarSpace, 250); });
 </script>
 
 </body>
