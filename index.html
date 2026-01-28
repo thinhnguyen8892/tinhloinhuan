@@ -705,12 +705,9 @@ th, td{ box-sizing: border-box; }
 
 .mkpis{
   display:grid;
-  grid-template-columns: 1.1fr 1.1fr .8fr .8fr;
+  grid-template-columns: 1fr 1fr;
   gap:10px;
   margin:10px 0 8px;
-}
-@media (max-width: 380px){
-  .mkpis{ grid-template-columns: 1fr 1fr; }
 }
 .mchip{
   border:1px solid var(--line);
@@ -1210,7 +1207,7 @@ td.stickyLeft{z-index:20}
   border-radius: 14px;
   padding: 10px;
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
-  z-index: 2000;
+  z-index: 5000;
 }
 
 .actionsRow{ position: relative; }
@@ -2065,6 +2062,10 @@ function buildMobileCardDOM(i){
         <div class="v big mono" data-out="realProfit"></div>
       </div>
       <div class="mchip">
+        <div class="k">Lãi ròng</div>
+        <div class="v big mono" data-out="net"></div>
+      </div>
+      <div class="mchip">
         <div class="k">% chuẩn</div>
         <div class="v mono" data-out="roiMb"></div>
       </div>
@@ -2131,6 +2132,12 @@ function updateMobileCardDOM(i){
     ? `<span class="${c.realProfit>=0?'positive':'negative'}">${fmt(c.realProfit)}</span>`
     : "";
   set("realProfit", realProfitHtml);
+
+  const netHtml = isFinite(c.net)
+    ? `<span class="${c.net>=0?'positive':'negative'}">${fmt(c.net)}</span>`
+    : "";
+  set("net", netHtml);
+
 
   // break-even outputs are already computed in updateRowDOM; reuse same helpers here
   const costInv0 = parseMoney(row.costInvoice ?? row.cost);
@@ -3489,11 +3496,19 @@ try{
     btn.setAttribute('aria-expanded','true');
   }
 
-  btn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    e.stopPropagation();
+  function toggleMenu(e){
+    if(e){
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if(menu.hidden) openMenu(); else closeMenu();
-  });
+  }
+
+  // Mobile browsers sometimes don't fire click reliably inside overflow-x containers,
+  // so we listen to pointerup/touchend as well.
+  btn.addEventListener('click', toggleMenu);
+  btn.addEventListener('pointerup', toggleMenu, {passive:false});
+  btn.addEventListener('touchend', toggleMenu, {passive:false});
 
   // Keep positioned on resize/scroll
   window.addEventListener('resize', ()=>{ if(!menu.hidden) positionMenu(); });
