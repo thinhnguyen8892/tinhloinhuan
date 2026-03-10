@@ -126,11 +126,12 @@ thead th.sticky-left{ z-index: 6; background: var(--card) !important; }
 @media (prefers-color-scheme: light){ .search-box{ background: #fff; } }
 .badge{ display:inline-flex;align-items:center;gap:6px; padding:5px 10px;border-radius:999px; font-weight:900;font-size:11px;border:1px solid var(--line2); background:rgba(255,255,255,.02); }
 .badge .dot{width:8px;height:8px;border-radius:999px;background:#94a3b8} .badge.ok{border-color:rgba(34,197,94,.30);background:rgba(34,197,94,.12);color:var(--ok)} .badge.ok .dot{background:var(--ok)} .badge.bad{border-color:rgba(239,68,68,.30);background:rgba(239,68,68,.12);color:var(--bad)} .badge.bad .dot{background:var(--bad)}
+
 .th-tip{position:relative;cursor:help} .th-tip::after{ content: attr(data-tip); position:absolute; left:50%; bottom:100%; transform:translateX(-50%); min-width:220px; max-width:320px; background:rgba(15,26,51,.98); color:#e5e7eb; padding:10px 12px; border-radius:8px; font-size:12.5px; font-weight:600; line-height:1.45; box-shadow:0 16px 40px rgba(0,0,0,.45); opacity:0; pointer-events:none; margin-bottom:10px; z-index:80; } .th-tip::before{ content:""; position:absolute; left:50%; bottom:100%; transform:translateX(-50%); border:6px solid transparent; border-top-color:rgba(15,26,51,.98); opacity:0; margin-bottom:-2px; } .th-tip:hover::after, .th-tip:hover::before{opacity:1}
 thead th{ overflow: visible !important; }
 
-.dd{ position:relative; } .dd-btn{ width: auto; min-width: 160px; display:flex;align-items:center;justify-content:space-between;gap:10px; border:1px solid var(--line2); background:rgba(255,255,255,.03); color:var(--text); padding:9px 12px;border-radius:var(--radius-btn); cursor:pointer;font-weight:800;font-size:13px; transition:.15s ease; } .dd-btn:hover{transform:translateY(-1px)} .dd-caret{opacity:.8;font-size:12px}
-.dd-menu{ position:absolute; top: calc(100% + 8px); left:0; min-width: 200px; max-width: 340px; z-index:60; border:1px solid var(--line2); background: var(--card); border-radius:var(--radius); box-shadow:0 18px 60px rgba(0,0,0,.45); overflow:hidden; display:none; } .dd.open .dd-menu{display:block} .dd-item{ padding:10px 14px; display:flex;align-items:center;justify-content:space-between;gap:10px; cursor:pointer; font-weight:800; font-size:13px; color:var(--text); border-top:1px solid rgba(255,255,255,.06); } .dd-item:first-child{border-top:0} .dd-item:hover{background:rgba(124,58,237,.12)} .dd-item.active{ background:rgba(124,58,237,.20); } .dd-item.active .check{opacity:1} .check{opacity:0;color:var(--text)}
+.dd{ position:relative; } .dd-btn{ width: auto; min-width: 160px; display:flex;align-items:center;justify-content:space-between;gap:10px; border:1px solid var(--line2); background:rgba(255,255,255,.03); color:var(--text); padding:9px 12px;border-radius:var(--radius-btn); cursor:pointer;font-weight:800;font-size:13px; transition:.15s ease; }
+.dd-menu{ position:absolute; top: calc(100% + 8px); left:0; min-width: 200px; max-width: 340px; z-index:60; border:1px solid var(--line2); background: var(--card); border-radius:var(--radius); box-shadow:0 18px 60px rgba(0,0,0,.45); overflow:hidden; display:none; } .dd.open .dd-menu{display:block} .dd-item{ padding:10px 14px; display:flex;align-items:center;justify-content:space-between;gap:10px; cursor:pointer; font-weight:800; font-size:13px; color:var(--text); border-top:1px solid rgba(255,255,255,.06); } .dd-item:first-child{border-top:0} .dd-item:hover{background:rgba(124,58,237,.12)}
 
 .backdrop{ position:fixed;inset:0; background:rgba(2,6,23,.55); backdrop-filter: blur(3px); z-index:40; display:none; } .backdrop.show{display:block}
 .settingsDrawer{ position:fixed; top:12px; left:12px; width:min(420px, calc(100vw - 24px)); height:calc(100vh - 24px); z-index:50; transform:translateX(calc(-100% - 20px)); transition: .2s ease cubic-bezier(0.4, 0, 0.2, 1); display:flex; flex-direction:column; }
@@ -166,7 +167,7 @@ thead th{ overflow: visible !important; }
 .m-card { background: var(--card); border: 1px solid var(--line2); border-radius: 16px; padding: 16px; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: relative;}
 .m-card-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--line); padding-bottom: 12px;}
 .m-card-hd input { font-size: 16px; font-weight: 900; border: none; background: transparent; color: var(--text); outline: none; width: 100%; text-overflow: ellipsis; }
-.m-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.m-grid { display: grid; gap: 12px; margin-bottom: 14px; }
 .m-field { display: flex; flex-direction: column; gap: 6px; }
 .m-field label { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;}
 .m-field input { background: rgba(255,255,255,.04); border: 1px solid var(--line2); border-radius: 8px; padding: 12px 10px; color: var(--text); font-family: var(--mono); font-weight: 900; font-size: 16px; width: 100%; outline: none; transition: .2s; }
@@ -253,6 +254,8 @@ thead th{ overflow: visible !important; }
         <div class="dd-menu" style="right:0; left:auto; min-width:180px;">
           <div class="dd-item" id="undoBtn">↶ Hoàn tác (Ctrl+Z)</div>
           <div class="dd-item" id="downloadTemplateBtn">Tải mẫu Excel</div>
+          <div class="dd-item" id="stickyToggleBtn">Cố định cột SP: <span>ON</span></div>
+          <div class="dd-item" id="helpBtnMenu">Hướng dẫn sử dụng</div>
           <div class="dd-item" style="color:var(--bad)" id="resetBtn">Reset toàn bộ</div>
         </div>
       </div>
@@ -300,7 +303,7 @@ thead th{ overflow: visible !important; }
       </div>
       <div class="qc-pane active" id="qcPane1">
         <div class="field"><div style="width:100%"><label>Giá Vốn Hóa Đơn</label><input id="qc1Cinv" type="text" placeholder="VD: 200.000"></div></div>
-        <div class="field"><div style="width:100%"><label>Giá Vốn Thực Tế</label><input id="qc1Creal" type="text" placeholder="VD: 200.000"></div></div>
+        <div class="field"><div style="width:100%"><label>Giá Vốn Thực Tế</label><input id="qc1Creal" type="text placeholder="VD: 200.000"></div></div>
         <div class="qc-result-box">
           <div style="font-size:12px; color:var(--muted); font-weight:800;">GIÁ BÁN TỐI THIỂU (ĐỂ ĐẠT MỤC TIÊU)</div>
           <div class="qc-result-val" id="qc1Result">0đ</div>
@@ -442,7 +445,7 @@ function deepClone(obj){ return JSON.parse(JSON.stringify(obj)); }
 let state = deepClone(DEFAULT_STATE);
 try { const saved = localStorage.getItem(STORAGE_KEY); if (saved) { const p = JSON.parse(saved); if (p && p.rows) state = p; } } catch(e){}
 
-// SAFEGUARD: Luôn đảm bảo có ít nhất 1 dòng để không bị trống bảng
+// BẢO VỆ CHỐNG TRỐNG BẢNG
 if (!state.rows || state.rows.length === 0) {
   state.rows = [ { name: "Sản phẩm 1", sale: "", costInvoice: "", costReal: "" } ];
 }
@@ -454,8 +457,9 @@ function pushHistory() {
   historyStack.push(snap); if (historyStack.length > 20) historyStack.shift(); else historyIndex++;
 }
 function undo() {
-  if (historyIndex > 0) { historyIndex--; state.rows = deepClone(historyStack[historyIndex]); rebuildAll(); saveDebounced(); showToast("Đã hoàn tác", "info"); } 
-  else { showToast("Không còn thao tác nào.", "warn"); }
+  if (historyIndex > 0) {
+    historyIndex--; state.rows = deepClone(historyStack[historyIndex]); rebuildAll(); saveDebounced(); showToast("Đã hoàn tác", "info");
+  } else { showToast("Không còn thao tác nào.", "warn"); }
 }
 document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { if (document.activeElement.tagName !== 'INPUT') { e.preventDefault(); undo(); } } });
 pushHistory();
@@ -551,6 +555,7 @@ function buildRowDOM(i){
   `; return tr;
 }
 
+// BẢN VÁ: THÊM Ô VỐN HÓA ĐƠN TRÊN MOBILE
 function buildMobileCard(i) {
   const r = state.rows[i]; const div = document.createElement("div"); div.className = "m-card"; div.dataset.i = String(i);
   div.innerHTML = `
@@ -561,10 +566,22 @@ function buildMobileCard(i) {
         <button class="danger smallBtn" data-action="del" data-del="${i}">✕</button>
       </div>
     </div>
-    <div class="m-grid">
-      <div class="m-field"><label>Vốn Nhập</label><input inputmode="numeric" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="Vốn"></div>
-      <div class="m-field"><label>Giá Bán</label><input inputmode="numeric" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="Bán"></div>
+    
+    <div class="m-grid" style="grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div class="m-field">
+        <label>Vốn Hóa Đơn</label>
+        <input inputmode="numeric" data-k="costInvoice" data-i="${i}" value="${escapeHtml(r.costInvoice ?? r.cost)}" placeholder="Vốn HĐ">
+      </div>
+      <div class="m-field">
+        <label>Vốn Thực Tế</label>
+        <input inputmode="numeric" data-k="costReal" data-i="${i}" value="${escapeHtml(r.costReal ?? r.costInvoice ?? r.cost)}" placeholder="Vốn Thực">
+      </div>
+      <div class="m-field" style="grid-column: span 2;">
+        <label>Giá Bán Khách Nhìn Thấy</label>
+        <input inputmode="numeric" data-k="sale" data-i="${i}" value="${escapeHtml(r.sale)}" placeholder="Nhập giá bán...">
+      </div>
     </div>
+
     <div class="m-actions-row">
        <div class="m-suggest-text">Đề xuất: <span data-out="mSuggestVal" class="m-suggest-val">—</span></div>
        <button class="smallBtn primary" data-action="applySuggest" data-i="${i}" style="padding:6px 14px;">⚡ Áp dụng</button>
@@ -785,7 +802,6 @@ const handleAdd = () => {
   if(window.innerWidth <= 720) window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 };
 $("addRowBtn").addEventListener("click", handleAdd);
-if($("mNavAdd")) $("mNavAdd").addEventListener("click", handleAdd);
 
 $("bulkApplyBtn").addEventListener("click", () => {
   const rT = safePct(state.settings.targetPct)/100; let chg = 0;
